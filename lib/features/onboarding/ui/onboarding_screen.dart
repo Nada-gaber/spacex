@@ -4,14 +4,14 @@ import 'package:spacex/features/onboarding/model/onboarding_model.dart';
 import 'package:spacex/features/onboarding/ui/widgets/onboarding_button.dart';
 import 'package:spacex/features/onboarding/ui/widgets/onboarding_page_view.dart';
 
-class OnboardingView extends StatefulWidget {
-  const OnboardingView({super.key});
+class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
 
   @override
-  State<OnboardingView> createState() => _OnboardingViewState();
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
 }
 
-class _OnboardingViewState extends State<OnboardingView> {
+class _OnboardingScreenState extends State<OnboardingScreen> {
   List<OnboardingModel> onboardingItems = [
     OnboardingModel(
       image: MyImages.firstOnboarding,
