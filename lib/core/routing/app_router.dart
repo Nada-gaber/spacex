@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/features/home/ui/views/splash/splash_screen.dart';
 import 'package:spacex/features/onboarding/onboarding_view.dart';
 
 import '../../features/home/ui/views/splash/splash_screen.dart';
