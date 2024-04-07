@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/onboarding/onboarding_view.dart';
 
-import '../../features/home/ui/views/splash/splash_screen.dart';
+import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {

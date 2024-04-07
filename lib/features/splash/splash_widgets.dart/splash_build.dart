@@ -1,6 +1,6 @@
   import 'package:flutter/material.dart';
 
-import '../../../../../core/constant/image/app_images.dart';
+import '../../../core/constant/image/app_images.dart';
 
  buildBody( BuildContext context) {
    
