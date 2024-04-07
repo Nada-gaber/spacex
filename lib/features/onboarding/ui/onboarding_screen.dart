@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/features/onboarding/model/onboarding_model.dart';
 import 'package:spacex/features/onboarding/ui/widgets/onboarding_button.dart';
 import 'package:spacex/features/onboarding/ui/widgets/onboarding_page_view.dart';
+
+import '../../../core/constant/image/app_images.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -14,19 +15,19 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   List<OnboardingModel> onboardingItems = [
     OnboardingModel(
-      image: MyImages.firstOnboarding,
+      image: AppImage.firstOnboarding,
       title: 'Galaxy Explorer',
       subTitle:
           'We will learn all of the scientific  disciplines that involve.',
     ),
     OnboardingModel(
-      image: MyImages.secondOnboarding,
+      image: AppImage.secondOnboarding,
       title: 'Insights',
       subTitle:
           'Embark on an interstellar voyage like never before. Explore distant galaxies, uncover cosmic secrets, and witness the majesty of the universe. Your cosmic adventure begins here.',
     ),
     OnboardingModel(
-      image: MyImages.thirdOnboarding,
+      image: AppImage.thirdOnboarding,
       title: 'Let’s float in Universe',
       subTitle: 'Unlock a universe of knowledge and adventure with your pass.',
     ),
