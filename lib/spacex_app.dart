@@ -13,7 +13,7 @@ class SpacexApp extends StatelessWidget {
         brightness: Brightness.dark
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.onboarding,
+      initialRoute: Routes.splashScreen,
       onGenerateRoute: appRouter.generateRoute,
     );
   }

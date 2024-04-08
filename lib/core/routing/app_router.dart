@@ -3,9 +3,12 @@ import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
 
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
+import '../../features/onboarding/ui/onboarding_screen.dart';
+import '../../features/splash/splash_screen.dart';
+
 
 class AppRouter {
-  Route generateRoute(RouteSettings settings) {
+  Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onboarding:
         return MaterialPageRoute(
@@ -17,6 +20,8 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
         );
+      case Routes.splashScreen:
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
