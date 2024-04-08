@@ -19,6 +19,7 @@ dependencies:
   get_it: ^7.6.7
   dio: ^5.4.2+1
   retrofit: ^4.1.0
+  font_awesome_flutter: ^10.7.0
   flutter_native_splash: ^2.4.0
 
 dev_dependencies:
@@ -31,4 +32,5 @@ flutter:
 
 
   uses-material-design: true
-
+  assets:
+    - assets/images/
