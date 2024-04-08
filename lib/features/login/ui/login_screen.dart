@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/image/app_images.dart';
-import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/features/login/ui/widgets/build_login_form.dart';
+import 'package:spacex/features/login/ui/widgets/login_screen_body.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -24,25 +22,7 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Welcome Back',
-                  style: MyTextStyles.font40WhiteBold,
-                ),
-                SizedBox(
-                  height: MediaQuery.sizeOf(context).height * 0.1,
-                ),
-                const BuildLoginForm(),
-              ],
-            ),
-          ),
+          const LoginScreenBody(),
         ],
       ),
     );

@@ -22,10 +22,10 @@ class CustomFormField extends StatelessWidget {
     return TextFormField(
       validator: validator,
       controller: controller,
-      style: MyTextStyles.font14WhiteW500,
+      style: MyTextStyles.font14WhiteBold,
       decoration: InputDecoration(
         hintText: text,
-        hintStyle: MyTextStyles.font14WhiteW500,
+        hintStyle: MyTextStyles.font14WhiteBold,
         suffixIcon: Icon(
           icon,
           color: Colors.white,
