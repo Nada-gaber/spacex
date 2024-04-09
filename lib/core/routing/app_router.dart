@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/features/home/ui/views/ships/ship_detail.dart';
+import 'package:spacex/features/home/ui/views/ships/ships.dart';
 import '../../features/onboarding/ui/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';
-
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -11,8 +12,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-         case Routes.splashScreen:
+      case Routes.splashScreen:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
+      case Routes.ships:
+        return MaterialPageRoute(builder: (context) => const Ships());
     }
     return null;
   }
