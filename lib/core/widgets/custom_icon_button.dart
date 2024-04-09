@@ -11,9 +11,8 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      hoverColor: AppColors.buttonColor,
-      splashColor: AppColors.buttonColor,
+    return GestureDetector(
+
       onTap: onTap,
       child: Container(
           decoration: BoxDecoration(
