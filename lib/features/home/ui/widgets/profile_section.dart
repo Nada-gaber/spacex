@@ -31,8 +31,10 @@ class ProfileSection extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 18.0),
           ),
           const Text(
-            "+20 1007582545",
+            "mahmoud.alaa1212@gmail.com",
             style: TextStyle(color: Colors.grey, fontSize: 16.0),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
         ],
       ),
