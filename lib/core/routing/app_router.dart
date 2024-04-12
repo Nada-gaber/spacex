@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
+import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 
@@ -24,7 +25,10 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CrewScreen(),
         );
-
+      case Routes.editProfileScreen:
+        return MaterialPageRoute(
+          builder: (context) => const EditProfileScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(
