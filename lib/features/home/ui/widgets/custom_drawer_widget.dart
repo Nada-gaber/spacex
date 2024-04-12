@@ -15,8 +15,8 @@ class CustomDrawer extends StatelessWidget {
         child: Column(
           children: [
             const ProfileSection(),
-            const DrawerComponent(
-              title: "My Profile",
+             const DrawerComponent(
+              title: "Edit Profile",
               icon: Icons.person_pin,
             ),
             buildDivide(),
@@ -38,6 +38,11 @@ class CustomDrawer extends StatelessWidget {
             const DrawerComponent(
               title: "Company Information",
               icon: Icons.info_outline_rounded,
+            ),
+            buildDivide(),
+            const DrawerComponent(
+              title: "Log out",
+              icon: Icons.logout,
             ),
           ],
         ),
