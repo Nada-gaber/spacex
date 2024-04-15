@@ -13,6 +13,8 @@ class CrewMemberDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
@@ -36,16 +38,18 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                         top: 10,
                         left: 10,
                         child: CustomIconButton(
+                          size: screenWidth / 9.5,
                           icon: Icons.arrow_back,
                           onTap: () {
                             context.pop();
                           },
                         ),
                       ),
-                      const Positioned(
+                      Positioned(
                         top: 10,
                         right: 10,
                         child: CustomIconButton(
+                          size: screenWidth / 9.5,
                           icon: Icons.info_outline,
                         ),
                       ),
