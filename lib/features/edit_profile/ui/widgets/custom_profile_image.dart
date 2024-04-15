@@ -13,12 +13,16 @@ class CustomProfileImage extends StatelessWidget {
     return Stack(
       children: [
         CircleAvatar(
-          radius: screenWidth / 4.4,
-          backgroundColor: AppColors.customBlueColor,
+          radius: screenWidth / 4.3,
+          backgroundColor: AppColors.textColor,
           child: CircleAvatar(
-            radius: screenWidth / 4.6,
-            backgroundImage: const NetworkImage(
-                "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
+            radius: screenWidth / 4.4,
+            backgroundColor: AppColors.customBlueColor,
+            child: CircleAvatar(
+              radius: screenWidth / 4.6,
+              backgroundImage: const NetworkImage(
+                  "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
+            ),
           ),
         ),
         Positioned(
