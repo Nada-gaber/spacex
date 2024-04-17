@@ -20,6 +20,8 @@ dependencies:
   dio: ^5.4.2+1
   retrofit: ^4.1.0
   flutter_native_splash: ^2.4.0
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
 
 dev_dependencies:
   flutter_test:
