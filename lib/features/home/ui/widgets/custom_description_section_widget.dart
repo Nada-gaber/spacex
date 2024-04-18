@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constant/colors.dart';
 
-class CustomDescriptionSection extends StatelessWidget {
+class CustomDescriptionSection extends StatefulWidget {
   const CustomDescriptionSection({super.key, required this.descriptionText});
 
   final String descriptionText;
 
   @override
+  State<CustomDescriptionSection> createState() =>
+      _CustomDescriptionSectionState();
+}
+
+class _CustomDescriptionSectionState extends State<CustomDescriptionSection> {
+  bool _showFullText = false;
+
+  @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,11 +31,27 @@ class CustomDescriptionSection extends StatelessWidget {
           ),
         ),
         Text(
-          descriptionText,
+          widget.descriptionText,
+          maxLines: _showFullText ? 100 : 5,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width / 21,
-              fontWeight: FontWeight.w300,
-              color: AppColors.textColor.withOpacity(.8)),
+              color: Colors.grey,
+              fontSize: widthScreen / 24,
+              fontWeight: FontWeight.bold),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              _showFullText = !_showFullText;
+            });
+          },
+          child: Text(
+            _showFullText ? 'Show Less' : 'Show More',
+            style: const TextStyle(
+              color: AppColors.customBlueColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ],
     );
