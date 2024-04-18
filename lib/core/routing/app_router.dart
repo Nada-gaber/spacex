@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
+import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
 
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
-import '../../features/onboarding/ui/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 
@@ -19,6 +19,10 @@ class AppRouter {
       case Routes.home:
         return MaterialPageRoute(
           builder: (context) => const HomeScreen(),
+        );
+      case Routes.rocketDetails:
+        return MaterialPageRoute(
+          builder: (context) => const RocketDetailsScreen(),
         );
       case Routes.splashScreen:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
