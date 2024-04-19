@@ -42,6 +42,16 @@ class MyTextStyles {
     fontSize: 18,
     fontWeight: FontWeight.w600,
   );
+  static const TextStyle font20WhiteW600 = TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle font18WhiteW400 = TextStyle(
+    color: Colors.white60,
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
 
   static const TextStyle font14WhiteBold = TextStyle(
     color: Colors.white,

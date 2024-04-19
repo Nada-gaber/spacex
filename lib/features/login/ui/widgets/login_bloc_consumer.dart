@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/functions/show_toast.dart';
-import 'package:spacex/core/widgets/auth_text_button.dart';
+import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 
 class LoginBlocConsumer extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoginBlocConsumer extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return AuthTextButton(
+        return CustomTextButton(
           text: 'Login',
           requestLoading: context.read<LoginCubit>().requestLoading,
           onPressed: () {

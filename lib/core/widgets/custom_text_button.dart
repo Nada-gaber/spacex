@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_auth_loading.dart';
 
-class AuthTextButton extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final bool requestLoading;
 
-  const AuthTextButton({
+  const CustomTextButton({
     super.key,
     required this.text,
     this.onPressed,
