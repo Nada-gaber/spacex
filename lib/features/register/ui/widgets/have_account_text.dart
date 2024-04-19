@@ -4,8 +4,8 @@ import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 
-class DontHaveAccountText extends StatelessWidget {
-  const DontHaveAccountText({super.key});
+class HaveAccountText extends StatelessWidget {
+  const HaveAccountText({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +14,15 @@ class DontHaveAccountText extends StatelessWidget {
       text: TextSpan(
         children: [
           const TextSpan(
-            text: 'Don\'t have an account?',
+            text: 'Already have an account?',
             style: MyTextStyles.font14WhiteBold,
           ),
           TextSpan(
-            text: ' Register now',
+            text: ' login now',
             style: MyTextStyles.font18WhiteBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacementNamed(Routes.register);
+                context.pushReplacementNamed(Routes.login);
               },
           ),
         ],
