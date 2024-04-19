@@ -9,8 +9,11 @@ class SpacexApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.splashScreen,
+      initialRoute: Routes.login,
       onGenerateRoute: appRouter.generateRoute,
     );
   }
