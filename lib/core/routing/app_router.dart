@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
-<<<<<<<<< Temporary merge branch 1
-import 'package:spacex/features/home/ui/views/splash/splash_screen.dart';
-import 'package:spacex/features/onboarding/onboarding_view.dart';
-=========
-import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
->>>>>>>>> Temporary merge branch 2
+import 'package:spacex/features/home/ui/views/ships/ships.dart';
+import 'package:spacex/features/login/ui/login_screen.dart';
+import 'package:spacex/features/register/ui/register_screen.dart';
+import '../../features/onboarding/ui/onboarding_screen.dart';
+import '../../features/splash/splash_screen.dart';
+import '../../features/home/ui/views/company_info/company_info.dart';
+
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
