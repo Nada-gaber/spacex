@@ -13,7 +13,7 @@ class SpacexApp extends StatelessWidget {
         fontFamily: 'Poppins',
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.splashScreen,
+      initialRoute: Routes.login,
       onGenerateRoute: appRouter.generateRoute,
     );
   }
