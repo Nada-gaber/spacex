@@ -24,7 +24,7 @@ class DrawerComponent extends StatelessWidget {
             Icon(
               icon,
               size: screenWidth / 10,
-              color: AppColors.textColor,
+              color: AppColors.textWhite,
             ),
             const SizedBox(
               width: 12,

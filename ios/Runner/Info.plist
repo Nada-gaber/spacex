@@ -12,7 +12,7 @@
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
-		<key>CFBundleName</key>
+		<key>spacex</key>
 		<string>spacex</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>

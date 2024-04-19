@@ -18,9 +18,9 @@ class CustomMessageBoxWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadiusDirectional.circular(24),
           gradient: LinearGradient(colors: [
-            AppColors.customBlueColor,
+            AppColors.blueGray,
             Colors.white.withOpacity(.6),
-            AppColors.customBlueColor,
+            AppColors.blueGray,
             Colors.white.withOpacity(.6),
           ])),
       child: Text(

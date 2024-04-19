@@ -46,7 +46,7 @@ class CustomPageView extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     onboardingItems[index].subTitle,
-                    style: MyTextStyles.font18WhiteW600,
+                    style: MyTextStyles.font18White60W600,
                   ),
                 ],
               ),

@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         title: const Text(
           "SpaceX",
           style: TextStyle(fontWeight: FontWeight.w900),
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: const CustomDrawer(),
       body: const HomeScreenBody(),
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
     );
   }
 }
