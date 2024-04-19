@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/home/ui/views/ships/ships.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
+import 'package:spacex/features/login/ui/widgets/login_provider.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import '../../features/onboarding/ui/onboarding_screen.dart';
 import '../../features/splash/splash_screen.dart';
@@ -25,7 +26,7 @@ class AppRouter {
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (context) => const LoginScreen(),
+          builder: (context) => const LoginProvider(),
         );
       case Routes.register:
         return MaterialPageRoute(
