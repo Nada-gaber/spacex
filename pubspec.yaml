@@ -19,10 +19,13 @@ dependencies:
   get_it: ^7.6.7
   dio: ^5.4.2+1
   retrofit: ^4.1.0
+  font_awesome_flutter: ^10.7.0
   flutter_native_splash: ^2.4.0
   firebase_core: ^2.30.0
   firebase_auth: ^4.19.2
   flutter_launcher_icons: ^0.13.1
+
+
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true
