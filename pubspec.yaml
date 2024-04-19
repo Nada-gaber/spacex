@@ -1,5 +1,5 @@
 name: spacex
-description: "A new Flutter project."
+description: "Stay updated on SpaceX launches, missions, and news. Explore stunning images and videos, track launches, and learn about space exploration innovations. Your SpaceX companion app!"
 
 publish_to: 'none' 
 
@@ -21,6 +21,18 @@ dependencies:
   retrofit: ^4.1.0
   font_awesome_flutter: ^10.7.0
   flutter_native_splash: ^2.4.0
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
+  flutter_launcher_icons: ^0.13.1
+  font_awesome_flutter: ^10.7.0
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/app_icon/icon.png"
+  min_sdk_android: 21 
+
+
 
 dev_dependencies:
   flutter_test:
@@ -35,3 +47,9 @@ flutter:
   assets:
     - assets/images/
     - assets/splash/
+    - assets/app_icon/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins.ttf
