@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/core/widgets/auth_text_button.dart';
-import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/widgets/build_login_form.dart';
 import 'package:spacex/features/login/ui/widgets/dont_have_account_text.dart';
+import 'package:spacex/features/login/ui/widgets/login_bloc_consumer.dart';
 
 class LoginScreenBody extends StatelessWidget {
   const LoginScreenBody({super.key});
@@ -37,23 +35,7 @@ class LoginScreenBody extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              BlocBuilder<LoginCubit, LoginState>(
-                builder: (context, state) {
-                  return AuthTextButton(
-                    text: 'Login',
-                    requestLoading: context.read<LoginCubit>().requestLoading,
-                    onPressed: () {
-                      if (context
-                          .read<LoginCubit>()
-                          .formKey
-                          .currentState!
-                          .validate()) {
-                        context.read<LoginCubit>().login();
-                      }
-                    },
-                  );
-                },
-              ),
+              const LoginBlocConsumer(),
               const SizedBox(height: 15),
               const DontHaveAccountText(),
             ],
