@@ -6,8 +6,8 @@ import '../../widgets/company_info_widgets.dart/app_bar.dart';
 import '../../widgets/company_info_widgets.dart/buildin_column.dart';
 import '../../widgets/text_widget/text_style.dart';
 
-class CompanyInfo extends StatelessWidget {
-  const CompanyInfo({super.key});
+class CompanyInfoScreen  extends StatelessWidget {
+  const CompanyInfoScreen ({super.key});
 
   @override
   Widget build(BuildContext context) {
