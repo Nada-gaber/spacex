@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/register/ui/widgets/build_register_form.dart';
+import 'package:spacex/features/register/ui/widgets/have_account_text.dart';
 
 class RegisterScreenBody extends StatelessWidget {
   const RegisterScreenBody({super.key});
@@ -29,10 +30,7 @@ class RegisterScreenBody extends StatelessWidget {
                 text: 'Register',
               ),
               const SizedBox(height: 15),
-              const Text(
-                'Terms and Conditions',
-                style: MyTextStyles.font14WhiteBold,
-              ),
+              const HaveAccountText(),
             ],
           ),
         ),
