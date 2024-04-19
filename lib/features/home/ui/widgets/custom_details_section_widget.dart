@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/features/home/ui/widgets/display_details_row_widget.dart';
 
-import '../../../../core/themes/text_styles.dart';
 import 'drawer_component.dart';
 
 class CustomDetailsSectionWidget extends StatelessWidget {
@@ -20,44 +20,23 @@ class CustomDetailsSectionWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600),
           ),
         ),
-        displayDetailsRowWidget("Type", "rocket"),
+        const DisplayDetailsRowWidget(nameOfKey: "Type", value: "rocket"),
         buildDivide(),
-        displayDetailsRowWidget("Cost per launch", "6700000 \$"),
+        const DisplayDetailsRowWidget(
+            nameOfKey: "Cost per launch", value: "6700000 \$"),
         buildDivide(),
-        displayDetailsRowWidget("First flight", "2006-03-24"),
+        const DisplayDetailsRowWidget(
+            nameOfKey: "First flight", value: "2006-03-24"),
         buildDivide(),
-        displayDetailsRowWidget("Company", "SpaceX"),
+        const DisplayDetailsRowWidget(nameOfKey: "Company", value: "SpaceX"),
         buildDivide(),
-        displayDetailsRowWidget("Country", "Republic of Marshall Islands"),
+        const DisplayDetailsRowWidget(
+            nameOfKey: "Country", value: "Republic of Marshall Islands"),
         buildDivide(),
-        displayDetailsRowWidget("Height (m)", "22.25"),
+        const DisplayDetailsRowWidget(nameOfKey: "Height (m)", value: "22.25"),
         buildDivide(),
-        displayDetailsRowWidget("Mass (kg)", "30146"),
+        const DisplayDetailsRowWidget(nameOfKey: "Mass (kg)", value: "30146"),
       ],
     );
   }
-}
-
-Widget displayDetailsRowWidget(String key, String value) {
-  return Padding(
-    padding: const EdgeInsetsDirectional.symmetric(vertical: 8, horizontal: 4),
-    child: SizedBox(
-      width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            "$key :",
-            style: MyTextStyles.font20WhiteW600,
-          ),
-          SizedBox(
-            child: Text(
-              value,
-              style: MyTextStyles.font18WhiteW400,
-            ),
-          ),
-        ],
-      ),
-    ),
-  );
 }

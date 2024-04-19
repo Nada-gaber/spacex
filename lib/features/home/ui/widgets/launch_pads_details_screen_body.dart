@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import 'custom_description_section_widget.dart';
-import 'custom_details_section_widget.dart';
+import 'display_details_row_widget.dart';
 import 'drawer_component.dart';
 
 class LaunchPadsDetailsScreenBody extends StatelessWidget {
@@ -35,17 +35,22 @@ class LaunchPadsDetailsScreenBody extends StatelessWidget {
                     fontWeight: FontWeight.w600),
               ),
             ),
-            displayDetailsRowWidget("Full name", "Of Course I Still Love You"),
+            const DisplayDetailsRowWidget(
+                nameOfKey: "Full name", value: "Of Course I Still Love You"),
             buildDivide(),
-            displayDetailsRowWidget("Type", "ASDS"),
+            const DisplayDetailsRowWidget(nameOfKey: "Type", value: "ASDS"),
             buildDivide(),
-            displayDetailsRowWidget("locality", "Port of Los Angeles"),
+            const DisplayDetailsRowWidget(
+                nameOfKey: "locality", value: "Port of Los Angeles"),
             buildDivide(),
-            displayDetailsRowWidget("region", "California"),
+            const DisplayDetailsRowWidget(
+                nameOfKey: "region", value: "California"),
             buildDivide(),
-            displayDetailsRowWidget("landing_attempts (success)", "61 (54)"),
+            const DisplayDetailsRowWidget(
+                nameOfKey: "landing_attempts (success)", value: "61 (54)"),
             buildDivide(),
-            displayDetailsRowWidget("status", "retired"),
+            const DisplayDetailsRowWidget(
+                nameOfKey: "status", value: "retired"),
             const SizedBox(
               height: 60,
             )
