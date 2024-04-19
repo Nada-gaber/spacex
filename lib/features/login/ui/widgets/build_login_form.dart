@@ -29,7 +29,7 @@ class BuildLoginForm extends StatelessWidget {
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
               if (value == null || !AppRegex.hasMinLength(value)) {
-                return 'The password is too short, please enter at least 8 character';
+                return 'The password is too short';
               }
               return null;
             },
