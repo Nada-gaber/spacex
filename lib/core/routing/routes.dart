@@ -9,5 +9,6 @@ class Routes {
   static const String register = '/register';
     static const String ships = '/ships';
   static const String crewScreen = '/crew_screen';
+  static const String editProfileScreen = '/edit_profile_screen';
 
 }

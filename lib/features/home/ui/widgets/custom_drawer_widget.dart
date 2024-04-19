@@ -17,9 +17,12 @@ class CustomDrawer extends StatelessWidget {
         child: Column(
           children: [
             const ProfileSection(),
-             const DrawerComponent(
+              DrawerComponent(
               title: "Edit Profile",
               icon: Icons.person_pin,
+               onTap: (){
+                context.pushNamed(Routes.editProfileScreen);
+               },
             ),
             buildDivide(),
              DrawerComponent(

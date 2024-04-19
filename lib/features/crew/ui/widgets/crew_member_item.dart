@@ -28,7 +28,7 @@ class CrewMemberItem extends StatelessWidget {
           footer: Container(
             padding: const EdgeInsetsDirectional.all(4),
             decoration:
-                BoxDecoration(color: AppColors.customBlueColor.withOpacity(.7)),
+                BoxDecoration(color: AppColors.buttonBlue.withOpacity(.7)),
             child: Text(
               crewMember.name,
               style: TextStyle(
@@ -51,8 +51,3 @@ class CrewMemberItem extends StatelessWidget {
     );
   }
 }
-
-/*
-
-
- */

@@ -12,9 +12,9 @@ class CrewScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Crew",
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
       ),
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
       body: Padding(
         padding: EdgeInsetsDirectional.symmetric(
             horizontal: MediaQuery.of(context).size.width / 25,vertical: 12),
