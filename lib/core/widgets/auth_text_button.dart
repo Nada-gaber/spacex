@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/themes/text_styles.dart';
+import 'package:spacex/core/widgets/custom_auth_loading.dart';
 
-class CustomTextButton extends StatelessWidget {
+class AuthTextButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
+  final bool requestLoading;
 
-  const CustomTextButton({
+  const AuthTextButton({
     super.key,
     required this.text,
     this.onPressed,
+    required this.requestLoading,
   });
 
   @override
@@ -31,10 +34,12 @@ class CustomTextButton extends StatelessWidget {
           ),
         ),
       ),
-      child: Text(
-        text,
-        style: MyTextStyles.font20BlackBold,
-      ),
+      child: requestLoading == false
+          ? Text(
+              text,
+              style: MyTextStyles.font20BlackBold,
+            )
+          : const CustomAuthLoading(),
     );
   }
 }

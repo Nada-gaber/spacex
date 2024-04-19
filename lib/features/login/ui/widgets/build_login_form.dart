@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
+import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 
 class BuildLoginForm extends StatelessWidget {
   const BuildLoginForm({super.key});
@@ -8,10 +10,11 @@ class BuildLoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: GlobalKey(),
+      key: context.read<LoginCubit>().formKey,
       child: Column(
         children: [
           CustomFormField(
+            controller: context.read<LoginCubit>().emailController,
             validator: (value) {
               if (value == null || !AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
@@ -23,6 +26,7 @@ class BuildLoginForm extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           CustomFormField(
+            controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
               if (value == null || !AppRegex.hasMinLength(value)) {
                 return 'The password is too short, please enter at least 8 character';

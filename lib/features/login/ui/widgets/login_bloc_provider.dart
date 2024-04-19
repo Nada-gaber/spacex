@@ -5,8 +5,8 @@ import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 
-class LoginProvider extends StatelessWidget {
-  const LoginProvider({super.key});
+class LoginBlocProvider extends StatelessWidget {
+  const LoginBlocProvider({super.key});
 
   @override
   Widget build(BuildContext context) {
