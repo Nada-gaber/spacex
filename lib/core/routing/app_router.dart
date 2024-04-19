@@ -14,7 +14,7 @@ class AppRouter {
       case Routes.splashScreen:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.ships:
-        return MaterialPageRoute(builder: (context) => const Ships());
+        return MaterialPageRoute(builder: (context) => const ShipsScreen());
     }
     return null;
   }
