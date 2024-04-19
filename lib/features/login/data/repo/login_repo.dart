@@ -21,9 +21,7 @@ class LoginRepo {
       if (error is FirebaseAuthException) {
         return Left(FirebaseAuthFailure.fromFirebaseAuthException(error));
       } else {
-        return Left(
-          FirebaseAuthFailure(error.toString()),
-        );
+        return Left(FirebaseAuthFailure(error.toString()));
       }
     }
   }
