@@ -6,7 +6,21 @@ class MyTextStyles {
     fontSize: 40,
     fontWeight: FontWeight.bold,
   );
-
+   static const TextStyle font30WhiteBold = TextStyle(
+    color: Colors.white,
+    fontSize:30,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle font25WhiteBoldW500 = TextStyle(
+    color: Colors.white,
+    fontSize: 25,
+    fontWeight: FontWeight.w500,
+  );
+   static const TextStyle font20WhiteBoldW500 = TextStyle(
+    color: Colors.white,
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+  );
   static const TextStyle font20BlackBold = TextStyle(
     color: Colors.black,
     fontSize: 20,
