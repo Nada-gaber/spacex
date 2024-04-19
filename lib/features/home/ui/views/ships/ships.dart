@@ -3,8 +3,8 @@ import 'package:spacex/core/constant/color/app_color.dart';
 import '../../../../../core/themes/text_styles.dart';
 import '../../widgets/ships/ship_container.dart';
 
-class Ships extends StatelessWidget {
-  const Ships({super.key});
+class ShipsScreen extends StatelessWidget {
+  const ShipsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
