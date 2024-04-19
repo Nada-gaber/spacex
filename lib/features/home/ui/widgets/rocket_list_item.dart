@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 
 class RocketListItem extends StatelessWidget {
   const RocketListItem({super.key});
@@ -6,7 +8,9 @@ class RocketListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        context.pushNamed(Routes.rocketDetails);
+      },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 
 import '../../../../core/constant/colors.dart';
 
@@ -13,7 +15,9 @@ class LaunchPadItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(vertical: 6),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(Routes.launchPadDetails);
+        },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -61,7 +65,7 @@ class LaunchPadItem extends StatelessWidget {
                       Text(
                         "Marshall Islands",
                         style: TextStyle(
-                            color: AppColors.customBlueColor,
+                            color: AppColors.blueGray,
                             fontSize: screenWidth / 24,
                             fontWeight: FontWeight.w300),
                       ),
