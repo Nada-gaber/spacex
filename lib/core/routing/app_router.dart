@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/features/home/ui/views/home_screen.dart';
+import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
+import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
 import 'package:spacex/features/home/ui/views/ships/ships.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
+import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
-import '../../features/onboarding/ui/onboarding_screen.dart';
-import '../../features/splash/splash_screen.dart';
 import '../../features/home/ui/views/company_info/company_info.dart';
-
+import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -15,9 +17,24 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-         case Routes.companyInfo:
+
+      case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => const CompanyInfoScreen (),
+          builder: (context) => const HomeScreen(),
+        );
+      case Routes.rocketDetails:
+        return MaterialPageRoute(
+          builder: (context) => const RocketDetailsScreen(),
+        );
+      case Routes.launchPadDetails:
+        return MaterialPageRoute(
+          builder: (context) => const LaunchPadsDetailsScreen(),
+        );
+      case Routes.splashScreen:
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
+      case Routes.companyInfo:
+        return MaterialPageRoute(
+          builder: (context) => const CompanyInfoScreen(),
         );
       case Routes.splashScreen:
         return MaterialPageRoute(
@@ -31,9 +48,16 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const RegisterScreen(),
         );
-            case Routes.ships:
+      case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
+      default:
+        return MaterialPageRoute(
+          builder: (context) => const Scaffold(
+            body: Center(
+              child: Text("No route"),
+            ),
+          ),
+        );
     }
-    return null;
   }
 }

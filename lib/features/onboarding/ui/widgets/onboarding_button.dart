@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/routing/extensions.dart';
+
+import '../../../../core/routing/routes.dart';
 
 class OnboardingButton extends StatelessWidget {
   final PageController pageController;
@@ -18,6 +21,8 @@ class OnboardingButton extends StatelessWidget {
           );
         } else {
           // ToDo navigate to login
+
+          context.pushNamed(Routes.home);
         }
       },
       child: const Icon(
