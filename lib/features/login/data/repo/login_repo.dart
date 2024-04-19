@@ -1,4 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:spacex/core/errors/failure.dart';
+import 'package:spacex/core/errors/firebase_auth_failure.dart';
 import 'package:spacex/features/login/data/models/login_request_model.dart';
 
 class LoginRepo {
@@ -6,15 +9,22 @@ class LoginRepo {
 
   LoginRepo(this.firebaseAuthInstance);
 
-  Future login(LoginRequestModel loginRequestModel) async {
+  Future<Either<Failure, UserCredential>> login(
+      LoginRequestModel loginRequestModel) async {
     try {
       final response = await firebaseAuthInstance.signInWithEmailAndPassword(
         email: loginRequestModel.email,
         password: loginRequestModel.password,
       );
-      return response;
+      return Right(response);
     } catch (error) {
-      //ToDo handle error login
+      if (error is FirebaseAuthException) {
+        return Left(FirebaseAuthFailure.fromFirebaseAuthException(error));
+      } else {
+        return Left(
+          FirebaseAuthFailure(error.toString()),
+        );
+      }
     }
   }
 }
