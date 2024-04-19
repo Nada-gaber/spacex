@@ -20,6 +20,8 @@ dependencies:
   dio: ^5.4.2+1
   retrofit: ^4.1.0
   flutter_native_splash: ^2.4.0
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
   flutter_launcher_icons: ^0.13.1
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -43,3 +45,8 @@ flutter:
     - assets/images/
     - assets/splash/
     - assets/app_icon/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins.ttf
