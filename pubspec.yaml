@@ -36,3 +36,8 @@ flutter:
   assets:
     - assets/images/
     - assets/splash/
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins.ttf
