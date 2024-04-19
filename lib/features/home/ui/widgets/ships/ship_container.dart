@@ -51,7 +51,7 @@ containerShipDesign(BuildContext context,
             alignment: Alignment.topRight,
             child: IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.favorite_border,
                   size: 30,
                   color: AppColor.textColor,
