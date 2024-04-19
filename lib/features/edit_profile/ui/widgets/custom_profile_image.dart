@@ -14,10 +14,10 @@ class CustomProfileImage extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: screenWidth / 4.3,
-          backgroundColor: AppColors.textColor,
+          backgroundColor: AppColors.textWhite,
           child: CircleAvatar(
             radius: screenWidth / 4.4,
-            backgroundColor: AppColors.customBlueColor,
+            backgroundColor: AppColors.blueGray,
             child: CircleAvatar(
               radius: screenWidth / 4.6,
               backgroundImage: const NetworkImage(

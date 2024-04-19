@@ -10,7 +10,7 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         body: EditProfileScreenBody(),
       ),
     );

@@ -17,7 +17,7 @@ class CrewMemberDetailsScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(

@@ -18,22 +18,22 @@ class CustomEditTextField extends StatelessWidget {
       padding: const EdgeInsetsDirectional.all(10),
       margin: const EdgeInsetsDirectional.symmetric(vertical: 8, horizontal: 8),
       decoration: BoxDecoration(
-          color: AppColors.customBlueColor.withOpacity(.2),
+          color: AppColors.blueGray.withOpacity(.2),
           borderRadius: const BorderRadiusDirectional.all(Radius.circular(16))),
       child: TextField(
-        cursorColor: AppColors.textColor,
+        cursorColor: AppColors.textWhite,
         decoration: InputDecoration(
             hintText: currentValue,
             hintStyle: TextStyle(
-                color: AppColors.textColor, fontSize: screenWidth / 18),
-            labelStyle: MyTextStyles.font18WhiteW600,
+                color: AppColors.textWhite, fontSize: screenWidth / 18),
+            labelStyle: MyTextStyles.font18WhiteBold,
             labelText: hintText,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             border: InputBorder.none,
             suffixIcon: const Icon(
               Icons.mode_edit_outlined,
               size: 35,
-              color: AppColors.textColor,
+              color: AppColors.textWhite,
             )),
       ),
     );
