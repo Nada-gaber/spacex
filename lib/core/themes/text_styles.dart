@@ -33,7 +33,7 @@ class MyTextStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle font18WhiteW600 = TextStyle(
+  static const TextStyle font18White60W600 = TextStyle(
     color: Colors.white60,
     fontSize: 18,
     fontWeight: FontWeight.w600,

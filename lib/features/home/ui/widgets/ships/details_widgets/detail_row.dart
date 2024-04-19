@@ -17,7 +17,7 @@ detailsValuesRow(String key, String value) {
             ),
             Text(
               value,
-              style: MyTextStyles.font18WhiteW600,
+              style: MyTextStyles.font18White60W600,
             ),
           ],
         ),
