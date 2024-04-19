@@ -48,7 +48,7 @@ class _CustomDescriptionSectionState extends State<CustomDescriptionSection> {
           child: Text(
             _showFullText ? 'Show Less' : 'Show More',
             style: const TextStyle(
-              color: AppColors.customBlueColor,
+              color: AppColors.blueGray,
               fontWeight: FontWeight.bold,
             ),
           ),

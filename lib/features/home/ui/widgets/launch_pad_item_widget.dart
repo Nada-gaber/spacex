@@ -65,7 +65,7 @@ class LaunchPadItem extends StatelessWidget {
                       Text(
                         "Marshall Islands",
                         style: TextStyle(
-                            color: AppColors.customBlueColor,
+                            color: AppColors.blueGray,
                             fontSize: screenWidth / 24,
                             fontWeight: FontWeight.w300),
                       ),

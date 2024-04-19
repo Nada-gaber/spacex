@@ -10,9 +10,9 @@ class RocketDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
+          backgroundColor: AppColors.backgroundDarkBlue,
           title: Text(
             "Falcon 1",
             style: TextStyle(
@@ -30,7 +30,7 @@ class RocketDetailsScreen extends StatelessWidget {
         ),
         body: const RocketDetailsScreenBody(),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.buttonColor,
+          backgroundColor: AppColors.buttonBlue,
           onPressed: () {},
           child: const Icon(
             Icons.favorite_border,

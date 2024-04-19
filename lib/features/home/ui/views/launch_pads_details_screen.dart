@@ -10,7 +10,7 @@ class LaunchPadsDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         title: Text(
           "OCISLY",
           style: TextStyle(
@@ -26,10 +26,10 @@ class LaunchPadsDetailsScreen extends StatelessWidget {
               ))
         ],
       ),
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
       body: const LaunchPadsDetailsScreenBody(),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.buttonColor,
+        backgroundColor: AppColors.buttonBlue,
         onPressed: () {},
         child: const Icon(
           Icons.favorite_border,
