@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../core/constant/colors.dart';
 
 class CustomDescriptionSection extends StatefulWidget {
+  final String descriptionText;
+
   const CustomDescriptionSection({super.key, required this.descriptionText});
 
-  final String descriptionText;
 
   @override
   State<CustomDescriptionSection> createState() =>
