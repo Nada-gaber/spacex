@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/utils/dependency_injection.dart';
-import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 
@@ -11,7 +10,7 @@ class LoginBlocProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(getIt<LoginRepo>()),
+      create: (context) => getIt<LoginCubit>(),
       child: const LoginScreen(),
     );
   }

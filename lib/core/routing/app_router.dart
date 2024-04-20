@@ -8,7 +8,7 @@ import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
 import 'package:spacex/features/home/ui/views/ships/ships.dart';
 import 'package:spacex/features/login/ui/widgets/login_bloc_provider.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
-import 'package:spacex/features/register/ui/register_screen.dart';
+import 'package:spacex/features/register/ui/widgets/register_bloc_provider.dart';
 import '../../features/home/ui/views/company_info/company_info.dart';
 import '../../features/splash/splash_screen.dart';
 
@@ -45,7 +45,7 @@ class AppRouter {
         );
       case Routes.register:
         return MaterialPageRoute(
-          builder: (context) => const RegisterScreen(),
+          builder: (context) => const RegisterBlocProvider(),
         );
       case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
