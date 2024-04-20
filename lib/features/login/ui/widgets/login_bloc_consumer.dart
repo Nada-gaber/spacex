@@ -9,22 +9,23 @@ class LoginBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool requestLoading = false;
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LoginLoading) {
-          context.read<LoginCubit>().requestLoading = true;
+          requestLoading = true;
         } else if (state is LoginSuccess) {
           showToast(text: 'Login done successfully');
-          context.read<LoginCubit>().requestLoading = false;
+          requestLoading = false;
         } else if (state is LoginFailure) {
           showToast(text: state.errorMessage);
-          context.read<LoginCubit>().requestLoading = false;
+          requestLoading = false;
         }
       },
       builder: (context, state) {
         return CustomTextButton(
           text: 'Login',
-          requestLoading: context.read<LoginCubit>().requestLoading,
+          requestLoading: requestLoading,
           onPressed: () {
             if (context.read<LoginCubit>().formKey.currentState!.validate()) {
               context.read<LoginCubit>().login();

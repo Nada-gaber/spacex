@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/core/utils/dependency_injection.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
 import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
 import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
 import 'package:spacex/features/home/ui/views/ships/ships.dart';
+import 'package:spacex/features/login/data/repo/login_repo.dart';
+import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/login/ui/widgets/login_bloc_provider.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
@@ -41,7 +46,10 @@ class AppRouter {
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (context) => const LoginBlocProvider(),
+          builder: (context) => BlocProvider(
+            create: (context) => LoginCubit(getIt<LoginRepo>()),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.register:
         return MaterialPageRoute(
