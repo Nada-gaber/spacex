@@ -3,6 +3,7 @@ import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/register/ui/widgets/build_register_form.dart';
 import 'package:spacex/features/register/ui/widgets/have_account_text.dart';
+import 'package:spacex/features/register/ui/widgets/register_bloc_consumer.dart';
 
 class RegisterScreenBody extends StatelessWidget {
   const RegisterScreenBody({super.key});
@@ -26,10 +27,7 @@ class RegisterScreenBody extends StatelessWidget {
               ),
               const BuildRegisterForm(),
               const SizedBox(height: 45),
-              const CustomTextButton(
-                text: 'Register',
-                requestLoading: false,
-              ),
+              const RegisterBlocConsumer(),
               const SizedBox(height: 15),
               const HaveAccountText(),
             ],
