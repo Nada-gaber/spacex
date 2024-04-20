@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
+import 'package:spacex/features/register/logic/register_cubit.dart';
 
 class BuildRegisterForm extends StatelessWidget {
   const BuildRegisterForm({super.key});
@@ -8,10 +10,11 @@ class BuildRegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: GlobalKey(),
+      key: context.read<RegisterCubit>().formKey,
       child: Column(
         children: [
           CustomFormField(
+            controller: context.read<RegisterCubit>().nameController,
             validator: (value) {
               if (value == null) {
                 return 'Name must not be empty';
@@ -23,8 +26,11 @@ class BuildRegisterForm extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           CustomFormField(
+            controller: context.read<RegisterCubit>().emailController,
             validator: (value) {
-              if (value == null || !AppRegex.isEmailValid(value)) {
+              if (value == null) {
+                return 'Email must not be empty';
+              } else if (!AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
               }
               return null;
@@ -34,9 +40,12 @@ class BuildRegisterForm extends StatelessWidget {
           ),
           const SizedBox(height: 25),
           CustomFormField(
+            controller: context.read<RegisterCubit>().passwordController,
             validator: (value) {
-              if (value == null || !AppRegex.hasMinLength(value)) {
-                return 'The password is too short, please enter at least 8 character';
+              if (value == null) {
+                return 'Password must not be empty';
+              } else if (!AppRegex.isPasswordValid(value)) {
+                return 'The password is too week';
               }
               return null;
             },
