@@ -17,10 +17,12 @@ class LoginCubit extends Cubit<LoginState> {
 
   Future login() async {
     emit(LoginLoading());
-    final response = await loginRepo.login(LoginRequestModel(
-      email: emailController.text,
-      password: passwordController.text,
-    ));
+    final response = await loginRepo.login(
+      LoginRequestModel(
+        email: emailController.text,
+        password: passwordController.text,
+      ),
+    );
 
     response.fold(
       (failure) => emit(LoginFailure(failure.message)),
