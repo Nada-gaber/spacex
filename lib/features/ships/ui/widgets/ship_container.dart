@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/features/ships/ui/ship_detail.dart';
 import '../../../../../core/constant/image/app_images.dart';
-import '../../views/ships/ship_detail.dart';
 
 shipContainer(BuildContext context,
     {String shipImage = AppImage.firstOnboarding,
@@ -18,10 +17,11 @@ shipContainer(BuildContext context,
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ShipDetails(
-                      shipImage: shipImage,
-                      shipName: shipName,
-                    )),
+              builder: (context) => ShipDetails(
+                shipImage: shipImage,
+                shipName: shipName,
+              ),
+            ),
           );
         },
         child: containerShipDesign(context)),

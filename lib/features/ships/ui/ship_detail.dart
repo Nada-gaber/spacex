@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/color/app_color.dart';
 import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/features/home/ui/widgets/ships/details_widgets/button.dart';
-
-import '../../widgets/ships/details_widgets/app_bar.dart';
-import '../../widgets/ships/details_widgets/container_image.dart';
-import '../../widgets/ships/details_widgets/detail_row.dart';
+import 'package:spacex/features/ships/ui/widgets/button.dart';
+import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
+import 'widgets/app_bar.dart';
+import 'widgets/container_image.dart';
 
 class ShipDetails extends StatelessWidget {
-  String shipImage;
-  String shipName;
-  ShipDetails({required this.shipImage, required this.shipName, super.key});
+  final String shipImage;
+  final String shipName;
+  const ShipDetails({required this.shipImage, required this.shipName, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +19,7 @@ class ShipDetails extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 12),
           detailImageContainer(context, shipImage),
           const Padding(
             padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),

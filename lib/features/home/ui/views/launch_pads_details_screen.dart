@@ -11,18 +11,18 @@ class LaunchPadsDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
-        title: Text(
+        title: const Text(
           "OCISLY",
           style: TextStyle(
-              fontSize: MediaQuery.of(context).size.width / 15,
-              fontWeight: FontWeight.w600),
+            fontWeight: FontWeight.w600,
+          ),
         ),
         actions: [
           IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.info_outline,
-                size: 35,
+                size: 28,
               ))
         ],
       ),

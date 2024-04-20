@@ -31,7 +31,7 @@ class CustomDetailsSectionWidget extends StatelessWidget {
         const DisplayDetailsRowWidget(nameOfKey: "Company", value: "SpaceX"),
         buildDivide(),
         const DisplayDetailsRowWidget(
-            nameOfKey: "Country", value: "Republic of Marshall Islands"),
+            nameOfKey: "Country", value: "Republic of Marshall Islands "),
         buildDivide(),
         const DisplayDetailsRowWidget(nameOfKey: "Height (m)", value: "22.25"),
         buildDivide(),

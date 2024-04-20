@@ -27,12 +27,14 @@ class DrawerComponent extends StatelessWidget {
               color: AppColors.textWhite,
             ),
             const SizedBox(
-              width: 12,
+              width: 14,
             ),
             Text(
               title,
               style: TextStyle(
-                  fontWeight: FontWeight.w500, fontSize: screenWidth / 18),
+                fontWeight: FontWeight.w500,
+                fontSize: screenWidth / 22,
+              ),
             )
           ],
         ),
@@ -43,7 +45,7 @@ class DrawerComponent extends StatelessWidget {
 
 Widget buildDivide() {
   return Padding(
-    padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
+    padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 5),
     child: Divider(
       height: .5,
       color: Colors.grey.withOpacity(.2),

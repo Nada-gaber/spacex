@@ -17,40 +17,47 @@ class CustomDrawer extends StatelessWidget {
         child: Column(
           children: [
             const ProfileSection(),
-              DrawerComponent(
+            DrawerComponent(
               title: "Edit Profile",
               icon: Icons.person_pin,
-               onTap: (){
+              onTap: () {
                 context.pushNamed(Routes.editProfileScreen);
-               },
+              },
             ),
             buildDivide(),
-             DrawerComponent(
+            DrawerComponent(
               title: "Crew",
               icon: Icons.groups,
-              onTap: (){
+              onTap: () {
                 context.pushNamed(Routes.crewScreen);
               },
             ),
             buildDivide(),
-            const DrawerComponent(
-              title: "Dragons",
-              icon: Icons.rocket_launch_outlined,
-            ),
-            buildDivide(),
-            const DrawerComponent(
+            DrawerComponent(
               title: "Ships",
               icon: FontAwesomeIcons.ship,
+              onTap: () {
+                context.pushNamed(Routes.ships);
+              },
             ),
             buildDivide(),
-            const DrawerComponent(
-              title: "Company Information",
+            DrawerComponent(
+              title: "About",
               icon: Icons.info_outline_rounded,
+              onTap: () {
+                context.pushNamed(Routes.companyInfo);
+              },
             ),
             buildDivide(),
-            const DrawerComponent(
+            DrawerComponent(
               title: "Log out",
               icon: Icons.logout,
+              onTap: () {
+                context.pushNamedAndRemoveUntil(
+                  Routes.login,
+                  predicate: (route) => false,
+                );
+              },
             ),
           ],
         ),

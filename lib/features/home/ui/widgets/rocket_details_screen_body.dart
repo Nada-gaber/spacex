@@ -11,10 +11,10 @@ class RocketDetailsScreenBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 12),
             ClipRRect(
                 borderRadius: BorderRadiusDirectional.circular(16),
                 child: Image.network(

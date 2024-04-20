@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/features/ships/ui/widgets/ship_container.dart';
 import '../../../../../core/themes/text_styles.dart';
-import '../../widgets/ships/ship_container.dart';
 
 class ShipsScreen extends StatelessWidget {
   const ShipsScreen({super.key});

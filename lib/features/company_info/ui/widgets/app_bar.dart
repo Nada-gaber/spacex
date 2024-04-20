@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spacex/core/widgets/custom_icon_button.dart';
 
-import '../button_widgets/icon_button.dart';
-import '../text_widget/text_style.dart';
+import '../../../../core/widgets/text_style.dart';
 
 companyInfoAppBar(BuildContext context) {
   return AppBar(
@@ -10,13 +10,23 @@ companyInfoAppBar(BuildContext context) {
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        textStyle('SpaceX', 20, ),
-        iconButton(FontAwesomeIcons.info, onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) => _buildPopupDialog(context),
-          );
-        }),
+        textStyle(
+          'SpaceX',
+          20,
+        ),
+        CustomIconButton(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) => _buildPopupDialog(context),
+            );
+          },
+          color: Colors.white,
+          icon: Icons.info_outline_rounded,
+          size: 24,
+          isFontAwesomeIcons: false,
+          backgroundColor: Colors.transparent,
+        ),
       ],
     ),
   );
