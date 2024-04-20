@@ -16,7 +16,7 @@ class BuildRegisterForm extends StatelessWidget {
           CustomFormField(
             controller: context.read<RegisterCubit>().nameController,
             validator: (value) {
-              if (value == null) {
+              if (value!.isEmpty) {
                 return 'Name must not be empty';
               }
               return null;
@@ -28,7 +28,7 @@ class BuildRegisterForm extends StatelessWidget {
           CustomFormField(
             controller: context.read<RegisterCubit>().emailController,
             validator: (value) {
-              if (value == null) {
+              if (value!.isEmpty) {
                 return 'Email must not be empty';
               } else if (!AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
@@ -42,7 +42,7 @@ class BuildRegisterForm extends StatelessWidget {
           CustomFormField(
             controller: context.read<RegisterCubit>().passwordController,
             validator: (value) {
-              if (value == null) {
+              if (value!.isEmpty) {
                 return 'Password must not be empty';
               } else if (!AppRegex.isPasswordValid(value)) {
                 return 'The password is too week';

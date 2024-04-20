@@ -15,7 +15,7 @@ class SpacexApp extends StatelessWidget {
 
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.login,
+      initialRoute: Routes.register,
       onGenerateRoute: appRouter.generateRoute,
     );
   }

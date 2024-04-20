@@ -16,7 +16,7 @@ class BuildLoginForm extends StatelessWidget {
           CustomFormField(
             controller: context.read<LoginCubit>().emailController,
             validator: (value) {
-              if (value == null) {
+              if (value!.isEmpty) {
                 return 'Email must not be empty';
               } else if (!AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
@@ -30,7 +30,7 @@ class BuildLoginForm extends StatelessWidget {
           CustomFormField(
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
-              if (value == null) {
+              if (value!.isEmpty) {
                 return 'Password must not be empty';
               }
               return null;
