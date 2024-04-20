@@ -10,7 +10,6 @@ class RocketsListView extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height / 5.5,
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
         itemBuilder: (context, index) {
           return const RocketListItem();
         },

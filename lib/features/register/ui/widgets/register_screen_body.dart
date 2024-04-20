@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/register/ui/widgets/build_register_form.dart';
@@ -26,8 +28,11 @@ class RegisterScreenBody extends StatelessWidget {
               ),
               const BuildRegisterForm(),
               const SizedBox(height: 45),
-              const CustomTextButton(
+              CustomTextButton(
                 text: 'Register',
+                onPressed: () {
+                  context.pushNamed(Routes.home);
+                },
               ),
               const SizedBox(height: 15),
               const HaveAccountText(),

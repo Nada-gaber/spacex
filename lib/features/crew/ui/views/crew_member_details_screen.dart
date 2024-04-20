@@ -13,7 +13,10 @@ class CrewMemberDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
 
     return SafeArea(
       child: Scaffold(
@@ -28,7 +31,10 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadiusDirectional.circular(24),
                   child: SizedBox(
-                    height: MediaQuery.of(context).size.height * .85,
+                    height: MediaQuery
+                        .of(context)
+                        .size
+                        .height * .85,
                     child: Stack(fit: StackFit.expand, children: [
                       Image.network(
                         model.imageUrl,
@@ -43,14 +49,20 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                           onTap: () {
                             context.pop();
                           },
+                          isFontAwesomeIcons: false,
+                          color: Colors.black,
+                          backgroundColor: Colors.transparent,
                         ),
                       ),
                       Positioned(
                         top: 10,
                         right: 10,
                         child: CustomIconButton(
+                          isFontAwesomeIcons: false,
                           size: screenWidth / 9.5,
                           icon: Icons.info_outline,
+                          color: Colors.black,
+                          backgroundColor: Colors.transparent,
                         ),
                       ),
                     ]),
@@ -65,7 +77,10 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                     Text(
                       model.name,
                       style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width / 16,
+                          fontSize: MediaQuery
+                              .of(context)
+                              .size
+                              .width / 16,
                           color: AppColor.textColor,
                           fontWeight: FontWeight.w600),
                     ),
