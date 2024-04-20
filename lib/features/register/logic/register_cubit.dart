@@ -13,7 +13,6 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  bool requestLoading = false;
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future register() async {

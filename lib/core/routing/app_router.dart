@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/core/utils/dependency_injection.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
@@ -8,6 +10,8 @@ import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
 import 'package:spacex/features/home/ui/views/ships/ships.dart';
 import 'package:spacex/features/login/ui/widgets/login_bloc_provider.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
+import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/register/ui/widgets/register_bloc_provider.dart';
 import '../../features/home/ui/views/company_info/company_info.dart';
 import '../../features/splash/splash_screen.dart';
@@ -45,7 +49,10 @@ class AppRouter {
         );
       case Routes.register:
         return MaterialPageRoute(
-          builder: (context) => const RegisterBlocProvider(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());

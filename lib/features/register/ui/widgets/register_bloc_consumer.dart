@@ -9,22 +9,23 @@ class RegisterBlocConsumer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool requestLoading = false;
     return BlocConsumer<RegisterCubit, RegisterState>(
       listener: (context, state) {
         if (state is RegisterLoading) {
-          context.read<RegisterCubit>().requestLoading = true;
+          requestLoading = true;
         } else if (state is RegisterSuccess) {
           showToast(text: 'Register done successfully');
-          context.read<RegisterCubit>().requestLoading = false;
+          requestLoading = false;
         } else if (state is RegisterFailure) {
           showToast(text: state.errorMessage);
-          context.read<RegisterCubit>().requestLoading = false;
+          requestLoading = false;
         }
       },
       builder: (context, state) {
         return CustomTextButton(
           text: 'Register',
-          requestLoading: context.read<RegisterCubit>().requestLoading,
+          requestLoading: requestLoading,
           onPressed: () {
             if (context
                 .read<RegisterCubit>()
