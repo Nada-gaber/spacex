@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/themes/text_styles.dart';
+import '../../../../core/themes/text_styles.dart';
 
 shipDetailAppBar(String shipName) {
   return AppBar(

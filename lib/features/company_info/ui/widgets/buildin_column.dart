@@ -1,6 +1,6 @@
  import 'package:flutter/widgets.dart';
+import 'package:spacex/core/widgets/text_style.dart';
 
-import '../text_widget/text_style.dart';
 
 buildInfoColumn(String value, String label) {
     return Expanded(

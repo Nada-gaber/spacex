@@ -8,34 +8,32 @@ class RocketDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: AppColors.backgroundDarkBlue,
+      appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
-        appBar: AppBar(
-          backgroundColor: AppColors.backgroundDarkBlue,
-          title: Text(
-            "Falcon 1",
-            style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width / 15,
-                fontWeight: FontWeight.w600),
+        title: const Text(
+          "Falcon 1",
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
           ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.info_outline,
-                  size: 35,
-                ))
-          ],
         ),
-        body: const RocketDetailsScreenBody(),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.buttonBlue,
-          onPressed: () {},
-          child: const Icon(
-            Icons.favorite_border,
-            size: 35,
-          ),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.info_outline,
+                size: 28,
+              ))
+        ],
+      ),
+      body: const RocketDetailsScreenBody(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.buttonBlue,
+        onPressed: () {},
+        child: const Icon(
+          Icons.favorite_border,
+          size: 35,
         ),
       ),
     );
