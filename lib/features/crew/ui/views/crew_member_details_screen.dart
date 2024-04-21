@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/extensions.dart';
 
-import '../../../../core/constant/color/app_color.dart';
 import '../../../../core/constant/colors.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
 import '../../data/models/person_model.dart';
@@ -74,7 +73,7 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                         model.name,
                         style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width / 16,
-                            color: AppColor.textColor,
+                            color: AppColors.textWhite,
                             fontWeight: FontWeight.w600),
                       ),
                       Row(
@@ -87,7 +86,7 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                             model.agencyName,
                             style: TextStyle(
                                 fontSize: 20,
-                                color: AppColor.textColor.withOpacity(.7),
+                                color: AppColors.textWhite.withOpacity(.7),
                                 fontWeight: FontWeight.w400),
                           ),
                         ],
