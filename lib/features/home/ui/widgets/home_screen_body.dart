@@ -15,7 +15,6 @@ class HomeScreenBody extends StatelessWidget {
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
       child: CustomScrollView(
         scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: Column(

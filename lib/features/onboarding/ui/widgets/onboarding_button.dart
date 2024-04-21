@@ -20,9 +20,7 @@ class OnboardingButton extends StatelessWidget {
             curve: Curves.ease,
           );
         } else {
-          // ToDo navigate to login
-
-          context.pushNamed(Routes.home);
+          context.pushNamed(Routes.register);
         }
       },
       child: const Icon(

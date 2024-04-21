@@ -9,7 +9,6 @@ class CustomProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
     return Stack(
       children: [
         CircleAvatar(
@@ -26,13 +25,16 @@ class CustomProfileImage extends StatelessWidget {
           ),
         ),
         Positioned(
-            bottom: 5,
-            right: 0,
-            child: CustomIconButton(
-              onTap: () {},
-              size: screenWidth / 10,
-              icon: Icons.edit,
-            ))
+          bottom: 5,
+          right: 0,
+          child: CustomIconButton(
+            onTap: () {},
+            size: screenWidth / 10,
+            icon: Icons.edit,
+            color: Colors.black,
+            isFontAwesomeIcons: false, backgroundColor: Colors.white.withOpacity(0.7),
+          ),
+        ),
       ],
     );
   }

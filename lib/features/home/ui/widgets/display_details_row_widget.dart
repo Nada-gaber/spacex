@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/themes/text_styles.dart';
@@ -21,9 +22,9 @@ class DisplayDetailsRowWidget extends StatelessWidget {
           children: [
             Text(
               "$nameOfKey :",
-              style: MyTextStyles.font20WhiteW600,
+              style: MyTextStyles.font18WhiteBold,
             ),
-            SizedBox(
+            Flexible(
               child: Text(
                 value,
                 style: MyTextStyles.font18WhiteW400,

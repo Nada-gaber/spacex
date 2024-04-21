@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spacex/core/constant/images.dart';
-import '../../widgets/button_widgets/icon_button.dart';
-import '../../widgets/company_info_widgets.dart/app_bar.dart';
-import '../../widgets/company_info_widgets.dart/buildin_column.dart';
-import '../../widgets/text_widget/text_style.dart';
+import 'package:spacex/core/widgets/custom_icon_button.dart';
+import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
+import 'widgets/app_bar.dart';
+import '../../../core/widgets/text_style.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
   const CompanyInfoScreen({super.key});
@@ -31,12 +31,32 @@ class CompanyInfoScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 30),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  iconButton(FontAwesomeIcons.twitter, onPressed: () {}),
-                  iconButton(FontAwesomeIcons.globe, onPressed: () {}),
-                  iconButton(FontAwesomeIcons.flickr, onPressed: () {}),
+                  CustomIconButton(
+                    icon: FontAwesomeIcons.twitter,
+                    color: Colors.white,
+                    size: 30,
+                    isFontAwesomeIcons: true,
+                    backgroundColor: Colors.transparent,
+                  ),
+                  SizedBox(width: 10),
+                  CustomIconButton(
+                    icon: FontAwesomeIcons.globe,
+                    color: Colors.white,
+                    size: 30,
+                    isFontAwesomeIcons: true,
+                    backgroundColor: Colors.transparent,
+                  ),
+                  SizedBox(width: 10),
+                  CustomIconButton(
+                    icon: FontAwesomeIcons.flickr,
+                    color: Colors.white,
+                    size: 30,
+                    isFontAwesomeIcons: true,
+                    backgroundColor: Colors.transparent,
+                  ),
                 ],
               ),
               const SizedBox(height: 25),
