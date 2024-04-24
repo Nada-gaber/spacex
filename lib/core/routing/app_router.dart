@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
-import 'package:spacex/features/home/ui/views/home_screen.dart';
-import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
-import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
+import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
 import '../../features/company_info/ui/company_info.dart';
+import '../../features/home/ui/screens/home_screen.dart';
+import '../../features/home/ui/screens/launch_pads_details_screen.dart';
+import '../../features/home/ui/screens/rocket_details_screen.dart';
 import '../../features/splash/splash_screen.dart';
+import '../di/dependency_injection.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -23,7 +26,9 @@ class AppRouter {
 
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => BlocProvider<RocketCubit>(
+              create: (BuildContext context) => getIt<RocketCubit>(),
+              child: const HomeScreen()),
         );
 
       case Routes.rocketDetails:
