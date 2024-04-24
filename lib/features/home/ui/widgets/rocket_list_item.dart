@@ -3,7 +3,9 @@ import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 
 class RocketListItem extends StatelessWidget {
-  const RocketListItem({super.key});
+  final String imageUrl;
+
+  const RocketListItem({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class RocketListItem extends StatelessWidget {
           child: AspectRatio(
               aspectRatio: 1 / 1,
               child: Image.network(
-                "https://farm1.staticflickr.com/929/28787338307_3453a11a77_b.jpg",
+                imageUrl,
                 fit: BoxFit.fill,
               )),
         ),
