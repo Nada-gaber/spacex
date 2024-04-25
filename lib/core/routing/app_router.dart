@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
+import 'package:spacex/features/home/data/repo/home_repo.dart';
+import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
 import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
 import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
@@ -21,9 +25,14 @@ class AppRouter {
           builder: (context) => const OnboardingScreen(),
         );
 
+      // ToDo add getProfileCubit and homeRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) =>
+                GetProfileDataCubit(HomeRepo(FirebaseFirestore.instance))..getProfileData(),
+            child: const HomeScreen(),
+          ),
         );
 
       case Routes.rocketDetails:
