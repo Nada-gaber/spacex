@@ -10,6 +10,7 @@ import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
 import '../../features/company_info/ui/company_info.dart';
+import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/home_screen.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
@@ -32,8 +33,11 @@ class AppRouter {
         );
 
       case Routes.rocketDetails:
+        final arg = settings.arguments as Rocket;
         return MaterialPageRoute(
-          builder: (context) => const RocketDetailsScreen(),
+          builder: (context) => RocketDetailsScreen(
+            rocket: arg,
+          ),
         );
       case Routes.launchPadDetails:
         return MaterialPageRoute(
