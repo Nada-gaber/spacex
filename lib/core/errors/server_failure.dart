@@ -7,11 +7,11 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure("connection time out with api server");
+        return ServerFailure("Connection time out with api server");
       case DioExceptionType.sendTimeout:
-        return ServerFailure("send time out with api server");
+        return ServerFailure("Send time out with api server");
       case DioExceptionType.receiveTimeout:
-        return ServerFailure("receive time out with api server");
+        return ServerFailure("Receive time out with api server");
       case DioExceptionType.badCertificate:
         return ServerFailure("Internal Server Error");
       case DioExceptionType.badResponse:
@@ -20,9 +20,9 @@ class ServerFailure extends Failure {
       case DioExceptionType.cancel:
         return ServerFailure("Request to api server was canceled");
       case DioExceptionType.connectionError:
-        return ServerFailure("Connection Error");
-      case DioExceptionType.unknown:
         return ServerFailure("No Internet Connection");
+      case DioExceptionType.unknown:
+        return ServerFailure("Connection Error");
 
       default:
         return ServerFailure("Opps There was an error, Please Try Again");

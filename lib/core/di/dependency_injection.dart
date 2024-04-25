@@ -17,8 +17,8 @@ Future<void> setupGetIt() async {
 Dio createAndSetUpDio() {
   Dio dio = Dio();
   dio
-    ..options.connectTimeout= const Duration(seconds: 2)
-    ..options.receiveTimeout = const Duration(seconds: 3) ;
+    ..options.connectTimeout= const Duration(seconds: 10)
+    ..options.receiveTimeout = const Duration(seconds: 10) ;
 
   dio.interceptors.add(LogInterceptor(
     error: true,
