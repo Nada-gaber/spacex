@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/features/home/data/models/rocket_model.dart';
 
+import '../../../../core/widgets/open_url_in_browser_icon_button.dart';
 import '../widgets/rocket_details_screen_body.dart';
 
 class RocketDetailsScreen extends StatelessWidget {
-  const RocketDetailsScreen({super.key});
+  final Rocket rocket;
+
+  const RocketDetailsScreen({super.key, required this.rocket});
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +16,21 @@ class RocketDetailsScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundDarkBlue,
       appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
-        title: const Text(
-          "Falcon 1",
-          style: TextStyle(
+        title: Text(
+          rocket.name.toString(),
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.info_outline,
-                size: 28,
-              ))
+          OpenUrlInBrowserIconButton(
+            urlString: rocket.wikipedia.toString(),
+          ),
         ],
       ),
-      body: const RocketDetailsScreenBody(),
+      body: RocketDetailsScreenBody(
+        rocket: rocket,
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.buttonBlue,
         onPressed: () {},

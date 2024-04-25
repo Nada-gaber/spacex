@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/features/home/data/models/rocket_model.dart';
 
 class RocketListItem extends StatelessWidget {
   final String imageUrl;
-
-  const RocketListItem({super.key, required this.imageUrl});
+final Rocket rocket;
+  const RocketListItem({super.key, required this.imageUrl, required this.rocket});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.rocketDetails);
+        context.pushNamed(Routes.rocketDetails,arguments: rocket);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),

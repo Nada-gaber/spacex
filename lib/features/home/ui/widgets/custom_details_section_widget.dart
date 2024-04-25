@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/features/home/ui/widgets/display_details_row_widget.dart';
 
+import '../../data/models/rocket_model.dart';
 import 'drawer_component.dart';
 
 class CustomDetailsSectionWidget extends StatelessWidget {
-  const CustomDetailsSectionWidget({super.key});
+  final Rocket rocket;
+  const CustomDetailsSectionWidget({super.key, required this.rocket});
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +22,22 @@ class CustomDetailsSectionWidget extends StatelessWidget {
                 fontWeight: FontWeight.w600),
           ),
         ),
-        const DisplayDetailsRowWidget(nameOfKey: "Type", value: "rocket"),
+         DisplayDetailsRowWidget(nameOfKey: "Type", value: rocket.type.toString()),
         buildDivide(),
-        const DisplayDetailsRowWidget(
-            nameOfKey: "Cost per launch", value: "6700000 \$"),
+         DisplayDetailsRowWidget(
+            nameOfKey: "Cost per launch", value: "${rocket.costPerLaunch.toString()} \$"),
         buildDivide(),
-        const DisplayDetailsRowWidget(
-            nameOfKey: "First flight", value: "2006-03-24"),
+         DisplayDetailsRowWidget(
+            nameOfKey: "First flight", value: rocket.firstFlight.toString()),
         buildDivide(),
-        const DisplayDetailsRowWidget(nameOfKey: "Company", value: "SpaceX"),
+         DisplayDetailsRowWidget(nameOfKey: "Company", value: rocket.company.toString()),
         buildDivide(),
-        const DisplayDetailsRowWidget(
-            nameOfKey: "Country", value: "Republic of Marshall Islands "),
+         DisplayDetailsRowWidget(
+            nameOfKey: "Country", value: rocket.country.toString()),
         buildDivide(),
-        const DisplayDetailsRowWidget(nameOfKey: "Height (m)", value: "22.25"),
+         DisplayDetailsRowWidget(nameOfKey: "Height (m)", value: rocket.height!.meters.toString()),
         buildDivide(),
-        const DisplayDetailsRowWidget(nameOfKey: "Mass (kg)", value: "30146"),
+         DisplayDetailsRowWidget(nameOfKey: "Mass (kg)", value: rocket.mass!.kg.toString()),
       ],
     );
   }
