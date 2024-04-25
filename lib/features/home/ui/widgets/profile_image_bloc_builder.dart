@@ -17,6 +17,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
           if (state is GetProfileDataSuccess) {
             return Container(
               height: MediaQuery.sizeOf(context).height * 0.1,
+              width: MediaQuery.sizeOf(context).height * 0.1,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
               ),
