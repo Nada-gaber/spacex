@@ -8,7 +8,14 @@ class CustomFailureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [const Icon(Icons.warning_amber), Text(textError)],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(Icons.warning_amber),
+        const SizedBox(
+          width: 8,
+        ),
+        Text(textError)
+      ],
     );
   }
 }
