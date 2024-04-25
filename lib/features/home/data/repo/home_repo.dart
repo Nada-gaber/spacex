@@ -13,7 +13,7 @@ class HomeRepo {
     try {
       final response =
           await firebaseFirestoreInstance.collection('users').doc(token).get();
-      var userModel = UserModel.fromJson(response.data()!);
+      UserModel userModel = UserModel.fromJson(response.data()!);
       return Right(userModel);
     } catch (error) {
       if (error is FirebaseException) {
