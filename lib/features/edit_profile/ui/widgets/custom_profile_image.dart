@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/constant/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
 
 class CustomProfileImage extends StatelessWidget {
@@ -8,31 +10,46 @@ class CustomProfileImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       children: [
-        CircleAvatar(
-          radius: screenWidth / 4.3,
-          backgroundColor: AppColors.textWhite,
-          child: CircleAvatar(
-            radius: screenWidth / 4.4,
-            backgroundColor: AppColors.blueGray,
-            child: CircleAvatar(
-              radius: screenWidth / 4.6,
-              backgroundImage: const NetworkImage(
-                  "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
+        Container(
+          height: MediaQuery.sizeOf(context).height * 0.2,
+          width: MediaQuery.sizeOf(context).height * 0.2,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+          ),
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: CachedNetworkImage(
+            imageUrl: context.read<EditProfileDataCubit>().profileImageUrl,
+            fit: BoxFit.fill,
+            progressIndicatorBuilder: (context, url, downloadProgress) {
+              return CustomShimmerLoading(
+                child: Container(
+                  height: MediaQuery.sizeOf(context).height * 0.25,
+                  width: MediaQuery.sizeOf(context).height * 0.25,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                  ),
+                ),
+              );
+            },
+            errorWidget: (context, url, error) => const Icon(
+              Icons.error_outline,
+              size: 32,
             ),
           ),
         ),
         Positioned(
-          bottom: 5,
-          right: 0,
+          bottom: 10,
+          right: 5,
           child: CustomIconButton(
             onTap: () {},
-            size: screenWidth / 10,
+            size: 24,
             icon: Icons.edit,
             color: Colors.black,
-            isFontAwesomeIcons: false, backgroundColor: Colors.white.withOpacity(0.7),
+            isFontAwesomeIcons: false,
+            backgroundColor: Colors.white.withOpacity(0.7),
           ),
         ),
       ],

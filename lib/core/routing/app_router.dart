@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
+import 'package:spacex/features/edit_profile/data/profile_repo.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
-import 'package:spacex/features/home/data/repo/home_repo.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/views/home_screen.dart';
 import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
 import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
@@ -24,15 +24,9 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-
-      // ToDo add getProfileCubit and homeRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) =>
-                GetProfileDataCubit(HomeRepo(FirebaseFirestore.instance))..getProfileData(),
-            child: const HomeScreen(),
-          ),
+          builder: (context) => const HomeScreen(),
         );
 
       case Routes.rocketDetails:
@@ -63,9 +57,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CrewScreen(),
         );
+      // ToDo add editProfileCubit and profileRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.editProfileScreen:
         return MaterialPageRoute(
-          builder: (context) => const EditProfileScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => EditProfileDataCubit(
+              ProfileRepo(FirebaseFirestore.instance),
+            ),
+            child: const EditProfileScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

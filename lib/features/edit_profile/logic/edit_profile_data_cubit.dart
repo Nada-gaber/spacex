@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:spacex/features/edit_profile/data/profile_repo.dart';
@@ -9,6 +10,9 @@ class EditProfileDataCubit extends Cubit<EditProfileDataState> {
   final ProfileRepo profileRepo;
 
   EditProfileDataCubit(this.profileRepo) : super(EditProfileDataInitial());
+
+  TextEditingController nameController = TextEditingController();
+  String profileImageUrl = '';
 
   Future editProfileData(UserModel userModel) async {
     final response = await profileRepo.editProfileData(userModel);

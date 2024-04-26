@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
-
-import 'custom_app_bar.dart';
-import 'custom_edit_text_field.dart';
+import 'package:spacex/core/widgets/custom_text_form_field.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
 import 'custom_profile_image.dart';
 
 class EditProfileScreenBody extends StatelessWidget {
@@ -11,32 +11,27 @@ class EditProfileScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 24,
+      ),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomAppBar(),
             const CustomProfileImage(),
             SizedBox(
               height: MediaQuery.of(context).size.height / 18,
             ),
-            const CustomEditTextField(
-              hintText: "Username",
-              currentValue: "Mahmoud Alaa",
+            CustomTextFormField(
+              icon: Icons.person_outline_outlined,
+              text: context.read<EditProfileDataCubit>().nameController.text,
+              controller: context.read<EditProfileDataCubit>().nameController,
             ),
-            const CustomEditTextField(
-              hintText: "Password",
-              currentValue: "*********",
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.05,
             ),
-            const CustomEditTextField(
-              hintText: "Email",
-              currentValue: "mahmoud.alaa1212@gmail.com",
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 8,
-                  vertical: MediaQuery.of(context).size.width / 12),
-              child: const CustomTextButton(text: "Save changes"),
+            const CustomTextButton(
+              text: "Save changes",
             )
           ],
         ),
