@@ -1,14 +1,14 @@
 class UserModel {
   final String name;
-  final String email;
+  final String? email;
   final String image;
-  final String token;
+  final String? token;
 
   const UserModel({
     required this.name,
-    required this.email,
+    this.email,
     required this.image,
-    required this.token,
+    this.token,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
