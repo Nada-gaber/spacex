@@ -13,8 +13,8 @@ class ProfileRepo {
     try {
       await firebaseFirestoreInstance
           .collection('users')
-          .doc(userModel.token)
-          .update(userModel.toMap());
+          .doc('GtummCYmQxNFLpBlT5iT')
+          .set(userModel.toMap());
       return const Right(unit);
     } catch (error) {
       if (error is FirebaseException) {

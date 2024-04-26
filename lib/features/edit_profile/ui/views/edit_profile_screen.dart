@@ -50,6 +50,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               if (state is GetProfileDataSuccess) {
                 context.read<EditProfileDataCubit>().nameController.text =
                     state.userModel.name;
+                context.read<EditProfileDataCubit>().emailController.text =
+                    state.userModel.email;
                 context.read<EditProfileDataCubit>().profileImageUrl =
                     state.userModel.image;
               }

@@ -12,9 +12,12 @@ class EditProfileDataCubit extends Cubit<EditProfileDataState> {
   EditProfileDataCubit(this.profileRepo) : super(EditProfileDataInitial());
 
   TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   String profileImageUrl = '';
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future editProfileData(UserModel userModel) async {
+    emit(EditProfileDataLoading());
     final response = await profileRepo.editProfileData(userModel);
     response.fold(
       (failure) => emit(EditProfileDataFailure(failure.message)),
