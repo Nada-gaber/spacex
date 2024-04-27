@@ -8,7 +8,7 @@ class CustomEditProfileLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomShimmerLoading(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Column(
           children: [
             Container(
@@ -21,16 +21,16 @@ class CustomEditProfileLoading extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.06,
+              height: MediaQuery.sizeOf(context).height * 0.05,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.06,
+              height: MediaQuery.sizeOf(context).height * 0.05,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),

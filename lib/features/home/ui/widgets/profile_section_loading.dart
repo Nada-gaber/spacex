@@ -33,15 +33,6 @@ class ProfileSectionLoading extends StatelessWidget {
             height: 15,
             width: screenWidth * 0.2,
           ),
-          const SizedBox(height: 10),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.white,
-            ),
-            height: 15,
-            width: screenWidth * 0.4,
-          ),
         ],
       ),
     );

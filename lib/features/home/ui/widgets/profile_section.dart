@@ -14,7 +14,7 @@ class ProfileSection extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsetsDirectional.symmetric(vertical: screenHeight / 20),
+      padding: const EdgeInsetsDirectional.symmetric(vertical: 24),
       child: BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
         builder: (context, state) {
           if (state is GetProfileDataSuccess) {
@@ -48,22 +48,13 @@ class ProfileSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: screenHeight * 0.015),
                 Text(
                   state.userModel.name,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
                   ),
-                ),
-                Text(
-                  state.userModel.email!,
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 16.0,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             );

@@ -37,7 +37,6 @@ class EditProfileBlocConsumer extends StatelessWidget {
               name: context.read<EditProfileDataCubit>().nameController.text,
               image: context.read<EditProfileDataCubit>().profileImageUrl,
               token: 'GtummCYmQxNFLpBlT5iT',
-              email: context.read<EditProfileDataCubit>().emailController.text,
             );
             if (context
                 .read<EditProfileDataCubit>()
@@ -45,7 +44,6 @@ class EditProfileBlocConsumer extends StatelessWidget {
                 .currentState!
                 .validate()) {
               context.read<EditProfileDataCubit>().editProfileData(userModel);
-              // ToDo handle change email in auth
             }
           },
         );

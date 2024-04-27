@@ -12,7 +12,6 @@ class EditProfileDataCubit extends Cubit<EditProfileDataState> {
   EditProfileDataCubit(this.profileRepo) : super(EditProfileDataInitial());
 
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
   String profileImageUrl = '';
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

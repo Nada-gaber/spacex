@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/widgets/edit_profile_bloc_consumer.dart';
@@ -37,21 +36,7 @@ class EditProfileScreenBody extends StatelessWidget {
                 },
               ),
               SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.03,
-              ),
-              CustomTextFormField(
-                controller: context.read<EditProfileDataCubit>().emailController,
-                validator: (value) {
-                  if (value == null || !AppRegex.isEmailValid(value)) {
-                    return 'Please enter a valid email';
-                  }
-                  return null;
-                },
-                text: context.read<EditProfileDataCubit>().emailController.text,
-                icon: Icons.mail_outline_outlined,
-              ),
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.05,
+                height: MediaQuery.sizeOf(context).height * 0.04,
               ),
               const EditProfileBlocConsumer(),
             ],
