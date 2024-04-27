@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex/core/constant/color/app_color.dart';
 import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_links_row.dart';
 import '../../../core/constant/images.dart';
@@ -12,14 +13,17 @@ import 'widgets/company_info_appbar.dart';
 import '../../../core/widgets/text_style.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
-  CompanyInfoScreen({super.key});
-
-  final cubit = CompanyCubit(CompanyRepository(WebServices(Dio())));
+  const CompanyInfoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CompanyCubit>(
-      create: (context) => cubit,
+      create: (context) {
+        final cubit = CompanyCubit(CompanyRepository(WebServices(Dio())));
+        cubit.fetchCompanyInfo();
+        return cubit;
+      },
+
       child: BlocConsumer<CompanyCubit, CompanyInfoState>(
         listener: (context, state) {
           if (state is CompanyError) {
@@ -34,10 +38,16 @@ class CompanyInfoScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is CompanyInitial) {
             return const Center(
-                child: CircularProgressIndicator(strokeWidth: 2));
+                child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppColor.blueGrey,
+            ));
           } else if (state is CompanyLoading) {
             return const Center(
-                child: CircularProgressIndicator(strokeWidth: 2));
+                child: CircularProgressIndicator(
+              strokeWidth: 2,
+              color: AppColor.buttonColor,
+            ));
           } else if (state is CompanyLoaded) {
             final companyInfo = state.companyInfo;
             return Scaffold(
