@@ -10,7 +10,7 @@ import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
-import '../../features/company_info/ui/company_info.dart';
+import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
