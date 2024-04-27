@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:spacex/core/constant/color/app_color.dart';
 import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/core/widgets/custom_icon_button.dart';
 import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
-import 'widgets/app_bar.dart';
+import 'widgets/company_info_appbar.dart';
 import '../../../core/widgets/text_style.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
@@ -12,8 +13,7 @@ class CompanyInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //TODO: color constants isn't in this branch so i will edit it soon
-      backgroundColor: const Color(0xff061428),
+      backgroundColor: AppColor.backgroundColor,
       appBar: companyInfoAppBar(context),
       body: SingleChildScrollView(
         child: SizedBox(
