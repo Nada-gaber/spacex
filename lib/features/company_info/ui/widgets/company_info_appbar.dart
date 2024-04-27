@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spacex/core/widgets/custom_icon_button.dart';
-
 import '../../../../core/widgets/text_style.dart';
 
-companyInfoAppBar(BuildContext context) {
+companyInfoAppBar(BuildContext context,String summary) {
   return AppBar(
     backgroundColor: Colors.transparent,
     title: Row(
@@ -18,7 +16,7 @@ companyInfoAppBar(BuildContext context) {
           onTap: () {
             showDialog(
               context: context,
-              builder: (BuildContext context) => _buildPopupDialog(context),
+              builder: (BuildContext context) => _buildPopupDialog(context,summary),
             );
           },
           color: Colors.white,
@@ -32,15 +30,14 @@ companyInfoAppBar(BuildContext context) {
   );
 }
 
-_buildPopupDialog(BuildContext context) {
-  return const AlertDialog(
-    title: Text('SpaceX'),
+_buildPopupDialog(BuildContext context, String summary) {
+  return AlertDialog(
+    title: const Text('SpaceX'),
     content: Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(
-            "SpaceX designs, manufactures and launches advanced rockets and spacecraft. The company was founded in 2002 to revolutionize space technology, with the ultimate goal of enabling people to live on other planets."),
+        Text(summary),
       ],
     ),
   );
