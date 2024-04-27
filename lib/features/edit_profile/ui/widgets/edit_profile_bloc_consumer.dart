@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
-import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_state.dart';
 import 'package:spacex/features/home/data/models/user_model.dart';
 
 class EditProfileBlocConsumer extends StatelessWidget {

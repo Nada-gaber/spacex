@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
 
-class ProfileImageLoading extends StatelessWidget {
-  const ProfileImageLoading({super.key});
+class CustomHomeProfileImageLoading extends StatelessWidget {
+  const CustomHomeProfileImageLoading({super.key});
 
   @override
   Widget build(BuildContext context) {

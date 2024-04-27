@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
-import 'package:spacex/features/home/ui/widgets/profile_image_loading.dart';
+import 'package:spacex/features/home/ui/widgets/custom_home_profile_image_loading.dart';
 
 class ProfileImageBlocBuilder extends StatelessWidget {
   const ProfileImageBlocBuilder({super.key});
@@ -26,7 +26,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
                 imageUrl: state.userModel.image,
                 fit: BoxFit.fill,
                 progressIndicatorBuilder: (context, url, downloadProgress) {
-                  return const ProfileImageLoading();
+                  return const CustomHomeProfileImageLoading();
                 },
                 errorWidget: (context, url, error) => const Icon(
                   Icons.error_outline,
@@ -40,7 +40,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
               child: const Icon(Icons.error_outline),
             );
           } else {
-            return const ProfileImageLoading();
+            return const CustomHomeProfileImageLoading();
           }
         },
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
-import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/widgets/edit_profile_bloc_consumer.dart';
 import 'custom_profile_image.dart';
 
@@ -10,6 +10,7 @@ class EditProfileScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String textLabel = context.read<EditProfileDataCubit>().nameController.text;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 12,
@@ -26,11 +27,11 @@ class EditProfileScreenBody extends StatelessWidget {
               ),
               CustomTextFormField(
                 icon: Icons.person_outline_outlined,
-                text: context.read<EditProfileDataCubit>().nameController.text,
+                text: 'Please Enter Your Name',
                 controller: context.read<EditProfileDataCubit>().nameController,
                 validator: (value) {
-                  if (value == null) {
-                    return 'Name must not ber null';
+                  if (value == null || value.isEmpty) {
+                    return 'Name must not be null';
                   }
                   return null;
                 },

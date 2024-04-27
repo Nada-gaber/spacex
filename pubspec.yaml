@@ -29,6 +29,8 @@ dependencies:
   shimmer: ^3.0.0
   cached_network_image: ^3.3.1
   image_picker: ^1.1.0
+  firebase_storage: ^11.7.4
+  path: ^1.9.0
 
 
 flutter_launcher_icons:

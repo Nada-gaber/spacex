@@ -1,9 +1,13 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/core/functions/show_custom_dialog.dart';
 import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/features/edit_profile/logic/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/widgets/custom_edit_profile_loading.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 
@@ -34,7 +38,28 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             Icons.arrow_back_ios_outlined,
           ),
           onPressed: () {
-            context.pop();
+            showCustomDialog(
+              context,
+              () async {
+                if (context.read<UploadProfileImageCubit>().imagePath != null) {
+                  await FirebaseStorage.instance
+                      .ref('profile')
+                      .child(context.read<UploadProfileImageCubit>().imagePath!)
+                      .delete()
+                      .then((value) {
+                    context.pushNamedAndRemoveUntil(
+                      Routes.home,
+                      predicate: (route) => false,
+                    );
+                  });
+                } else {
+                  context.pushNamedAndRemoveUntil(
+                    Routes.home,
+                    predicate: (route) => false,
+                  );
+                }
+              },
+            );
           },
           color: Colors.white,
         ),
