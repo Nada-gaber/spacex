@@ -30,7 +30,7 @@ class _CustomProfileImageState extends State<CustomProfileImage> {
             onTap: () async {
               try {
                 final image =
-                    await ImagePicker().pickImage(source: ImageSource.camera);
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
                 if (image == null) return;
                 uploadProfileImageCubit.file = File(image.path);
                 uploadProfileImageCubit.imagePath = basename(image.path);
