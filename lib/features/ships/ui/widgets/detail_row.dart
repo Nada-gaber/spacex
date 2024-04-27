@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/constant/color/app_color.dart';
 import '../../../../../../core/themes/text_styles.dart';
 
-detailsValuesRow(String key, String value) {
+detailsValuesRow(dynamic key, dynamic value) {
   return Padding(
     padding: const EdgeInsets.only(right: 20.0, left: 20),
     child: Column(
@@ -12,11 +12,11 @@ detailsValuesRow(String key, String value) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              key,
-              style: MyTextStyles.font20WhiteBoldW500,
+              key.toString(),
+              style: MyTextStyles.font18WhiteBold,
             ),
             Text(
-              value,
+              value.toString(),
               style: MyTextStyles.font18White60W600,
             ),
           ],
