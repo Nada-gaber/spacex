@@ -38,7 +38,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.companyInfo:
         return MaterialPageRoute(
-          builder: (context) => const CompanyInfoScreen(),
+          builder: (context) =>  CompanyInfoScreen(),
         );
       case Routes.login:
         return MaterialPageRoute(
