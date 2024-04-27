@@ -8,6 +8,7 @@ part 'web_services.g.dart';
 @RestApi(baseUrl: ApiConstants.apiBaseUrl)
 abstract class WebServices {
   factory WebServices(Dio dio, {String baseUrl}) = _WebServices;
-    @GET(ApiConstants.companyInfo)
+  
+  @GET(ApiConstants.companyInfo)
   Future<CompanyInfo> getCompanyInfo();
 }
