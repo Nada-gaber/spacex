@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-
-import '../../../../../core/networking/web_services.dart';
+import 'package:spacex/core/networking/web_services.dart';
 import '../model/ships_model.dart';
 
 class ShipsRepository {

@@ -19,7 +19,7 @@ Rocket _$RocketFromJson(Map<String, dynamic> json) => Rocket(
       name: json['name'] as String?,
       type: json['type'] as String?,
       active: json['active'] as bool?,
-      costPerLaunch: json['cost_per_launch'] as int?,
+      costPerLaunch: (json['cost_per_launch'] as num?)?.toInt(),
       firstFlight: json['first_flight'] as String?,
       country: json['country'] as String?,
       company: json['company'] as String?,
@@ -55,8 +55,8 @@ Map<String, dynamic> _$DiameterToJson(Diameter instance) => <String, dynamic>{
     };
 
 Mass _$MassFromJson(Map<String, dynamic> json) => Mass(
-      kg: json['kg'] as int?,
-      lb: json['lb'] as int?,
+      kg: (json['kg'] as num?)?.toInt(),
+      lb: (json['lb'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$MassToJson(Mass instance) => <String, dynamic>{
