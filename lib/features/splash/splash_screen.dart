@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'splash_utils/splash_navigate.dart';
 import 'splash_widgets.dart/splash_build.dart';
 
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
       body: buildBody(context),
     );
   }

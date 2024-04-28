@@ -30,9 +30,10 @@ dependencies:
   dio: ^5.4.3+1
   retrofit: ^4.1.0
   retrofit_generator: ^8.1.0
+#url launcher  
+  url_launcher: ^6.2.6
 #shimmer
   shimmer: ^3.0.0 
-  
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true

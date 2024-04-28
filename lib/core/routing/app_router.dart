@@ -10,7 +10,7 @@ import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
-import '../../features/company_info/ui/company_info.dart';
+import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -38,7 +38,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.companyInfo:
         return MaterialPageRoute(
-          builder: (context) => const CompanyInfoScreen(),
+          builder: (context) =>  CompanyInfoScreen(),
         );
       case Routes.login:
         return MaterialPageRoute(

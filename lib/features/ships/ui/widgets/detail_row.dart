@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/constant/colors.dart';
 
-import '../../../../../../core/constant/color/app_color.dart';
 import '../../../../../../core/themes/text_styles.dart';
 
 detailsValuesRow(dynamic key, dynamic value) {
@@ -25,7 +25,7 @@ detailsValuesRow(dynamic key, dynamic value) {
           height: 7,
         ),
         const Divider(
-          color: AppColor.blueGrey,
+          color: AppColors.blueGray,
         ),
       ],
     ),
