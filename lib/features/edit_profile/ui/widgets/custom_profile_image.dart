@@ -1,38 +1,49 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-
-import '../../../../core/constant/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
+import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
+import 'package:spacex/features/edit_profile/ui/widgets/upload_profile_image_bloc_consumer.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
 
-class CustomProfileImage extends StatelessWidget {
+class CustomProfileImage extends StatefulWidget {
   const CustomProfileImage({super.key});
 
   @override
+  State<CustomProfileImage> createState() => _CustomProfileImageState();
+}
+
+class _CustomProfileImageState extends State<CustomProfileImage> {
+  @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    UploadProfileImageCubit uploadProfileImageCubit =
+        BlocProvider.of<UploadProfileImageCubit>(context);
+
     return Stack(
       children: [
-        CircleAvatar(
-          radius: screenWidth / 4.3,
-          backgroundColor: AppColors.textWhite,
-          child: CircleAvatar(
-            radius: screenWidth / 4.4,
-            backgroundColor: AppColors.blueGray,
-            child: CircleAvatar(
-              radius: screenWidth / 4.6,
-              backgroundImage: const NetworkImage(
-                  "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
-            ),
-          ),
-        ),
+        const UploadProfileImageBlocConsumer(),
         Positioned(
-          bottom: 5,
-          right: 0,
+          bottom: 10,
+          right: 5,
           child: CustomIconButton(
-            onTap: () {},
-            size: screenWidth / 10,
+            onTap: () async {
+              try {
+                final image =
+                    await ImagePicker().pickImage(source: ImageSource.gallery);
+                if (image == null) return;
+                uploadProfileImageCubit.file = File(image.path);
+                uploadProfileImageCubit.imagePath = basename(image.path);
+                uploadProfileImageCubit.uploadProfileImage();
+              } catch (e) {
+                print('Failed to pick image: $e');
+              }
+            },
+            size: 24,
             icon: Icons.edit,
             color: Colors.black,
-            isFontAwesomeIcons: false, backgroundColor: Colors.white.withOpacity(0.7),
+            isFontAwesomeIcons: false,
+            backgroundColor: Colors.white.withOpacity(0.7),
           ),
         ),
       ],

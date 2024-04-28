@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constant/colors.dart';
-
 class CustomDescriptionSection extends StatefulWidget {
   final String descriptionText;
 
   const CustomDescriptionSection({super.key, required this.descriptionText});
-
 
   @override
   State<CustomDescriptionSection> createState() =>
@@ -48,8 +45,8 @@ class _CustomDescriptionSectionState extends State<CustomDescriptionSection> {
           },
           child: Text(
             _showFullText ? 'Show Less' : 'Show More',
-            style: const TextStyle(
-              color: AppColors.blueGray,
+            style: TextStyle(
+              color: Colors.blue.withOpacity(.8),
               fontWeight: FontWeight.bold,
             ),
           ),

@@ -17,17 +17,32 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_bloc: ^8.1.5
   get_it: ^7.6.7
-  dio: ^5.4.2+1
-  retrofit: ^4.1.0
+
   font_awesome_flutter: ^10.7.0
   flutter_native_splash: ^2.4.0
   firebase_core: ^2.30.0
   firebase_auth: ^4.19.2
+  cloud_firestore: ^4.17.2
   flutter_launcher_icons: ^0.13.1
   dartz: ^0.10.1
   fluttertoast: ^8.2.5
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+  image_picker: ^1.1.0
+  firebase_storage: ^11.7.4
+  path: ^1.9.0
 
 
+# logic
+  bloc: ^8.1.4
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+# API
+  dio: ^5.4.3+1
+  retrofit: ^4.1.0
+  retrofit_generator: ^8.1.0
+#url launcher
+  url_launcher: ^6.2.6
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true
@@ -40,8 +55,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-
-
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.9
 flutter:
 
 

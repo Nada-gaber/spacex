@@ -10,7 +10,7 @@ detailImageContainer(BuildContext context, String shipImage) {
             Radius.circular(25),
           ),
           image: DecorationImage(
-            image: AssetImage(shipImage),
+            image: NetworkImage(shipImage),
             fit: BoxFit.fitWidth,
           )),
     ),

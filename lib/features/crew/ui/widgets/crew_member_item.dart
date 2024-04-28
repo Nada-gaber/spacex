@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/features/crew/data/models/person_model.dart';
 
-import '../../../../core/constant/color/app_color.dart';
 import '../../../../core/constant/colors.dart';
 import '../views/crew_member_details_screen.dart';
 
@@ -33,7 +32,7 @@ class CrewMemberItem extends StatelessWidget {
               crewMember.name,
               style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width / 20,
-                  color: AppColor.textColor),
+                  color: AppColors.textWhite),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               textAlign: TextAlign.center,

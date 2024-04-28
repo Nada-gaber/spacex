@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/themes/text_styles.dart';
 
 import '../../../../core/constant/colors.dart';
 
@@ -23,7 +24,7 @@ class DrawerComponent extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: screenWidth / 10,
+              size: 30,
               color: AppColors.textWhite,
             ),
             const SizedBox(
@@ -31,10 +32,7 @@ class DrawerComponent extends StatelessWidget {
             ),
             Text(
               title,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: screenWidth / 22,
-              ),
+              style: MyTextStyles.font18WhiteBold,
             )
           ],
         ),

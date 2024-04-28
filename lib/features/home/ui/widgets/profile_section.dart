@@ -1,4 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
+import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/ui/widgets/profile_section_loading.dart';
 
 class ProfileSection extends StatelessWidget {
   const ProfileSection({super.key});
@@ -9,34 +14,63 @@ class ProfileSection extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsetsDirectional.symmetric(vertical: screenHeight / 20),
-      child: Column(
-        children: [
-          Container(
-            height: screenHeight / 9.5,
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                gradient:
-                    LinearGradient(colors: [Colors.white, Colors.blueGrey])),
-            child: CircleAvatar(
-              radius: screenWidth / 9.5,
-              backgroundImage: const NetworkImage(
-                  "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
-            ),
-          ),
-          const SizedBox(height: 6),
-          const Text(
-            "Mahmoud Alaa",
-            style: TextStyle(color: Colors.white, fontSize: 18.0),
-          ),
-          const Text(
-            "mahmoud.alaa1212@gmail.com",
-            style: TextStyle(color: Colors.grey, fontSize: 16.0),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+      padding: const EdgeInsetsDirectional.symmetric(vertical: 24),
+      child: BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
+        builder: (context, state) {
+          if (state is GetProfileDataSuccess) {
+            return Column(
+              children: [
+                Container(
+                  height: screenHeight / 9.5,
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: state.userModel.image,
+                    fit: BoxFit.fill,
+                    progressIndicatorBuilder: (context, url, downloadProgress) {
+                      return CustomShimmerLoading(
+                        child: Container(
+                          height: screenHeight / 9.5,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    },
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error_outline,
+                    ),
+                  ),
+                ),
+                SizedBox(height: screenHeight * 0.015),
+                Text(
+                  state.userModel.name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ],
+            );
+          } else if (state is GetProfileDataFailure) {
+            return Center(
+              child: Text(
+                state.errorMessage,
+              ),
+            );
+          } else {
+            return ProfileSectionLoading(
+              screenHeight: screenHeight,
+              screenWidth: screenWidth,
+            );
+          }
+        },
       ),
     );
   }

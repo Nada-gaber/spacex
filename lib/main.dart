@@ -7,10 +7,10 @@ import 'package:spacex/spacex_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupGetIt();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  setupGetIt();
   runApp(SpacexApp(
     appRouter: AppRouter(),
   ));
