@@ -29,3 +29,4 @@ detailButton(String shipName) {
     ),
   );
 }
+

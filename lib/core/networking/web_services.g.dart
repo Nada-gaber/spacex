@@ -13,7 +13,7 @@ class _WebServices implements WebServices {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.spacexdata.com/v4/';
+    baseUrl ??= 'https://api.spacexdata.com/v4';
   }
 
   final Dio _dio;
@@ -21,20 +21,20 @@ class _WebServices implements WebServices {
   String? baseUrl;
 
   @override
-  Future<CompanyInfo> getCompanyInfo() async {
+  Future<List<Ships>> getAllShips() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CompanyInfo>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Ships>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'company',
+              '/ships',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,7 +43,9 @@ class _WebServices implements WebServices {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = CompanyInfo.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => Ships.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -75,5 +77,11 @@ class _WebServices implements WebServices {
     }
 
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
+  }
+  
+  @override
+  Future<CompanyInfo> getCompanyInfo() {
+    // TODO: implement getCompanyInfo
+    throw UnimplementedError();
   }
 }
