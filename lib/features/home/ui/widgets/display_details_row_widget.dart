@@ -24,6 +24,7 @@ class DisplayDetailsRowWidget extends StatelessWidget {
               "$nameOfKey :",
               style: MyTextStyles.font18WhiteBold,
             ),
+            const SizedBox(width: 10,),
             Flexible(
               child: Text(
                 value,

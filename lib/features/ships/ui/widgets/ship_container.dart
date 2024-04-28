@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
 import 'package:spacex/features/ships/ui/ship_detail.dart';
-import '../../../../../core/constant/image/app_images.dart';
+import 'ship_container_desing.dart';
 
-shipContainer(BuildContext context,
-    {String shipImage = AppImage.firstOnboarding,
-    String shipName = 'Ship Name'}) {
+shipContainer(BuildContext context, String shipImage, String shipName,
+    int yearBuilt, int mass, String type) {
   return Padding(
-    padding: const EdgeInsets.all(8.0),
+    padding: const EdgeInsets.all(10.0),
     child: InkWell(
         borderRadius: BorderRadius.circular(20),
         hoverColor: Colors.transparent,
@@ -20,53 +18,14 @@ shipContainer(BuildContext context,
               builder: (context) => ShipDetails(
                 shipImage: shipImage,
                 shipName: shipName,
+                yearBuilt: yearBuilt,
+                mass: mass,
+                type: type,
               ),
             ),
           );
         },
-        child: containerShipDesign(context)),
+        child: containerShipDesign(context, shipImage, shipName)),
   );
 }
 
-containerShipDesign(BuildContext context,
-    {String shipImage = AppImage.firstOnboarding,
-    String shipName = 'Ship Name'}) {
-  return Container(
-    decoration: BoxDecoration(
-      color: Colors.red,
-      borderRadius: BorderRadius.circular(10),
-      boxShadow: const [
-        BoxShadow(
-          color: AppColor.blueGrey,
-          spreadRadius: -5.0,
-          blurRadius: 7.0,
-        ),
-      ],
-      image: DecorationImage(fit: BoxFit.fill, image: AssetImage(shipImage)),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.favorite_border,
-                  size: 30,
-                  color: AppColor.textColor,
-                ))),
-        Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-            child: Text(
-              shipName,
-              style: const TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}

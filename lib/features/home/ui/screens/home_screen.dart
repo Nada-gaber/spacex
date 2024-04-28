@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/profile_image_bloc_builder.dart';
+import '../../logic/cubits/rocket_cubit/rocket_cubit.dart';
 import '../widgets/custom_drawer_widget.dart';
 import '../widgets/home_screen_body.dart';
 
@@ -17,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     context.read<GetProfileDataCubit>().getProfileData();
+    BlocProvider.of<RocketCubit>(context).getAllRockets();
     super.initState();
   }
 

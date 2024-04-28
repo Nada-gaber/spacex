@@ -16,8 +16,7 @@ class SpacexApp extends StatelessWidget {
     // ToDo add getProfileCubit and homeRepo and firebaseFirestore to getIt after merge previous branches
     return BlocProvider(
       create: (context) =>
-          GetProfileDataCubit(HomeRepo(FirebaseFirestore.instance))
-            ..getProfileData(),
+          GetProfileDataCubit(HomeRepo(FirebaseFirestore.instance)),
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.dark,
