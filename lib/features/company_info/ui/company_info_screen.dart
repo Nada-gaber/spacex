@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_links_row.dart';
 import '../../../core/constant/images.dart';
@@ -40,13 +40,13 @@ class CompanyInfoScreen extends StatelessWidget {
             return const Center(
                 child: CircularProgressIndicator(
               strokeWidth: 2,
-              color: AppColor.blueGrey,
+              color: AppColors.blueGray,
             ));
           } else if (state is CompanyLoading) {
             return const Center(
                 child: CircularProgressIndicator(
               strokeWidth: 2,
-              color: AppColor.buttonColor,
+              color: AppColors.buttonBlue,
             ));
           } else if (state is CompanyLoaded) {
             final companyInfo = state.companyInfo;
