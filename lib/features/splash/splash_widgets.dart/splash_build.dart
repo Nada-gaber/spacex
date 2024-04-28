@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/constant/image/app_images.dart';
+import '../../../core/constant/images.dart';
 
 buildBody(BuildContext context) {
   return SizedBox(
     height: MediaQuery.of(context).size.height,
     child: Image.asset(
-      AppImage.animationSplash,
+      MyImages.animationSplash,
       fit: BoxFit.fitHeight,
     ),
   );

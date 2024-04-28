@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/image/app_images.dart';
 import 'package:spacex/features/register/ui/widgets/register_screen_body.dart';
+
+import '../../../core/constant/images.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -16,7 +17,7 @@ class RegisterScreen extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  AppImage.authBackground,
+                  MyImages.authBackground,
                 ),
                 fit: BoxFit.fill,
               ),

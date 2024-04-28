@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/features/ships/ui/widgets/button.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
@@ -14,7 +14,7 @@ class ShipDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
       appBar: shipDetailAppBar(shipName),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
