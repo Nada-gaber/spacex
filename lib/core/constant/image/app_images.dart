@@ -5,4 +5,5 @@ class AppImage {
   static const secondOnboarding = 'assets/images/second_onboarding.png';
   static const thirdOnboarding = 'assets/images/third_onboarding.png';
   static const authBackground = 'assets/images/auth_background.png';
+  static const animatedSpace= "assets/images/animated_space_image.gif";
 }
