@@ -30,10 +30,10 @@ class RegisterScreenBody extends StatelessWidget {
               const SizedBox(height: 45),
               CustomTextButton(
                 text: 'Register',
+                requestLoading: false,
                 onPressed: () {
                   context.pushNamed(Routes.home);
                 },
-                requestLoading: false,
               ),
               const SizedBox(height: 15),
               const HaveAccountText(),

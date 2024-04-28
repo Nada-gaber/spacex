@@ -25,6 +25,7 @@ dependencies:
   cloud_firestore: ^4.17.2
   flutter_launcher_icons: ^0.13.1
   dartz: ^0.10.1
+  fluttertoast: ^8.2.5
   shimmer: ^3.0.0
   cached_network_image: ^3.3.1
   image_picker: ^1.1.0

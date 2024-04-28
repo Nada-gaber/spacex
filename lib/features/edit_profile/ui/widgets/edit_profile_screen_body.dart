@@ -10,38 +10,35 @@ class EditProfileScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String textLabel = context.read<EditProfileDataCubit>().nameController.text;
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 12,
         horizontal: 24,
       ),
-      child: SingleChildScrollView(
-        child: Form(
-          key: context.read<EditProfileDataCubit>().formKey,
-          child: Column(
-            children: [
-              const CustomProfileImage(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height / 18,
-              ),
-              CustomTextFormField(
-                icon: Icons.person_outline_outlined,
-                text: 'Please Enter Your Name',
-                controller: context.read<EditProfileDataCubit>().nameController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Name must not be null';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.04,
-              ),
-              const EditProfileBlocConsumer(),
-            ],
-          ),
+      child: Form(
+        key: context.read<EditProfileDataCubit>().formKey,
+        child: Column(
+          children: [
+            const CustomProfileImage(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 18,
+            ),
+            CustomTextFormField(
+              icon: Icons.person_outline_outlined,
+              text: 'Please Enter Your Name',
+              controller: context.read<EditProfileDataCubit>().nameController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Name must not be null';
+                }
+                return null;
+              },
+            ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.04,
+            ),
+            const EditProfileBlocConsumer(),
+          ],
         ),
       ),
     );
