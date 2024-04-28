@@ -9,12 +9,13 @@ import 'package:spacex/features/edit_profile/data/profile_repo.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
+import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
+import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/ui/register_screen.dart';
+import 'package:spacex/features/ships/ui/ships.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
-import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
-import 'package:spacex/features/register/ui/register_screen.dart';
-import 'package:spacex/features/ships/ui/ships.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/home_screen.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
@@ -62,7 +63,10 @@ class AppRouter {
         );
       case Routes.register:
         return MaterialPageRoute(
-          builder: (context) => const RegisterScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<RegisterCubit>(),
+            child: const RegisterScreen(),
+          ),
         );
       case Routes.ships:
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
@@ -76,20 +80,10 @@ class AppRouter {
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => EditProfileDataCubit(
-                  ProfileRepo(
-                    FirebaseFirestore.instance,
-                    FirebaseStorage.instance,
-                  ),
-                ),
+                create: (context) => getIt.get<EditProfileDataCubit>(),
               ),
               BlocProvider(
-                create: (context) => UploadProfileImageCubit(
-                  ProfileRepo(
-                    FirebaseFirestore.instance,
-                    FirebaseStorage.instance,
-                  ),
-                ),
+                create: (context) => getIt.get<UploadProfileImageCubit>(),
               ),
             ],
             child: const EditProfileScreen(),

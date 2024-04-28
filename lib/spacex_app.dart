@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/app_router.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/core/utils/dependency_injection.dart';
 import 'package:spacex/features/home/data/repo/home_repo.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 
@@ -15,15 +16,14 @@ class SpacexApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // ToDo add getProfileCubit and homeRepo and firebaseFirestore to getIt after merge previous branches
     return BlocProvider(
-      create: (context) =>
-          GetProfileDataCubit(HomeRepo(FirebaseFirestore.instance)),
+      create: (context) => getIt.get<GetProfileDataCubit>(),
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.home,
+        initialRoute: Routes.splashScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
