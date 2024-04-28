@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/constant/colors.dart';
 
-import '../../../../../../core/constant/color/app_color.dart';
 import '../../../../../../core/themes/text_styles.dart';
 
 detailButton(String shipName) {
@@ -9,7 +9,7 @@ detailButton(String shipName) {
     child: Container(
       height: 45,
       decoration: BoxDecoration(
-        color: AppColor.buttonColor,
+        color: AppColors.buttonBlue,
         borderRadius: BorderRadius.circular(6),
       ),
       child: Row(

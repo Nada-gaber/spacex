@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/ships/ui/widgets/ship_container.dart';
 import '../../../../../core/themes/text_styles.dart';
 
@@ -9,9 +9,9 @@ class ShipsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.backgroundColor,
+      backgroundColor: AppColors.backgroundDarkBlue,
       appBar: AppBar(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         title: const Text('Ships', style: MyTextStyles.font25WhiteBoldW500),
       ),
       body: GridView.count(

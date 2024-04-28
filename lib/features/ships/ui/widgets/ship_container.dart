@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/ships/ui/ship_detail.dart';
-import '../../../../../core/constant/image/app_images.dart';
+import '../../../../core/constant/images.dart';
 
 shipContainer(BuildContext context,
-    {String shipImage = AppImage.firstOnboarding,
+    {String shipImage = MyImages.firstOnboarding,
     String shipName = 'Ship Name'}) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -29,7 +29,7 @@ shipContainer(BuildContext context,
 }
 
 containerShipDesign(BuildContext context,
-    {String shipImage = AppImage.firstOnboarding,
+    {String shipImage = MyImages.firstOnboarding,
     String shipName = 'Ship Name'}) {
   return Container(
     decoration: BoxDecoration(
@@ -37,7 +37,7 @@ containerShipDesign(BuildContext context,
       borderRadius: BorderRadius.circular(10),
       boxShadow: const [
         BoxShadow(
-          color: AppColor.blueGrey,
+          color: AppColors.blueGray,
           spreadRadius: -5.0,
           blurRadius: 7.0,
         ),
@@ -54,7 +54,7 @@ containerShipDesign(BuildContext context,
                 icon: const Icon(
                   Icons.favorite_border,
                   size: 30,
-                  color: AppColor.textColor,
+                  color: AppColors.textWhite,
                 ))),
         Align(
           alignment: Alignment.bottomLeft,
