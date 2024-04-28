@@ -70,17 +70,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ),
       body: Column(
         children: [
-          BlocConsumer<GetProfileDataCubit, GetProfileDataState>(
-            listener: (BuildContext context, GetProfileDataState state) {
+          BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
+            builder: (context, state) {
               if (state is GetProfileDataSuccess) {
                 context.read<EditProfileDataCubit>().nameController.text =
                     state.userModel.name;
                 context.read<EditProfileDataCubit>().profileImageUrl =
                     state.userModel.image;
-              }
-            },
-            builder: (context, state) {
-              if (state is GetProfileDataSuccess) {
                 return const EditProfileScreenBody();
               } else if (state is GetProfileDataFailure) {
                 return Center(
