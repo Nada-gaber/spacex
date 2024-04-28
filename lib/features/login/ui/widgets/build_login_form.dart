@@ -11,7 +11,7 @@ class BuildLoginForm extends StatelessWidget {
       key: GlobalKey(),
       child: Column(
         children: [
-          CustomFormField(
+          CustomTextFormField(
             validator: (value) {
               if (value == null || !AppRegex.isEmailValid(value)) {
                 return 'Please enter a valid email';
@@ -22,7 +22,7 @@ class BuildLoginForm extends StatelessWidget {
             icon: Icons.mail_outline_outlined,
           ),
           const SizedBox(height: 25),
-          CustomFormField(
+          CustomTextFormField(
             validator: (value) {
               if (value == null || !AppRegex.hasMinLength(value)) {
                 return 'The password is too short, please enter at least 8 character';

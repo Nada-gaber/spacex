@@ -22,7 +22,16 @@ dependencies:
   flutter_native_splash: ^2.4.0
   firebase_core: ^2.30.0
   firebase_auth: ^4.19.2
+  cloud_firestore: ^4.17.2
   flutter_launcher_icons: ^0.13.1
+  dartz: ^0.10.1
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+  image_picker: ^1.1.0
+  firebase_storage: ^11.7.4
+  path: ^1.9.0
+
+
 # logic
   bloc: ^8.1.4
   json_serializable: ^6.7.1
@@ -33,8 +42,6 @@ dependencies:
   retrofit_generator: ^8.1.0
 #url launcher
   url_launcher: ^6.2.6
-#shimmer
-  shimmer: ^3.0.0
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true

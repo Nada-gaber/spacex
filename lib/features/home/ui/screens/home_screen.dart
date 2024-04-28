@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
-
+import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/ui/widgets/profile_image_bloc_builder.dart';
 import '../../logic/cubits/rocket_cubit/rocket_cubit.dart';
 import '../widgets/custom_drawer_widget.dart';
 import '../widgets/home_screen_body.dart';
@@ -16,13 +17,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
+    context.read<GetProfileDataCubit>().getProfileData();
     BlocProvider.of<RocketCubit>(context).getAllRockets();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
@@ -35,14 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               // navigate to profile page
             },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                radius: screenWidth / 15,
-                backgroundImage: const NetworkImage(
-                    "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"),
-              ),
-            ),
+            child: const ProfileImageBlocBuilder(),
           ),
         ],
       ),

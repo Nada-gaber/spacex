@@ -42,6 +42,7 @@ class LoginScreenBody extends StatelessWidget {
                 onPressed: () {
                   context.pushNamed(Routes.home);
                 },
+                requestLoading: false,
               ),
               const SizedBox(height: 15),
               const DontHaveAccountText(),

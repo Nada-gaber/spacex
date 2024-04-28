@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
+import 'package:spacex/features/edit_profile/data/profile_repo.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
@@ -23,7 +28,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-
       case Routes.home:
         return MaterialPageRoute(
           builder: (context) => BlocProvider<RocketCubit>(
@@ -62,9 +66,30 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CrewScreen(),
         );
+      // ToDo add editProfileCubit and profileRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.editProfileScreen:
         return MaterialPageRoute(
-          builder: (context) => const EditProfileScreen(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => EditProfileDataCubit(
+                  ProfileRepo(
+                    FirebaseFirestore.instance,
+                    FirebaseStorage.instance,
+                  ),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => UploadProfileImageCubit(
+                  ProfileRepo(
+                    FirebaseFirestore.instance,
+                    FirebaseStorage.instance,
+                  ),
+                ),
+              ),
+            ],
+            child: const EditProfileScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

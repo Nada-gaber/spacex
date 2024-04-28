@@ -1,4 +1,3 @@
-
 abstract class Failure {
   final String message;
 

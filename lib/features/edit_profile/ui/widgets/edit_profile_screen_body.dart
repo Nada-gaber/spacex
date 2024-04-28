@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/widgets/custom_text_button.dart';
-
-import 'custom_app_bar.dart';
-import 'custom_edit_text_field.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex/core/widgets/custom_text_form_field.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/ui/widgets/edit_profile_bloc_consumer.dart';
 import 'custom_profile_image.dart';
 
 class EditProfileScreenBody extends StatelessWidget {
@@ -10,35 +10,38 @@ class EditProfileScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String textLabel = context.read<EditProfileDataCubit>().nameController.text;
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 24,
+      ),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const CustomAppBar(),
-            const CustomProfileImage(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 18,
-            ),
-            const CustomEditTextField(
-              hintText: "Username",
-              currentValue: "Mahmoud Alaa",
-            ),
-            const CustomEditTextField(
-              hintText: "Password",
-              currentValue: "*********",
-            ),
-            const CustomEditTextField(
-              hintText: "Email",
-              currentValue: "mahmoud.alaa1212@gmail.com",
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 8,
-                  vertical: MediaQuery.of(context).size.width / 12),
-              child: const CustomTextButton(text: "Save changes"),
-            )
-          ],
+        child: Form(
+          key: context.read<EditProfileDataCubit>().formKey,
+          child: Column(
+            children: [
+              const CustomProfileImage(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 18,
+              ),
+              CustomTextFormField(
+                icon: Icons.person_outline_outlined,
+                text: 'Please Enter Your Name',
+                controller: context.read<EditProfileDataCubit>().nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Name must not be null';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.04,
+              ),
+              const EditProfileBlocConsumer(),
+            ],
+          ),
         ),
       ),
     );

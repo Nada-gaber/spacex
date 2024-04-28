@@ -33,6 +33,7 @@ class RegisterScreenBody extends StatelessWidget {
                 onPressed: () {
                   context.pushNamed(Routes.home);
                 },
+                requestLoading: false,
               ),
               const SizedBox(height: 15),
               const HaveAccountText(),
