@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import '../../../core/networking/web_services.dart';
 import 'business_logic/cubit/ships_cubit.dart';
@@ -47,7 +47,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
         return cubit;
       },
       child: Scaffold(
-        backgroundColor: AppColor.backgroundColor,
+        backgroundColor: AppColors.backgroundDarkBlue,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: _isSearchBarActive
@@ -70,13 +70,13 @@ class _ShipsScreenState extends State<ShipsScreen> {
             if (state is ShipsInitial) {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: AppColor.blueGrey,
+                  color: AppColors.blueGray,
                 ),
               );
             } else if (state is ShipsLoading) {
               return const Center(
                 child: CircularProgressIndicator(
-                  color: AppColor.buttonColor,
+                  color: AppColors.buttonBlue,
                 ),
               );
             } else if (state is ShipsLoaded) {

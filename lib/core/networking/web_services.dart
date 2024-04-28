@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 import '../../features/company_info/data/model/company_info_model.dart';
+import '../../features/ships/ui/data/model/ships_model.dart';
 import '../constant/api_constants.dart';
 
 part 'web_services.g.dart';
+
 
 @RestApi(baseUrl: ApiConstants.apiBaseUrl)
 abstract class WebServices {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:spacex/core/constant/color/app_color.dart';
+import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 
@@ -27,8 +27,8 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
               Shimmer(
                 gradient: const LinearGradient(
                   colors: [
-                    AppColor.blueGrey,
-                    AppColor.buttonColor,
+                    AppColors.blueGray,
+                    AppColors.buttonBlue,
                     Color.fromARGB(255, 23, 42, 63),
                   ],
                   stops: [
@@ -63,7 +63,7 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10)),
-          color: AppColor.buttonColor,
+          color: AppColors.buttonBlue,
           boxShadow: [
             BoxShadow(
               spreadRadius: -5.0,

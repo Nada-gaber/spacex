@@ -78,4 +78,10 @@ class _WebServices implements WebServices {
 
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
+  
+  @override
+  Future<CompanyInfo> getCompanyInfo() {
+    // TODO: implement getCompanyInfo
+    throw UnimplementedError();
+  }
 }

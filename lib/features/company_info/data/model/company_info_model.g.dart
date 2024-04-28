@@ -9,9 +9,9 @@ part of 'company_info_model.dart';
 CompanyInfo _$CompanyInfoFromJson(Map<String, dynamic> json) => CompanyInfo(
       name: json['name'] as String?,
       ceo: json['ceo'] as String?,
-      founded: json['founded'] as int?,
-      employees: json['employees'] as int?,
-      vehicles: json['vehicles'] as int?,
+      founded: (json['founded'] as num?)?.toInt(),
+      employees: (json['employees'] as num?)?.toInt(),
+      vehicles: (json['vehicles'] as num?)?.toInt(),
       summary: json['summary'] as String?,
       links: json['links'] == null
           ? null

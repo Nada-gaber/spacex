@@ -9,8 +9,8 @@ part of 'ships_model.dart';
 Ships _$ShipsFromJson(Map<String, dynamic> json) => Ships(
       image: json['image'] as String?,
       name: json['name'] as String?,
-      yearBuilt: json['year_built'] as int?,
-      massKg: json['mass_kg'] as int?,
+      yearBuilt: (json['year_built'] as num?)?.toInt(),
+      massKg: (json['mass_kg'] as num?)?.toInt(),
       type: json['type'] as String?,
     );
 
