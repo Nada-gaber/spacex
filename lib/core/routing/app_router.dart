@@ -8,12 +8,11 @@ import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
-
-import '../../features/company_info/ui/company_info.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/home_screen.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
+import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/splash/splash_screen.dart';
 import '../di/dependency_injection.dart';
 
@@ -47,7 +46,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.companyInfo:
         return MaterialPageRoute(
-          builder: (context) => const CompanyInfoScreen(),
+          builder: (context) =>  CompanyInfoScreen(),
         );
       case Routes.login:
         return MaterialPageRoute(

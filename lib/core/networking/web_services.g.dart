@@ -14,6 +14,7 @@ class _WebServices implements WebServices {
     this.baseUrl,
   }) {
     baseUrl ??= 'https://api.spacexdata.com/v4/';
+    baseUrl ??= 'https://api.spacexdata.com/v4';
   }
 
   final Dio _dio;
@@ -22,12 +23,14 @@ class _WebServices implements WebServices {
 
   @override
   Future<List<Rocket>> getAllRockets() async {
+  Future<List<Ships>> getAllShips() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =
         await _dio.fetch<List<dynamic>>(_setStreamType<List<Rocket>>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Ships>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -35,6 +38,7 @@ class _WebServices implements WebServices {
             .compose(
               _dio.options,
               'rockets',
+              '/ships',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -44,7 +48,7 @@ class _WebServices implements WebServices {
               baseUrl,
             ))));
     var value = _result.data!
-        .map((dynamic i) => Rocket.fromJson(i as Map<String, dynamic>))
+        .map((dynamic i) => Ships.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }
@@ -77,5 +81,11 @@ class _WebServices implements WebServices {
     }
 
     return Uri.parse(dioBaseUrl).resolveUri(url).toString();
+  }
+
+  @override
+  Future<CompanyInfo> getCompanyInfo() {
+    // TODO: implement getCompanyInfo
+    throw UnimplementedError();
   }
 }
