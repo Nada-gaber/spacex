@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/functions/show_toast.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 
@@ -16,6 +18,10 @@ class LoginBlocConsumer extends StatelessWidget {
           requestLoading = true;
         } else if (state is LoginSuccess) {
           showToast(text: 'Login done successfully');
+          context.pushNamedAndRemoveUntil(
+            Routes.home,
+            predicate: (route) => false,
+          );
           requestLoading = false;
         } else if (state is LoginFailure) {
           showToast(text: state.errorMessage);

@@ -7,6 +7,7 @@ import 'package:spacex/core/networking/web_services.dart';
 import 'package:spacex/features/edit_profile/data/profile_repo.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
+import 'package:spacex/features/home/data/repo/home_repo.dart';
 import 'package:spacex/features/home/data/repo/rocket_repo.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
@@ -27,6 +28,13 @@ Future<void> setupGetIt() async {
   );
   getIt.registerLazySingleton<FirebaseFirestore>(
     () => FirebaseFirestore.instance,
+  );
+
+  // home
+  getIt.registerLazySingleton<HomeRepo>(
+    () => HomeRepo(
+      getIt(),
+    ),
   );
 
   // profile
