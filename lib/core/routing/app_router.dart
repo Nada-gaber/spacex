@@ -1,18 +1,26 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/utils/dependency_injection.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
+import 'package:spacex/features/edit_profile/data/profile_repo.dart';
+import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
+import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
-import 'package:spacex/features/home/ui/views/home_screen.dart';
-import 'package:spacex/features/home/ui/views/launch_pads_details_screen.dart';
-import 'package:spacex/features/home/ui/views/rocket_details_screen.dart';
-import 'package:spacex/features/login/ui/widgets/login_bloc_provider.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/logic/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
-import '../../features/company_info/ui/company_info.dart';
+import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
+import 'package:spacex/features/login/ui/login_screen.dart';
+import '../../features/home/data/models/rocket_model.dart';
+import '../../features/home/ui/screens/home_screen.dart';
+import '../../features/home/ui/screens/launch_pads_details_screen.dart';
+import '../../features/home/ui/screens/rocket_details_screen.dart';
+import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -22,15 +30,19 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
+          builder: (context) => BlocProvider<RocketCubit>(
+              create: (BuildContext context) => getIt<RocketCubit>(),
+              child: const HomeScreen()),
         );
 
       case Routes.rocketDetails:
+        final arg = settings.arguments as Rocket;
         return MaterialPageRoute(
-          builder: (context) => const RocketDetailsScreen(),
+          builder: (context) => RocketDetailsScreen(
+            rocket: arg,
+          ),
         );
       case Routes.launchPadDetails:
         return MaterialPageRoute(
@@ -40,11 +52,14 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.companyInfo:
         return MaterialPageRoute(
-          builder: (context) => const CompanyInfoScreen(),
+          builder: (context) =>  CompanyInfoScreen(),
         );
       case Routes.login:
         return MaterialPageRoute(
-          builder: (context) => const LoginBlocProvider(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.register:
         return MaterialPageRoute(
@@ -59,9 +74,20 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CrewScreen(),
         );
+      // ToDo add editProfileCubit and profileRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.editProfileScreen:
         return MaterialPageRoute(
-          builder: (context) => const EditProfileScreen(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt.get<EditProfileDataCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt.get<UploadProfileImageCubit>(),
+              ),
+            ],
+            child: const EditProfileScreen(),
+          ),
         );
       default:
         return MaterialPageRoute(

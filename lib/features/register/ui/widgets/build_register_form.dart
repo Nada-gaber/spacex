@@ -13,7 +13,7 @@ class BuildRegisterForm extends StatelessWidget {
       key: context.read<RegisterCubit>().formKey,
       child: Column(
         children: [
-          CustomFormField(
+          CustomTextFormField(
             controller: context.read<RegisterCubit>().nameController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -25,7 +25,7 @@ class BuildRegisterForm extends StatelessWidget {
             icon: Icons.person_outline_outlined,
           ),
           const SizedBox(height: 25),
-          CustomFormField(
+          CustomTextFormField(
             controller: context.read<RegisterCubit>().emailController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -39,7 +39,7 @@ class BuildRegisterForm extends StatelessWidget {
             icon: Icons.mail_outline_outlined,
           ),
           const SizedBox(height: 25),
-          CustomFormField(
+          CustomTextFormField(
             controller: context.read<RegisterCubit>().passwordController,
             validator: (value) {
               if (value!.isEmpty) {

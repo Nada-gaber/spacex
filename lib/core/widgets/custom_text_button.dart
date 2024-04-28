@@ -6,12 +6,14 @@ class CustomTextButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final bool requestLoading;
+  final Color? backgroundColor;
 
   const CustomTextButton({
     super.key,
     required this.text,
     this.onPressed,
     required this.requestLoading,
+    this.backgroundColor,
   });
 
   @override
@@ -20,7 +22,7 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-          Colors.white,
+          backgroundColor ?? Colors.white,
         ),
         minimumSize: MaterialStateProperty.all(
           const Size(
@@ -37,7 +39,9 @@ class CustomTextButton extends StatelessWidget {
       child: requestLoading == false
           ? Text(
               text,
-              style: MyTextStyles.font20BlackBold,
+              style: backgroundColor == null
+                  ? MyTextStyles.font20BlackBold
+                  : MyTextStyles.font20WhiteW600,
             )
           : const CustomAuthLoading(),
     );

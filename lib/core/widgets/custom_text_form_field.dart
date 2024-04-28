@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 
-class CustomFormField extends StatelessWidget {
+class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final String text;
   final IconData icon;
   final bool? obscureText;
 
-  const CustomFormField({
+  const CustomTextFormField({
     super.key,
     this.validator,
     this.controller,

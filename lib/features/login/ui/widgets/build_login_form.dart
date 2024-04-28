@@ -13,7 +13,7 @@ class BuildLoginForm extends StatelessWidget {
       key: context.read<LoginCubit>().formKey,
       child: Column(
         children: [
-          CustomFormField(
+          CustomTextFormField(
             controller: context.read<LoginCubit>().emailController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -27,7 +27,7 @@ class BuildLoginForm extends StatelessWidget {
             icon: Icons.mail_outline_outlined,
           ),
           const SizedBox(height: 25),
-          CustomFormField(
+          CustomTextFormField(
             controller: context.read<LoginCubit>().passwordController,
             validator: (value) {
               if (value!.isEmpty) {
