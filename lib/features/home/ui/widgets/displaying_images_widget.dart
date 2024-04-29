@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class DisplayingImagesWidget extends StatelessWidget {
@@ -9,10 +10,9 @@ class DisplayingImagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      physics: const BouncingScrollPhysics(),
+    return CarouselSlider.builder(
       itemCount: lengthOfImagesList,
-      itemBuilder: (context, index) {
+      itemBuilder: (context, index, realIndex) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ClipRRect(
@@ -20,10 +20,22 @@ class DisplayingImagesWidget extends StatelessWidget {
               child: Image.network(
                 images![index].toString(),
                 height: MediaQuery.of(context).size.height / 3.2,
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               )),
         );
       },
+      options: CarouselOptions(
+        height: MediaQuery.of(context).size.height / 3.2,
+        viewportFraction: 0.8,
+        initialPage: 0,
+        enableInfiniteScroll: true,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 3),
+        autoPlayAnimationDuration: const Duration(milliseconds: 800),
+        autoPlayCurve: Curves.fastOutSlowIn,
+        enlargeCenterPage: true,
+        enlargeFactor: 0.3,
+      ),
     );
   }
 }
