@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/profile_image_bloc_builder.dart';
 import '../../logic/cubits/rocket_cubit/rocket_cubit.dart';
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     context.read<GetProfileDataCubit>().getProfileData();
     BlocProvider.of<RocketCubit>(context).getAllRockets();
+    BlocProvider.of<LaunchPadsCubit>(context).getAllLaunchPads();
     super.initState();
   }
 
