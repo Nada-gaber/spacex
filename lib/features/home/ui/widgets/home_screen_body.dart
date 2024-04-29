@@ -12,7 +12,7 @@ class HomeScreenBody extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
+      padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
       child: CustomScrollView(
         scrollDirection: Axis.vertical,
         slivers: [
@@ -26,7 +26,7 @@ class HomeScreenBody extends StatelessWidget {
                   child: Text(
                     "Rockets 🚀",
                     style: TextStyle(
-                        fontSize: screenWidth / 12,
+                        fontSize: screenWidth / 14,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -36,7 +36,7 @@ class HomeScreenBody extends StatelessWidget {
                   child: Text(
                     "launch pads 🚩",
                     style: TextStyle(
-                        fontSize: screenWidth / 12,
+                        fontSize: screenWidth / 14,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
