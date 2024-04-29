@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/rocket_list_item.dart';
 
 import '../../../../core/widgets/custom_failure_widget.dart';
-import '../../../../core/widgets/custom_loading_widget.dart';
+import 'custom_loading_list_of_rockets.dart';
 
 class RocketsListView extends StatelessWidget {
   const RocketsListView({super.key});
@@ -34,9 +33,7 @@ class RocketsListView extends StatelessWidget {
               textError: state.errorMessage,
             );
           } else {
-            return const CustomLoadingWidget(
-              color: AppColors.blueGray,
-            );
+            return const CustomLoadingListOfRockets();
           }
         },
       ),
