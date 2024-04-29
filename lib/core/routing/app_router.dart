@@ -1,26 +1,26 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/utils/dependency_injection.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
-import 'package:spacex/features/edit_profile/data/profile_repo.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
+import 'package:spacex/features/home/data/models/launch_pad_model.dart';
+import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
+import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
+import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
+import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/logic/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
-import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
-import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
-import 'package:spacex/features/login/ui/login_screen.dart';
+
+import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/home_screen.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
-import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -32,9 +32,14 @@ class AppRouter {
         );
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider<RocketCubit>(
+          builder: (context) => MultiBlocProvider(providers: [
+            BlocProvider<RocketCubit>(
               create: (BuildContext context) => getIt<RocketCubit>(),
-              child: const HomeScreen()),
+            ),
+            BlocProvider<LaunchPadsCubit>(
+              create: (BuildContext context) => getIt<LaunchPadsCubit>(),
+            ),
+          ], child: const HomeScreen()),
         );
 
       case Routes.rocketDetails:
@@ -45,14 +50,17 @@ class AppRouter {
           ),
         );
       case Routes.launchPadDetails:
+        final arg = settings.arguments as LaunchPad;
         return MaterialPageRoute(
-          builder: (context) => const LaunchPadsDetailsScreen(),
+          builder: (context) => LaunchPadsDetailsScreen(
+            launchPad: arg,
+          ),
         );
       case Routes.splashScreen:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
       case Routes.companyInfo:
         return MaterialPageRoute(
-          builder: (context) =>  CompanyInfoScreen(),
+          builder: (context) => const CompanyInfoScreen(),
         );
       case Routes.login:
         return MaterialPageRoute(
