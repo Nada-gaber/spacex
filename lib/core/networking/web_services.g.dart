@@ -50,6 +50,35 @@ class _WebServices implements WebServices {
   }
 
   @override
+  Future<List<LaunchPad>> getAllLaunchPads() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<LaunchPad>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'launchpads',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) => LaunchPad.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<CompanyInfo> getCompanyInfo() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
