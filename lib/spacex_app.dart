@@ -12,7 +12,6 @@ class SpacexApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ToDo add getProfileCubit and homeRepo and firebaseFirestore to getIt after merge previous branches
     return BlocProvider(
       create: (context) => getIt.get<GetProfileDataCubit>(),
       child: MaterialApp(
@@ -21,7 +20,7 @@ class SpacexApp extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.splashScreen,
+        initialRoute: Routes.crewScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

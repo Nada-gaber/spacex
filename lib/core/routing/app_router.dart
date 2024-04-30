@@ -82,7 +82,7 @@ class AppRouter {
       case Routes.crewScreen:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt.get<GetAllCrewCubit>(),
+            create: (context) => getIt.get<GetAllCrewCubit>()..getAllCrew(),
             child: const CrewScreen(),
           ),
         );
