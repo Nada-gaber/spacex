@@ -10,7 +10,7 @@ class CrewRepo {
 
   CrewRepo(this._webServices);
 
-  Future<Either<Failure, CrewModel>> getAllCrew() async {
+  Future<Either<Failure, List<CrewModel>>> getAllCrew() async {
     try {
       final crewModel = await _webServices.getAllCrew();
       return Right(crewModel);

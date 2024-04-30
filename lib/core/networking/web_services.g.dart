@@ -135,13 +135,13 @@ class _WebServices implements WebServices {
   }
 
   @override
-  Future<CrewModel> getAllCrew() async {
+  Future<List<CrewModel>> getAllCrew() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CrewModel>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<CrewModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -157,7 +157,9 @@ class _WebServices implements WebServices {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = CrewModel.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => CrewModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

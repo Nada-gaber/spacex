@@ -27,5 +27,5 @@ abstract class WebServices {
   Future<List<Ships>> getAllShips();
 
   @GET(ApiConstants.crew)
-  Future<CrewModel> getAllCrew();
+  Future<List<CrewModel>> getAllCrew();
 }
