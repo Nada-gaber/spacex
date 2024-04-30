@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
+import 'package:spacex/core/widgets/open_url_in_browser_icon_button.dart';
 
 import '../../../../core/constant/colors.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
@@ -73,15 +74,12 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                               backgroundColor: Colors.transparent,
                             ),
                           ),
-                          const Positioned(
+                          Positioned(
                             top: 10,
                             right: 10,
-                            child: CustomIconButton(
-                              isFontAwesomeIcons: false,
-                              size: 32,
-                              icon: Icons.info_outline,
-                              color: Colors.white,
-                              backgroundColor: Colors.transparent,
+                            child: OpenUrlInBrowserIconButton(
+                              urlString: crewModel.wikipedia,
+                              iconSize: 32,
                             ),
                           ),
                         ],
