@@ -18,6 +18,7 @@ class DisplayDetailsRowWidget extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(

@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 
 import '../widgets/launch_pads_details_screen_body.dart';
 
 class LaunchPadsDetailsScreen extends StatelessWidget {
-  const LaunchPadsDetailsScreen({super.key});
+  final LaunchPad launchPad;
+
+  const LaunchPadsDetailsScreen({super.key, required this.launchPad});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
-        title: const Text(
-          "OCISLY",
-          style: TextStyle(
+        title: Text(
+          launchPad.name.toString(),
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.info_outline,
-                size: 28,
-              ))
-        ],
       ),
       backgroundColor: AppColors.backgroundDarkBlue,
-      body: const LaunchPadsDetailsScreenBody(),
+      body: LaunchPadsDetailsScreenBody(
+        launchPad: launchPad,
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.buttonBlue,
         onPressed: () {},
