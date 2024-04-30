@@ -17,13 +17,14 @@ class CrewScreenBody extends StatelessWidget {
         mainAxisSpacing: 12,
       ),
       itemBuilder: (context, index) {
-        return  CrewMemberItem(
-          crewMember:CrewModel(
+        return CrewMemberItem(
+          crewMember: CrewModel(
             name: "Victor J. Glover",
-                imageUrl: "https://i.imgur.com/1Ca8K9L.png",
-            agencyName: "NASA",
-            wikipediaLinK: "https://en.wikipedia.org/wiki/Victor_J._Glover"
-          ) ,
+            image: "https://i.imgur.com/1Ca8K9L.png",
+            agency: "NASA",
+            wikipedia: "https://en.wikipedia.org/wiki/Victor_J._Glover",
+            id: '',
+          ),
         );
       },
       itemCount: 1,

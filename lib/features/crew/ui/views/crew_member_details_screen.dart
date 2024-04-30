@@ -25,14 +25,14 @@ class CrewMemberDetailsScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 16,),
                 Hero(
-                  tag: model.imageUrl,
+                  tag: model.image,
                   child: ClipRRect(
                     borderRadius: BorderRadiusDirectional.circular(24),
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .85,
                       child: Stack(fit: StackFit.expand, children: [
                         Image.network(
-                          model.imageUrl,
+                          model.image,
                           fit: BoxFit.cover,
                         ),
                         Positioned(
@@ -83,7 +83,7 @@ class CrewMemberDetailsScreen extends StatelessWidget {
                             width: 6,
                           ),
                           Text(
-                            model.agencyName,
+                            model.agency,
                             style: TextStyle(
                                 fontSize: 20,
                                 color: AppColors.textWhite.withOpacity(.7),

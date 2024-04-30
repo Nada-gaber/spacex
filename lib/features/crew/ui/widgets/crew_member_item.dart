@@ -39,9 +39,9 @@ class CrewMemberItem extends StatelessWidget {
             ),
           ),
           child: Hero(
-            tag: crewMember.imageUrl,
+            tag: crewMember.image,
             child: Image.network(
-              crewMember.imageUrl,
+              crewMember.image,
               fit: BoxFit.cover,
             ),
           ),
