@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/features/crew/data/models/person_model.dart';
+import 'package:spacex/features/crew/data/models/crew_model.dart';
 
 import 'crew_member_item.dart';
 
@@ -18,7 +18,7 @@ class CrewScreenBody extends StatelessWidget {
       ),
       itemBuilder: (context, index) {
         return  CrewMemberItem(
-          crewMember:CrewMemberModel(
+          crewMember:CrewModel(
             name: "Victor J. Glover",
                 imageUrl: "https://i.imgur.com/1Ca8K9L.png",
             agencyName: "NASA",

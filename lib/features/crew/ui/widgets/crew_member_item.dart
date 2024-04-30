@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/features/crew/data/models/person_model.dart';
+import 'package:spacex/features/crew/data/models/crew_model.dart';
 
 import '../../../../core/constant/colors.dart';
 import '../views/crew_member_details_screen.dart';
@@ -7,7 +7,7 @@ import '../views/crew_member_details_screen.dart';
 class CrewMemberItem extends StatelessWidget {
   const CrewMemberItem({super.key, required this.crewMember});
 
-  final CrewMemberModel crewMember;
+  final CrewModel crewMember;
 
   @override
   Widget build(BuildContext context) {

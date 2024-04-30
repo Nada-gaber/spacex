@@ -3,12 +3,12 @@ import 'package:spacex/core/routing/extensions.dart';
 
 import '../../../../core/constant/colors.dart';
 import '../../../../core/widgets/custom_icon_button.dart';
-import '../../data/models/person_model.dart';
+import '../../data/models/crew_model.dart';
 
 class CrewMemberDetailsScreen extends StatelessWidget {
   const CrewMemberDetailsScreen({super.key, required this.model});
 
-  final CrewMemberModel model;
+  final CrewModel model;
 
   @override
   Widget build(BuildContext context) {
