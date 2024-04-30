@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:spacex/core/constant/strings.dart';
 import 'package:spacex/core/errors/cloud_firestore_failure.dart';
 import 'package:spacex/core/errors/failure.dart';
 import 'package:spacex/core/errors/firebase_storage_failure.dart';
@@ -21,7 +22,7 @@ class ProfileRepo {
     try {
       await firebaseFirestoreInstance
           .collection('users')
-          .doc('GtummCYmQxNFLpBlT5iT')
+          .doc(MyStrings.token)
           .set(userModel.toMap());
       return const Right(unit);
     } catch (error) {
