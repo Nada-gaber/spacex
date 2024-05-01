@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spacex/core/constant/strings.dart';
 import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/utils/shared_preferences.dart';
 
 import '../../../../core/routing/routes.dart';
 
@@ -20,6 +22,8 @@ class OnboardingButton extends StatelessWidget {
             curve: Curves.ease,
           );
         } else {
+          MyStrings.isFirstTimeToOpenApp = false;
+          MySharedPreferences.setBool('isFirstTimeToOpenApp', false);
           context.pushNamed(Routes.register);
         }
       },

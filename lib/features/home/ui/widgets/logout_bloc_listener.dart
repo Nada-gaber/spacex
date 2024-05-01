@@ -8,12 +8,12 @@ import 'package:spacex/core/utils/shared_preferences.dart';
 import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/drawer_component.dart';
 
-class LogoutBlocConsumer extends StatelessWidget {
-  const LogoutBlocConsumer({super.key});
+class LogoutBlocListener extends StatelessWidget {
+  const LogoutBlocListener({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LogoutCubit, LogoutState>(
+    return BlocListener<LogoutCubit, LogoutState>(
       listener: (context, state) {
         if (state is LogoutSuccess) {
           MyStrings.token = '';
@@ -27,15 +27,13 @@ class LogoutBlocConsumer extends StatelessWidget {
           showToast(text: state.errorMessage);
         }
       },
-      builder: (context, state) {
-        return DrawerComponent(
-          title: "Log out",
-          icon: Icons.logout,
-          onTap: () {
-            context.read<LogoutCubit>().logout();
-          },
-        );
-      },
+      child: DrawerComponent(
+        title: "Log out",
+        icon: Icons.logout,
+        onTap: () {
+          context.read<LogoutCubit>().logout();
+        },
+      ),
     );
   }
 }

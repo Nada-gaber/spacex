@@ -15,6 +15,14 @@ class MySharedPreferences {
     return _preferences.getString(key) ?? '';
   }
 
+  static Future<void> setBool(String key, bool value) async {
+    await _preferences.setBool(key, value);
+  }
+
+  static bool getBool(String key) {
+    return _preferences.getBool(key) ?? true;
+  }
+
   static Future<bool> delete(String key) {
     return _preferences.remove(key);
   }

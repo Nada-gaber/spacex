@@ -49,7 +49,6 @@ class AppRouter {
             child: const HomeScreen(),
           ),
         );
-
       case Routes.rocketDetails:
         final arg = settings.arguments as Rocket;
         return MaterialPageRoute(

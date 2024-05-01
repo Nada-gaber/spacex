@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
-import 'splash_utils/splash_navigate.dart';
+import 'package:spacex/core/constant/strings.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/routing/routes.dart';
 import 'splash_widgets.dart/splash_build.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +18,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    navigateToOnboarding(context);
+    Timer(const Duration(seconds: 5), () {
+      context.pushReplacementNamed(
+        MyStrings.token == ''
+            ? MyStrings.isFirstTimeToOpenApp == true
+                ? Routes.onboarding
+                : Routes.login
+            : Routes.home,
+      );
+    });
   }
 
   @override
