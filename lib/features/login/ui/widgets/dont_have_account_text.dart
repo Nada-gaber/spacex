@@ -13,13 +13,17 @@ class DontHaveAccountText extends StatelessWidget {
       textAlign: TextAlign.center,
       text: TextSpan(
         children: [
-          const TextSpan(
+           TextSpan(
             text: 'Don\'t have an account?',
-            style: MyTextStyles.font14WhiteBold,
+            style: MyTextStyles.font14WhiteBold.copyWith(
+                fontFamily: 'TR'
+            ),
           ),
           TextSpan(
             text: ' Register now',
-            style: MyTextStyles.font18WhiteBold,
+            style: MyTextStyles.font18WhiteBold.copyWith(
+              fontFamily: 'TR'
+            ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 context.pushReplacementNamed(Routes.register);

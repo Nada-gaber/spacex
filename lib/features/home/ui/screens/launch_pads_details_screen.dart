@@ -25,14 +25,6 @@ class LaunchPadsDetailsScreen extends StatelessWidget {
       body: LaunchPadsDetailsScreenBody(
         launchPad: launchPad,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.buttonBlue,
-        onPressed: () {},
-        child: const Icon(
-          Icons.favorite_border,
-          size: 35,
-        ),
-      ),
     );
   }
 }

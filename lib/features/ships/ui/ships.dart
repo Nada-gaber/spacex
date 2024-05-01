@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/features/ships/ui/widgets/custom_ships_loading.dart';
+
 import '../../../core/networking/web_services.dart';
 import '../business_logic/cubit/ships_cubit.dart';
 import '../business_logic/cubit/ships_states.dart';
@@ -81,7 +82,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
                     ship.name ?? 'No Name',
                     ship.yearBuilt ?? 00,
                     ship.massKg ?? 00,
-                    ship.type ?? 'Not Definded',
+                    ship.type ?? 'Not Defined',
                   );
                 },
               );

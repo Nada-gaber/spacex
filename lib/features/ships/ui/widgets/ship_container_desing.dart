@@ -44,15 +44,19 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
                   color: Colors.grey[200],
                 ),
               ),
-              Container(
-                height: MediaQuery.of(context).size.height / 4,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    image: shipImage.isNotEmpty
-                        ? DecorationImage(
-                            fit: BoxFit.fill, image: NetworkImage(shipImage))
-                        : const DecorationImage(
-                            fit: BoxFit.fill, image: NetworkImage(MyImages.imageNotFound))),
+              Hero(
+                tag: shipName,
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      image: shipImage.isNotEmpty
+                          ? DecorationImage(
+                              fit: BoxFit.fill, image: NetworkImage(shipImage))
+                          : const DecorationImage(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(MyImages.imageNotFound))),
+                ),
               ),
             ],
           ),

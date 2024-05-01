@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
@@ -20,37 +21,42 @@ class ProfileSection extends StatelessWidget {
           if (state is GetProfileDataSuccess) {
             return Column(
               children: [
-                Container(
-                  height: screenHeight / 9.5,
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: state.userModel.image,
-                    fit: BoxFit.fill,
-                    progressIndicatorBuilder: (context, url, downloadProgress) {
-                      return CustomShimmerLoading(
-                        child: Container(
-                          height: screenHeight / 9.5,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Colors.white,
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                    height: screenHeight / 9.5,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: state.userModel.image,
+                      fit: BoxFit.fill,
+                      progressIndicatorBuilder: (context, url, downloadProgress) {
+                        return CustomShimmerLoading(
+                          child: Container(
+                            height: screenHeight / 9.5,
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.error_outline,
+                        );
+                      },
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.error_outline,
+                      ),
                     ),
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.015),
                 Text(
-                  state.userModel.name,
+                  "Hi, ${state.userModel.name}",
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,

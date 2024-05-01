@@ -31,14 +31,6 @@ class RocketDetailsScreen extends StatelessWidget {
       body: RocketDetailsScreenBody(
         rocket: rocket,
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.buttonBlue,
-        onPressed: () {},
-        child: const Icon(
-          Icons.favorite_border,
-          size: 35,
-        ),
-      ),
     );
   }
 }

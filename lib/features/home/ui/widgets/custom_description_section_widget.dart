@@ -30,7 +30,7 @@ class _CustomDescriptionSectionState extends State<CustomDescriptionSection> {
         ),
         Text(
           widget.descriptionText,
-          maxLines: _showFullText ? 100 : 5,
+          maxLines: _showFullText ? 100 : 4,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
               color: Colors.grey,
