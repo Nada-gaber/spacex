@@ -10,7 +10,7 @@ companyInfoAppBar(BuildContext context,String summary) {
       children: [
         textStyle(
           'SpaceX',
-          20,
+          18,
         ),
         CustomIconButton(
           onTap: () {

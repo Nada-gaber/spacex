@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/core/themes/text_styles.dart';
+import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_links_row.dart';
 import '../../../core/constant/images.dart';
@@ -23,7 +26,6 @@ class CompanyInfoScreen extends StatelessWidget {
         cubit.fetchCompanyInfo();
         return cubit;
       },
-
       child: BlocConsumer<CompanyCubit, CompanyInfoState>(
         listener: (context, state) {
           if (state is CompanyError) {
@@ -36,19 +38,7 @@ class CompanyInfoScreen extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          if (state is CompanyInitial) {
-            return const Center(
-                child: CircularProgressIndicator(
-              strokeWidth: 2,
-              color: AppColors.blueGray,
-            ));
-          } else if (state is CompanyLoading) {
-            return const Center(
-                child: CircularProgressIndicator(
-              strokeWidth: 2,
-              color: AppColors.buttonBlue,
-            ));
-          } else if (state is CompanyLoaded) {
+          if (state is CompanyLoaded) {
             final companyInfo = state.companyInfo;
             return Scaffold(
               backgroundColor: const Color(0xff061428),
@@ -86,9 +76,47 @@ class CompanyInfoScreen extends StatelessWidget {
               ),
             );
           } else if (state is CompanyError) {
-            return const Text('Error fetching company info.');
+            return Scaffold(
+              backgroundColor: AppColors.backgroundDarkBlue,
+              appBar: AppBar(
+                backgroundColor: AppColors.backgroundDarkBlue,
+                leading: IconButton(
+                  onPressed: () => context.pop(),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                ),
+                title: const Text(
+                  'spacex',
+                  style: MyTextStyles.font18White60W600,
+                ),
+              ),
+              body: const Text('Error fetching company info.'),
+            );
           } else {
-            return Text('Unexpected state: $state');
+            return Scaffold(
+              backgroundColor: AppColors.backgroundDarkBlue,
+              appBar: AppBar(
+                backgroundColor: AppColors.backgroundDarkBlue,
+                leading: IconButton(
+                  onPressed: () => context.pop(),
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    size: 24,
+                    color: Colors.white,
+                  ),
+                ),
+                title: const Text(
+                  'spacex',
+                  style: MyTextStyles.font18WhiteBold,
+                ),
+              ),
+              body: const CustomLoadingWidget(
+                color: Colors.white,
+              ),
+            );
           }
         },
       ),

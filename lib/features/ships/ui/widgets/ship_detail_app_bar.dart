@@ -5,7 +5,7 @@ import '../../../../core/themes/text_styles.dart';
 
 shipDetailAppBar(String shipName) {
   return AppBar(
-    backgroundColor: AppColors.blueGray,
+    backgroundColor: AppColors.backgroundDarkBlue,
     title: Text(
       shipName,
       style: MyTextStyles.font20WhiteBoldW500,

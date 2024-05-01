@@ -41,37 +41,37 @@ class CustomLoadingListOfLaunchPads extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                width: 6,
+                width: 20,
               ),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsetsDirectional.symmetric(
-                          horizontal: 8, vertical: 8),
-                      child: Container(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
                         decoration: const BoxDecoration(
-                            color: AppColors.blueGray,
-                            borderRadius: BorderRadiusDirectional.all(
-                                Radius.circular(8))),
+                          color: AppColors.blueGray,
+                          borderRadius: BorderRadiusDirectional.all(
+                            Radius.circular(8),
+                          ),
+                        ),
                         width: double.infinity,
-                        height: 32,
+                        height: 18,
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsetsDirectional.symmetric(
-                          horizontal: 8, vertical: 8),
-                      child: Container(
+                      const SizedBox(height: 10),
+                      Container(
                         decoration: const BoxDecoration(
-                            color: AppColors.blueGray,
-                            borderRadius: BorderRadiusDirectional.all(
-                                Radius.circular(8))),
-                        width: double.infinity,
-                        height: 24,
+                          color: AppColors.blueGray,
+                          borderRadius: BorderRadiusDirectional.all(
+                            Radius.circular(8),
+                          ),
+                        ),
+                        width: MediaQuery.sizeOf(context).width * 0.3,
+                        height: 18,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               )
             ],

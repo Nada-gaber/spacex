@@ -17,7 +17,7 @@ class SpacexApp extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           brightness: Brightness.dark,
-          fontFamily: 'Poppins',
+          fontFamily: 'TR',
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splashScreen,

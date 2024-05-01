@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
+import 'package:spacex/features/ships/ui/widgets/custom_ships_loading.dart';
 import '../../../core/networking/web_services.dart';
 import '../business_logic/cubit/ships_cubit.dart';
 import '../business_logic/cubit/ships_states.dart';
@@ -67,19 +68,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
         ),
         body: BlocBuilder<ShipsCubit, ShipsState>(
           builder: (context, state) {
-            if (state is ShipsInitial) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.blueGray,
-                ),
-              );
-            } else if (state is ShipsLoading) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.buttonBlue,
-                ),
-              );
-            } else if (state is ShipsLoaded) {
+            if (state is ShipsLoaded) {
               final ships = state.ships;
               final filteredShips = ShipSearch.filterShips(ships, _searchTerm);
               return ListView.builder(
@@ -97,11 +86,13 @@ class _ShipsScreenState extends State<ShipsScreen> {
                 },
               );
             } else if (state is ShipsError) {
-              return Center(child: Text('Error: ${state.error}'));
-            } else {
-              return Text(
-                'Unexpected state: $state',
+              return Center(
+                child: Text(
+                  'Error: ${state.error}',
+                ),
               );
+            } else {
+              return const CustomShipsLoading();
             }
           },
         ),

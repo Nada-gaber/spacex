@@ -21,7 +21,7 @@ class CustomEditProfileLoading extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.05,
+              height: MediaQuery.sizeOf(context).height * 0.035,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -30,7 +30,7 @@ class CustomEditProfileLoading extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.05,
+              height: MediaQuery.sizeOf(context).height * 0.035,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
