@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spacex/core/constant/strings.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
@@ -37,7 +38,7 @@ class EditProfileBlocConsumer extends StatelessWidget {
             UserModel userModel = UserModel(
               name: context.read<EditProfileDataCubit>().nameController.text,
               image: context.read<EditProfileDataCubit>().profileImageUrl,
-              token: 'GtummCYmQxNFLpBlT5iT',
+              token: MyStrings.token,
             );
             if (context
                 .read<EditProfileDataCubit>()

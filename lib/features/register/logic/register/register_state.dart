@@ -1,6 +1,5 @@
-part of 'register_cubit.dart';
+import 'package:spacex/features/home/data/models/user_model.dart';
 
-@immutable
 abstract class RegisterState {}
 
 class RegisterInitial extends RegisterState {}
@@ -8,9 +7,9 @@ class RegisterInitial extends RegisterState {}
 class RegisterLoading extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  final String token;
+  final UserModel userModel;
 
-  RegisterSuccess(this.token);
+  RegisterSuccess(this.userModel);
 }
 
 class RegisterFailure extends RegisterState {

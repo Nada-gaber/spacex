@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
-import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/logic/register/register_cubit.dart';
 
 class BuildRegisterForm extends StatelessWidget {
   const BuildRegisterForm({super.key});

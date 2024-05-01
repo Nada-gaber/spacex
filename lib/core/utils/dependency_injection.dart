@@ -14,11 +14,13 @@ import 'package:spacex/features/home/data/repo/launch_pad_repo.dart';
 import 'package:spacex/features/home/data/repo/rocket_repo.dart';
 import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
 import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
-import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
+import 'package:spacex/features/register/logic/register/register_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -41,6 +43,7 @@ Future<void> setupGetIt() async {
   // home
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepo(
+      getIt(),
       getIt(),
     ),
   );
@@ -73,8 +76,16 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   // register
-  getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo(getIt()));
+  getIt.registerLazySingleton<RegisterRepo>(
+    () => RegisterRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
   getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
+
+  // logout
+  getIt.registerFactory<LogoutCubit>(() => LogoutCubit(getIt()));
 
   // rocket
   getIt.registerFactory<RocketCubit>(() => RocketCubit(getIt()));
@@ -83,6 +94,14 @@ Future<void> setupGetIt() async {
   //launch pads
   getIt.registerFactory<LaunchPadsCubit>(() => LaunchPadsCubit(getIt()));
   getIt.registerLazySingleton<LaunchPadRepo>(() => LaunchPadRepo(getIt()));
+
+
+  // create user
+  getIt.registerFactory<CreateUserCubit>(
+        () => CreateUserCubit(
+      getIt(),
+    ),
+  );
 
   // crew
   getIt.registerFactory<GetAllCrewCubit>(

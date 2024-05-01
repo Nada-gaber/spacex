@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/app_router.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/utils/dependency_injection.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
 
 class SpacexApp extends StatelessWidget {
   final AppRouter appRouter;

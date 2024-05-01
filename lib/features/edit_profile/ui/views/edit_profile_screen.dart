@@ -9,7 +9,7 @@ import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
 import 'package:spacex/features/edit_profile/ui/widgets/custom_edit_profile_loading.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
 
 import '../widgets/edit_profile_screen_body.dart';
 

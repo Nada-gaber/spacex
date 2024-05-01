@@ -10,10 +10,12 @@ import 'package:spacex/features/edit_profile/ui/views/edit_profile_screen.dart';
 import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
+import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
-import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
+import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
@@ -33,16 +35,21 @@ class AppRouter {
         );
       case Routes.home:
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(providers: [
-            BlocProvider<RocketCubit>(
-              create: (BuildContext context) => getIt<RocketCubit>(),
-            ),
-            BlocProvider<LaunchPadsCubit>(
-              create: (BuildContext context) => getIt<LaunchPadsCubit>(),
-            ),
-          ], child: const HomeScreen()),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider<RocketCubit>(
+                create: (BuildContext context) => getIt<RocketCubit>(),
+              ),
+              BlocProvider<LaunchPadsCubit>(
+                create: (BuildContext context) => getIt<LaunchPadsCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<LogoutCubit>(),
+              ),
+            ],
+            child: const HomeScreen(),
+          ),
         );
-
       case Routes.rocketDetails:
         final arg = settings.arguments as Rocket;
         return MaterialPageRoute(
@@ -72,8 +79,15 @@ class AppRouter {
         );
       case Routes.register:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<RegisterCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<RegisterCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CreateUserCubit>(),
+              ),
+            ],
             child: const RegisterScreen(),
           ),
         );
