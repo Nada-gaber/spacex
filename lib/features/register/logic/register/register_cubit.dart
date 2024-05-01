@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/features/register/data/models/register_request_model.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
-
-part 'register_state.dart';
+import 'package:spacex/features/register/logic/register/register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   final RegisterRepo registerRepo;
@@ -27,7 +26,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     response.fold(
       (failure) => emit(RegisterFailure(failure.message)),
-      (userCredential) => emit(RegisterSuccess(userCredential.user!.uid)),
+      (userModel) => emit(RegisterSuccess(userModel)),
     );
   }
 }

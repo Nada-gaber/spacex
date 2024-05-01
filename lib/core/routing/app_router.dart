@@ -12,7 +12,8 @@ import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
-import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
+import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
@@ -71,8 +72,15 @@ class AppRouter {
         );
       case Routes.register:
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<RegisterCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<RegisterCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<CreateUserCubit>(),
+              ),
+            ],
             child: const RegisterScreen(),
           ),
         );
@@ -82,7 +90,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const CrewScreen(),
         );
-      // ToDo add editProfileCubit and profileRepo and firebaseFirestore to getIt after merge previous branches
       case Routes.editProfileScreen:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(

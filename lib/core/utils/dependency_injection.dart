@@ -16,7 +16,8 @@ import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
 import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
-import 'package:spacex/features/register/logic/register_cubit.dart';
+import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
+import 'package:spacex/features/register/logic/register/register_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -67,7 +68,12 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   // register
-  getIt.registerLazySingleton<RegisterRepo>(() => RegisterRepo(getIt()));
+  getIt.registerLazySingleton<RegisterRepo>(
+    () => RegisterRepo(
+      getIt(),
+      getIt(),
+    ),
+  );
   getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
 
   // rocket
@@ -77,11 +83,15 @@ Future<void> setupGetIt() async {
       () => WebServices(createAndSetUpDio()));
 
   //launch pads
-
   getIt.registerFactory<LaunchPadsCubit>(() => LaunchPadsCubit(getIt()));
   getIt.registerLazySingleton<LaunchPadRepo>(() => LaunchPadRepo(getIt()));
 
-
+  // create user
+  getIt.registerFactory<CreateUserCubit>(
+    () => CreateUserCubit(
+      getIt(),
+    ),
+  );
 }
 
 Dio createAndSetUpDio() {
