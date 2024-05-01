@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/profile_section_loading.dart';
 
 class ProfileSection extends StatelessWidget {

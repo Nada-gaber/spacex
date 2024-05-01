@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/themes/text_styles.dart';

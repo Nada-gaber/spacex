@@ -12,7 +12,7 @@ import 'package:spacex/features/home/data/repo/launch_pad_repo.dart';
 import 'package:spacex/features/home/data/repo/rocket_repo.dart';
 import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
-import 'package:spacex/features/home/logic/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
 import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
