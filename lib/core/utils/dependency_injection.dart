@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spacex/core/networking/web_services.dart';
+import 'package:spacex/features/crew/data/repo/crew_repo.dart';
+import 'package:spacex/features/crew/logic/get_all_crew/get_all_crew_cubit.dart';
 import 'package:spacex/features/edit_profile/data/profile_repo.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
@@ -21,6 +23,10 @@ import 'package:spacex/features/register/logic/register_cubit.dart';
 final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
+  // web services
+  getIt.registerLazySingleton<WebServices>(
+      () => WebServices(createAndSetUpDio()));
+
   // firebase
   getIt.registerLazySingleton<FirebaseAuth>(
     () => FirebaseAuth.instance,
@@ -73,15 +79,22 @@ Future<void> setupGetIt() async {
   // rocket
   getIt.registerFactory<RocketCubit>(() => RocketCubit(getIt()));
   getIt.registerLazySingleton<RocketRepo>(() => RocketRepo(getIt()));
-  getIt.registerLazySingleton<WebServices>(
-      () => WebServices(createAndSetUpDio()));
 
   //launch pads
-
   getIt.registerFactory<LaunchPadsCubit>(() => LaunchPadsCubit(getIt()));
   getIt.registerLazySingleton<LaunchPadRepo>(() => LaunchPadRepo(getIt()));
 
-
+  // crew
+  getIt.registerFactory<GetAllCrewCubit>(
+    () => GetAllCrewCubit(
+      getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<CrewRepo>(
+    () => CrewRepo(
+      getIt(),
+    ),
+  );
 }
 
 Dio createAndSetUpDio() {

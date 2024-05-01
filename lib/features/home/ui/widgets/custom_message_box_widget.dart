@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/constant/images.dart';
+import 'package:spacex/core/constant/images.dart';
 
 class CustomMessageBoxWidget extends StatelessWidget {
   const CustomMessageBoxWidget({
