@@ -13,6 +13,7 @@ import 'package:spacex/features/home/data/repo/rocket_repo.dart';
 import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
+import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
 import 'package:spacex/features/login/data/repo/login_repo.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
@@ -36,6 +37,7 @@ Future<void> setupGetIt() async {
   // home
   getIt.registerLazySingleton<HomeRepo>(
     () => HomeRepo(
+      getIt(),
       getIt(),
     ),
   );
@@ -75,6 +77,9 @@ Future<void> setupGetIt() async {
     ),
   );
   getIt.registerFactory<RegisterCubit>(() => RegisterCubit(getIt()));
+
+  // logout
+  getIt.registerFactory<LogoutCubit>(() => LogoutCubit(getIt()));
 
   // rocket
   getIt.registerFactory<RocketCubit>(() => RocketCubit(getIt()));

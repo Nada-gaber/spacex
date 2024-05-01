@@ -21,7 +21,6 @@ class LoginBlocConsumer extends StatelessWidget {
         } else if (state is LoginSuccess) {
           MyStrings.token = state.token;
           MySharedPreferences.setString('token', state.token);
-          print(state.token);
           showToast(text: 'Login done successfully');
           context.pushNamedAndRemoveUntil(
             Routes.home,

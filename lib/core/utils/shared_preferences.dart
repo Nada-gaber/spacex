@@ -14,4 +14,8 @@ class MySharedPreferences {
   static String getString(String key) {
     return _preferences.getString(key) ?? '';
   }
+
+  static Future<bool> delete(String key) {
+    return _preferences.remove(key);
+  }
 }

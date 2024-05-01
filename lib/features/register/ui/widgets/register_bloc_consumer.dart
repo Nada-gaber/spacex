@@ -22,7 +22,6 @@ class RegisterBlocConsumer extends StatelessWidget {
           requestLoading = true;
         } else if (state is RegisterSuccess) {
           MyStrings.token = state.userModel.token;
-          print(state.userModel.token);
           MySharedPreferences.setString('token', state.userModel.token);
           context.read<CreateUserCubit>().createUser(state.userModel).then((value) {
             showToast(text: 'Register done successfully');

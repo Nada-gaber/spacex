@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spacex/core/routing/extensions.dart';
+import 'package:spacex/features/home/ui/widgets/logout_bloc_consumer.dart';
 import 'package:spacex/features/home/ui/widgets/profile_section.dart';
 
 import '../../../../core/routing/routes.dart';
@@ -49,16 +50,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             buildDivide(),
-            DrawerComponent(
-              title: "Log out",
-              icon: Icons.logout,
-              onTap: () {
-                context.pushNamedAndRemoveUntil(
-                  Routes.login,
-                  predicate: (route) => false,
-                );
-              },
-            ),
+            const LogoutBlocConsumer(),
           ],
         ),
       ),
