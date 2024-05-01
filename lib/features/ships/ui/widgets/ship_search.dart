@@ -1,4 +1,4 @@
-import '../data/model/ships_model.dart';
+import '../../data/model/ships_model.dart';
 
 class ShipSearch {
   static List<Ships> filterShips(List<Ships> ships, String searchTerm) {

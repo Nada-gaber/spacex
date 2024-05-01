@@ -4,7 +4,7 @@ import 'package:spacex/features/crew/data/models/crew_model.dart';
 import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
 import '../../features/company_info/data/model/company_info_model.dart';
-import '../../features/ships/ui/data/model/ships_model.dart';
+import '../../features/ships/data/model/ships_model.dart';
 import 'api_constants.dart';
 
 part 'web_services.g.dart';
