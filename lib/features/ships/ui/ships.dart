@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import '../../../core/networking/web_services.dart';
-import 'business_logic/cubit/ships_cubit.dart';
-import 'business_logic/cubit/ships_states.dart';
-import 'data/repo/ships_repo.dart';
+import '../business_logic/cubit/ships_cubit.dart';
+import '../business_logic/cubit/ships_states.dart';
+import '../data/repo/ships_repo.dart';
 import 'widgets/ship_container.dart';
 import 'widgets/ship_search.dart';
 

@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:spacex/core/constant/image/app_images.dart';
 import 'package:spacex/core/errors/cloud_firestore_failure.dart';
 import 'package:spacex/core/errors/failure.dart';
 import 'package:spacex/core/errors/firebase_auth_failure.dart';
 import 'package:spacex/features/home/data/models/user_model.dart';
 import 'package:spacex/features/register/data/models/register_request_model.dart';
+import 'package:spacex/core/constant/images.dart';
 
 class RegisterRepo {
   final FirebaseAuth firebaseAuthInstance;
@@ -27,7 +27,7 @@ class RegisterRepo {
       );
       UserModel userModel = UserModel(
         name: registerRequestModel.name,
-        image: AppImage.profileImage,
+        image: MyImages.profileImage,
         token: response.user?.uid ?? '',
       );
       return Right(userModel);

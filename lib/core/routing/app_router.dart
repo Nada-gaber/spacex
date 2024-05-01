@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/utils/dependency_injection.dart';
+import 'package:spacex/features/crew/logic/get_all_crew/get_all_crew_cubit.dart';
 import 'package:spacex/features/crew/ui/views/crew_screen.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/upload_profile_image/upload_profile_image_cubit.dart';
@@ -94,7 +95,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => const ShipsScreen());
       case Routes.crewScreen:
         return MaterialPageRoute(
-          builder: (context) => const CrewScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<GetAllCrewCubit>()..getAllCrew(),
+            child: const CrewScreen(),
+          ),
         );
       case Routes.editProfileScreen:
         return MaterialPageRoute(

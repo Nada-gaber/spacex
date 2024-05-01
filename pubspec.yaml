@@ -32,6 +32,10 @@ dependencies:
   firebase_storage: ^11.7.4
   path: ^1.9.0
   shared_preferences: ^2.2.3
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
 
 # logic
   bloc: ^8.1.4

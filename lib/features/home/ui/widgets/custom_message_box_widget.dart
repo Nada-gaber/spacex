@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/image/app_images.dart';
+import 'package:spacex/core/constant/images.dart';
 
 class CustomMessageBoxWidget extends StatelessWidget {
   const CustomMessageBoxWidget({
@@ -20,7 +20,7 @@ class CustomMessageBoxWidget extends StatelessWidget {
             borderRadius:
                 const BorderRadiusDirectional.all(Radius.circular(16)),
             child: Image.asset(
-              AppImage.animatedSpace,
+              MyImages.animatedSpace,
               width: MediaQuery.of(context).size.width,
               fit: BoxFit.cover,
             ),
