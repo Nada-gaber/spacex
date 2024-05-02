@@ -45,7 +45,7 @@ class BuildRegisterForm extends StatelessWidget {
               if (value!.isEmpty) {
                 return 'Password must not be empty';
               } else if (!AppRegex.isPasswordValid(value)) {
-                return 'The password is too week';
+                return 'password must be at least 8 characters long and contain (1 lowercase letter, 1 uppercase letter, 1 special character, 1 number)';
               }
               return null;
             },
