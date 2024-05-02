@@ -26,25 +26,27 @@ class ShipDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundDarkBlue,
       appBar: shipDetailAppBar(shipName),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 12),
-          detailImageContainer(context, shipImage, shipName),
-          const Padding(
-            padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),
-            child: Text(
-              'Details',
-              style: MyTextStyles.font30WhiteBold,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 12),
+            detailImageContainer(context, shipImage, shipName),
+            const Padding(
+              padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),
+              child: Text(
+                'Details',
+                style: MyTextStyles.font30WhiteBold,
+              ),
             ),
-          ),
-          detailsValuesRow('Year built :', yearBuilt),
-          detailsValuesRow('Mass :', mass),
-          detailsValuesRow('Type :', type),
-          const SizedBox(
-            height: 30,
-          ),
-        ],
+            detailsValuesRow('Year built :', yearBuilt),
+            detailsValuesRow('Mass :', mass),
+            detailsValuesRow('Type :', type),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
       ),
     );
   }
