@@ -12,14 +12,16 @@ class ShipDetails extends StatelessWidget {
   final int yearBuilt;
   final int mass;
   final String type;
-
-  const ShipDetails(
-      {required this.shipImage,
-      required this.shipName,
-      super.key,
-      required this.yearBuilt,
-      required this.mass,
-      required this.type});
+  final bool isNetworkConnected;
+  const ShipDetails({
+    required this.shipImage,
+    required this.shipName,
+    super.key,
+    required this.yearBuilt,
+    required this.mass,
+    required this.type,
+    this.isNetworkConnected = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class ShipDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 12),
-          detailImageContainer(context, shipImage, shipName),
+          detailImageContainer(context, shipImage, shipName,isNetworkConnected ),
           const Padding(
             padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),
             child: Text(

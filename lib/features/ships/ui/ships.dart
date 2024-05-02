@@ -77,13 +77,13 @@ class _ShipsScreenState extends State<ShipsScreen> {
                 itemBuilder: (context, index) {
                   final ship = filteredShips[index];
                   return shipContainer(
-                    context,
-                    ship.image ?? MyImages.imageNotFound,
-                    ship.name ?? 'No Name',
-                    ship.yearBuilt ?? 00,
-                    ship.massKg ?? 00,
-                    ship.type ?? 'Not Defined',
-                  );
+                      context,
+                      ship.image ?? MyImages.imageNotFound,
+                      ship.name ?? 'No Name',
+                      ship.yearBuilt ?? 00,
+                      ship.massKg ?? 00,
+                      ship.type ?? 'Not Defined',
+                      state is ShipsError == true ? true : false);
                 },
               );
             } else if (state is ShipsError) {
@@ -101,3 +101,4 @@ class _ShipsScreenState extends State<ShipsScreen> {
     );
   }
 }
+
