@@ -29,68 +29,97 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.backgroundDarkBlue,
-      appBar: AppBar(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        showCustomDialog(
+          context,
+          () async {
+            if (context.read<UploadProfileImageCubit>().imagePath != null) {
+              await FirebaseStorage.instance
+                  .ref('profile')
+                  .child(context.read<UploadProfileImageCubit>().imagePath!)
+                  .delete()
+                  .then((value) {
+                context.pushNamedAndRemoveUntil(
+                  Routes.home,
+                  predicate: (route) => false,
+                );
+              });
+            } else {
+              context.pushNamedAndRemoveUntil(
+                Routes.home,
+                predicate: (route) => false,
+              );
+            }
+          },
+        );
+      },
+      child: Scaffold(
         backgroundColor: AppColors.backgroundDarkBlue,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios_outlined,
-          ),
-          onPressed: () {
-            showCustomDialog(
-              context,
-              () async {
-                if (context.read<UploadProfileImageCubit>().imagePath != null) {
-                  await FirebaseStorage.instance
-                      .ref('profile')
-                      .child(context.read<UploadProfileImageCubit>().imagePath!)
-                      .delete()
-                      .then((value) {
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundDarkBlue,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios_outlined,
+            ),
+            onPressed: () {
+              showCustomDialog(
+                context,
+                () async {
+                  if (context.read<UploadProfileImageCubit>().imagePath !=
+                      null) {
+                    await FirebaseStorage.instance
+                        .ref('profile')
+                        .child(
+                            context.read<UploadProfileImageCubit>().imagePath!)
+                        .delete()
+                        .then((value) {
+                      context.pushNamedAndRemoveUntil(
+                        Routes.home,
+                        predicate: (route) => false,
+                      );
+                    });
+                  } else {
                     context.pushNamedAndRemoveUntil(
                       Routes.home,
                       predicate: (route) => false,
                     );
-                  });
-                } else {
-                  context.pushNamedAndRemoveUntil(
-                    Routes.home,
-                    predicate: (route) => false,
+                  }
+                },
+              );
+            },
+            color: Colors.white,
+          ),
+          title: const Text(
+            "Edit Profile",
+            style: MyTextStyles.font20WhiteW600,
+          ),
+        ),
+        body: Column(
+          children: [
+            BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
+              builder: (context, state) {
+                if (state is GetProfileDataSuccess) {
+                  context.read<EditProfileDataCubit>().nameController.text =
+                      state.userModel.name;
+                  context.read<EditProfileDataCubit>().profileImageUrl =
+                      state.userModel.image;
+                  return const EditProfileScreenBody();
+                } else if (state is GetProfileDataFailure) {
+                  return Center(
+                    child: Text(
+                      state.errorMessage,
+                      style: MyTextStyles.font18WhiteBold,
+                    ),
                   );
+                } else {
+                  return const CustomEditProfileLoading();
                 }
               },
-            );
-          },
-          color: Colors.white,
+            ),
+          ],
         ),
-        title: const Text(
-          "Edit Profile",
-          style: MyTextStyles.font20WhiteW600,
-        ),
-      ),
-      body: Column(
-        children: [
-          BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
-            builder: (context, state) {
-              if (state is GetProfileDataSuccess) {
-                context.read<EditProfileDataCubit>().nameController.text =
-                    state.userModel.name;
-                context.read<EditProfileDataCubit>().profileImageUrl =
-                    state.userModel.image;
-                return const EditProfileScreenBody();
-              } else if (state is GetProfileDataFailure) {
-                return Center(
-                  child: Text(
-                    state.errorMessage,
-                    style: MyTextStyles.font18WhiteBold,
-                  ),
-                );
-              } else {
-                return const CustomEditProfileLoading();
-              }
-            },
-          ),
-        ],
       ),
     );
   }
