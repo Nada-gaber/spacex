@@ -26,6 +26,8 @@ class LaunchPadListView extends StatelessWidget {
                 title: allLaunchPads[index].fullName.toString(),
                 imageUrl: allLaunchPads[index].images!.large![0].toString(),
                 location: allLaunchPads[index].locality.toString(),
+                isNetworkConnected:
+                    state is LaunchPadsLoadedFailure == true ? true : false,
               );
             },
           );
