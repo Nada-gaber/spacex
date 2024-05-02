@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 detailImageContainer(BuildContext context, String shipImage, String shipName) {
@@ -11,13 +12,30 @@ detailImageContainer(BuildContext context, String shipImage, String shipName) {
         ),
       ),
       child: Hero(
-          tag: shipName,
-          child: ClipRRect(
-              borderRadius: BorderRadiusDirectional.circular(24),
-              child: Image.network(
-                shipImage,
-                fit: BoxFit.fill,
-              ))),
+        tag: shipName,
+        child: ClipRRect(
+          borderRadius: BorderRadiusDirectional.circular(24),
+          child: FittedBox(
+            fit: BoxFit.fill,
+            child: CachedNetworkImage(
+              imageUrl: shipImage,
+              placeholder: (context, url) => const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: CircularProgressIndicator(),
+              ),
+              errorWidget: (context, url, error) => const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    Icon(Icons.error),
+                    Text('no network connection'),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     ),
   );
 }
