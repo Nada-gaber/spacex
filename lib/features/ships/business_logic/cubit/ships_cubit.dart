@@ -3,17 +3,16 @@ import '../../data/repo/ships_repo.dart';
 import 'ships_states.dart';
 
 class ShipsCubit extends Cubit<ShipsState> {
-  final ShipsRepository _repository;
+  final ShipsRepository _shipRepository;
 
-  ShipsCubit(this._repository) : super(ShipsInitial());
+  ShipsCubit(this._shipRepository) : super(ShipsInitial());
 
-  Future<void> fetchShips({String searchTerm = ''}) async {
+  Future fetchShips({String searchTerm = ''}) async {
     emit(ShipsLoading());
-    try {
-      final ships = await _repository.getShips();
-      emit(ShipsLoaded(ships));
-    } on Exception catch (e) {
-      emit(ShipsError(e.toString()));
-    }
+    final result = await _shipRepository.getShips();
+    result.fold(
+      (failure) => emit(ShipsError(failure.message)),
+      (ships) => emit(ShipsLoaded(ships)),
+    );
   }
 }
