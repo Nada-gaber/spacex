@@ -4,23 +4,32 @@ import 'package:shimmer/shimmer.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
-import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
-import 'package:spacex/features/home/ui/widgets/custom_loading_list_of_rockets.dart';
+import '../../../../core/utils/nonetwork_toast.dart';
 
 class RocketListItem extends StatelessWidget {
   final String imageUrl;
   final Rocket rocket;
+  final bool isNetworkConnected;
 
   const RocketListItem(
-      {super.key, required this.imageUrl, required this.rocket});
+      {super.key,
+      required this.imageUrl,
+      required this.rocket,
+      required this.isNetworkConnected});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.pushNamed(Routes.rocketDetails, arguments: rocket);
-      },
+      onTap: isNetworkConnected
+          ? () {
+              context.pushNamed(Routes.rocketDetails, arguments: rocket);
+            }
+          : () {
+              showToastNoNetwork(
+                context,
+              );
+            },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(
