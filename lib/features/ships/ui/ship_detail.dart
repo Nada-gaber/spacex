@@ -39,7 +39,7 @@ class ShipDetails extends StatelessWidget {
             ),
           ),
           detailsValuesRow('Year built :', yearBuilt),
-          detailsValuesRow('Mass :', mass),
+          detailsValuesRow('Mass Kg:', mass),
           detailsValuesRow('Type :', type),
           const SizedBox(
             height: 30,

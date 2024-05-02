@@ -1,7 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:spacex/core/constant/colors.dart';
-import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 
 containerShipDesign(BuildContext context, String shipImage, String shipName) {
@@ -24,38 +24,47 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
               topLeft: Radius.circular(10), topRight: Radius.circular(10)),
           child: Stack(
             children: [
-              Shimmer(
-                gradient: const LinearGradient(
-                  colors: [
-                    AppColors.blueGray,
-                    AppColors.buttonBlue,
-                    Color.fromARGB(255, 23, 42, 63),
-                  ],
-                  stops: [
-                    0.1,
-                    0.3,
-                    0.4,
-                  ],
-                  begin: Alignment(-1.0, -0.3),
-                  end: Alignment(1.0, 0.3),
-                  tileMode: TileMode.clamp,
-                ),
-                child: Container(
-                  color: Colors.grey[200],
-                ),
-              ),
               Hero(
                 tag: shipName,
-                child: Container(
+                child: SizedBox(
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      image: shipImage.isNotEmpty
-                          ? DecorationImage(
-                              fit: BoxFit.fill, image: NetworkImage(shipImage))
-                          : const DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(MyImages.imageNotFound))),
+                  child: FittedBox(
+                    fit: BoxFit.fill,
+                    child: CachedNetworkImage(
+                      imageUrl: shipImage,
+                      placeholder: (context, url) => Shimmer(
+                        gradient: const LinearGradient(
+                          colors: [
+                            AppColors.blueGray,
+                            AppColors.buttonBlue,
+                            Color.fromARGB(255, 23, 42, 63),
+                          ],
+                          stops: [
+                            0.1,
+                            0.3,
+                            0.4,
+                          ],
+                          begin: Alignment(-1.0, -0.3),
+                          end: Alignment(1.0, 0.3),
+                          tileMode: TileMode.clamp,
+                        ),
+                        child: Container(
+                          color: Colors.grey[200],
+                        ),
+                      ),
+                      errorWidget: (context, url, error) =>  
+                    Container(
+                      color: AppColors.buttonBlue,
+                      child:const Padding(
+                        padding:  EdgeInsets.all(20.0),
+                        child: Text('no network connection'),
+                      )),
+                 
+                
+                      
+                    ),
+                  ),
                 ),
               ),
             ],
