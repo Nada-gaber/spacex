@@ -53,16 +53,12 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
                           color: Colors.grey[200],
                         ),
                       ),
-                      errorWidget: (context, url, error) =>  
-                    Container(
-                      color: AppColors.buttonBlue,
-                      child:const Padding(
-                        padding:  EdgeInsets.all(20.0),
-                        child: Text('no network connection'),
-                      )),
-                 
-                
-                      
+                      errorWidget: (context, url, error) => Container(
+                          color: const Color.fromARGB(255, 30, 46, 66),
+                          child: const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Icon(Icons.error,color: Colors.grey,),
+                          )),
                     ),
                   ),
                 ),

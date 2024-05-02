@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:spacex/core/constant/images.dart';
 
-detailImageContainer(BuildContext context, String shipImage, String shipName) {
+detailImageContainer(BuildContext context, String shipImage, String shipName,
+    final bool isNetworkConnected) {
   return Center(
     child: Container(
       height: 250,
@@ -16,24 +18,20 @@ detailImageContainer(BuildContext context, String shipImage, String shipName) {
         child: ClipRRect(
           borderRadius: BorderRadiusDirectional.circular(24),
           child: FittedBox(
-            fit: BoxFit.fill,
-            child: CachedNetworkImage(
-              imageUrl: shipImage,
-              placeholder: (context, url) => const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: CircularProgressIndicator(),
-              ),
-              errorWidget: (context, url, error) => const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Icon(Icons.error),
-                    Text('no network connection'),
-                  ],
-                ),
-              ),
-            ),
-          ),
+              fit: BoxFit.fill,
+              child: isNetworkConnected
+                  ? CachedNetworkImage(
+                      imageUrl: shipImage,
+                      placeholder: (context, url) => const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                      errorWidget: (context, url, error) => const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Icon(Icons.error),
+                      ),
+                    )
+                  : Image.asset(MyImages.imageNotFound)),
         ),
       ),
     ),
