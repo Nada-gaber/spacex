@@ -18,6 +18,9 @@ class LogoutBlocListener extends StatelessWidget {
         if (state is LogoutSuccess) {
           MyStrings.token = '';
           MySharedPreferences.delete('token');
+          MySharedPreferences.delete('cachedProfileData');
+          MySharedPreferences.delete('cachedLaunchPads');
+          MySharedPreferences.delete('cachedRockets');
           showToast(text: 'Logout done successfully');
           context.pushNamedAndRemoveUntil(
             Routes.login,
