@@ -6,12 +6,15 @@ import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
+import 'package:spacex/features/company_info/ui/widgets/company_loaded.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_links_row.dart';
 import '../../../core/constant/images.dart';
 import '../../../core/networking/web_services.dart';
+import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/company_info_cubit.dart';
 import '../business_logic/cubit/company_info_states.dart';
 import '../data/repo/company_info_repo.dart';
+import 'widgets/company_appbar_error.dart';
 import 'widgets/company_info_appbar.dart';
 import '../../../core/widgets/text_style.dart';
 
@@ -26,93 +29,33 @@ class CompanyInfoScreen extends StatelessWidget {
         cubit.fetchCompanyInfo();
         return cubit;
       },
-      child: BlocConsumer<CompanyCubit, CompanyInfoState>(
-        listener: (context, state) {
-          if (state is CompanyError) {
-            final errorState = state;
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Error: $errorState'),
-              ),
-            );
-          }
-        },
+      child: BlocBuilder<CompanyCubit, CompanyInfoState>(
         builder: (context, state) {
           if (state is CompanyLoaded) {
             final companyInfo = state.companyInfo;
-            return Scaffold(
-              backgroundColor: const Color(0xff061428),
-              appBar: companyInfoAppBar(context, '${companyInfo.summary}'),
-              body: SingleChildScrollView(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 25,
-                      ),
-                      textStyle('${companyInfo.ceo}', 25),
-                      textStyle('ceo of spaceX', 15,
-                          fontWeight: FontWeight.w400),
-                      const SizedBox(height: 35),
-                      Row(
-                        children: [
-                          buildInfoColumn(
-                              '${companyInfo.employees}', 'employees'),
-                          buildInfoColumn('${companyInfo.vehicles}', 'launch'),
-                          buildInfoColumn('${companyInfo.founded}', 'founded'),
-                        ],
-                      ),
-                      const SizedBox(height: 45),
-                      companyLinkRow(
-                          '${companyInfo.links?.twitter}',
-                          '${companyInfo.links?.website}',
-                          '${companyInfo.links?.flickr}'),
-                      const SizedBox(height: 25),
-                      Image.asset(MyImages.elonMask),
-                    ],
-                  ),
-                ),
-              ),
-            );
+            return CompanyInfoLoaded(
+                summary: '${companyInfo.summary}',
+                companyInfoCeo: '${companyInfo.ceo}',
+                companyInfoEmployees: '${companyInfo.employees}',
+                companyInfoVehicles: '${companyInfo.vehicles}',
+                companyInfoFounded: '${companyInfo.founded}',
+                companyInfoLinksTwitter: '${companyInfo.links?.twitter}',
+                companyInfoLinksWebsite: '${companyInfo.links?.website}',
+                companyInfoLinksFlickr: '${companyInfo.links?.flickr}');
           } else if (state is CompanyError) {
             return Scaffold(
               backgroundColor: AppColors.backgroundDarkBlue,
-              appBar: AppBar(
-                backgroundColor: AppColors.backgroundDarkBlue,
-                leading: IconButton(
-                  onPressed: () => context.pop(),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                title: const Text(
-                  'spacex',
-                  style: MyTextStyles.font18White60W600,
+              appBar: companyInfoErrorAppBar(context),
+              body: Center(
+                child: CustomFailureWidget(
+                  textError: state.error,
                 ),
               ),
-              body: const Text('Error fetching company info.'),
             );
           } else {
             return Scaffold(
               backgroundColor: AppColors.backgroundDarkBlue,
-              appBar: AppBar(
-                backgroundColor: AppColors.backgroundDarkBlue,
-                leading: IconButton(
-                  onPressed: () => context.pop(),
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                title: const Text(
-                  'spacex',
-                  style: MyTextStyles.font18WhiteBold,
-                ),
-              ),
+              appBar: companyInfoErrorAppBar(context),
               body: const CustomLoadingWidget(
                 color: Colors.white,
               ),
