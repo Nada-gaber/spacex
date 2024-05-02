@@ -4,9 +4,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
-import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
-import 'package:spacex/features/home/ui/widgets/custom_loading_list_of_rockets.dart';
 
 class RocketListItem extends StatelessWidget {
   final String imageUrl;

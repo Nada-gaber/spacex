@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spacex/core/errors/cloud_firestore_failure.dart';
 import 'package:spacex/core/errors/failure.dart';
 import 'package:spacex/core/errors/firebase_auth_failure.dart';
+import 'package:spacex/core/utils/cache_helper.dart';
 import 'package:spacex/features/home/data/models/user_model.dart';
 
 class HomeRepo {
@@ -17,9 +18,14 @@ class HomeRepo {
 
   Future<Either<Failure, UserModel>> getProfileData(String token) async {
     try {
+      UserModel? userModel = await CacheHelper.getCachedProfileData();
+      if (userModel != null) {
+        return right(userModel);
+      }
       final response =
           await firebaseFirestoreInstance.collection('users').doc(token).get();
-      UserModel userModel = UserModel.fromJson(response.data()!);
+      userModel = UserModel.fromJson(response.data()!);
+      CacheHelper.cacheProfileData(userModel);
       return Right(userModel);
     } catch (error) {
       if (error is FirebaseException) {

@@ -61,6 +61,7 @@ class ProfileSection extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 18.0,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             );
