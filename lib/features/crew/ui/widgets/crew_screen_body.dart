@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/core/widgets/custom_shimmer_loading.dart';
-import 'package:spacex/features/crew/data/models/crew_model.dart';
 import 'package:spacex/features/crew/logic/get_all_crew/get_all_crew_cubit.dart';
 import 'package:spacex/features/crew/ui/widgets/custom_crew_loading.dart';
 
@@ -27,6 +25,8 @@ class CrewScreenBody extends StatelessWidget {
             itemBuilder: (context, index) {
               return CrewMemberItem(
                 crewMember: state.crews[index],
+                isNetworkConnected:
+                    state is GetAllCrewFailure == true ? true : false,
               );
             },
             itemCount: state.crews.length,

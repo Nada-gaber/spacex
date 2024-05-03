@@ -4,6 +4,7 @@ import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 
 import '../../../../core/constant/colors.dart';
+import '../../../../core/utils/nonetwork_toast.dart';
 import '../../data/models/launch_pad_model.dart';
 
 class LaunchPadItem extends StatelessWidget {
@@ -11,7 +12,15 @@ class LaunchPadItem extends StatelessWidget {
   final String title;
   final String location;
   final LaunchPad launchPad;
-  const LaunchPadItem({super.key, required this.imageUrl, required this.title, required this.location, required this.launchPad});
+  final bool isNetworkConnected;
+
+  const LaunchPadItem(
+      {super.key,
+      required this.imageUrl,
+      required this.title,
+      required this.location,
+      required this.launchPad,
+      required this.isNetworkConnected});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +30,16 @@ class LaunchPadItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(vertical: 6),
       child: GestureDetector(
-        onTap: () {
-          context.pushNamed(Routes.launchPadDetails,arguments: launchPad);
-        },
+        onTap: isNetworkConnected
+            ? () {
+                context.pushNamed(Routes.launchPadDetails,
+                    arguments: launchPad);
+              }
+            : () {
+                showToastNoNetwork(
+                  context,
+                );
+              },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,15 +48,14 @@ class LaunchPadItem extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 1 / 1.2,
                 child: ClipRRect(
-                  borderRadius: BorderRadiusDirectional.circular(16),
-                  child: Hero(
-                    tag: launchPad.name.toString(),
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      fit: BoxFit.fill,
-                    ),
-                  )
-                ),
+                    borderRadius: BorderRadiusDirectional.circular(16),
+                    child: Hero(
+                      tag: launchPad.name.toString(),
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        fit: BoxFit.fill,
+                      ),
+                    )),
               ),
             ),
             const SizedBox(
@@ -92,4 +107,3 @@ class LaunchPadItem extends StatelessWidget {
     );
   }
 }
-

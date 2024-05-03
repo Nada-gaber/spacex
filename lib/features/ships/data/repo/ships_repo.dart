@@ -1,5 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:spacex/core/errors/server_failure.dart';
 import 'package:spacex/core/networking/web_services.dart';
+import '../../../../core/errors/failure.dart';
 import '../model/ships_model.dart';
 
 class ShipsRepository {
@@ -7,14 +10,16 @@ class ShipsRepository {
 
   ShipsRepository(this._webServices);
 
-  Future<List<Ships>> getShips() async {
+  Future<Either<Failure, List<Ships>>> getShips() async {
     try {
-      final response = await _webServices.getAllShips();
-      return response;
-    } on DioError catch (e) {
-      throw Exception('Error fetching ships: ${e.message}');
-    } catch (e) {
-      throw Exception('Unexpected error: $e');
+      final shipsModel = await _webServices.getAllShips();
+      return Right(shipsModel);
+    } catch (error) {
+      if (error is DioException) {
+        return Left(ServerFailure.fromDioError(error));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 }

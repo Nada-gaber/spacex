@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/features/ships/ui/widgets/custom_ships_loading.dart';
-
 import '../../../core/networking/web_services.dart';
+import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/ships_cubit.dart';
 import '../business_logic/cubit/ships_states.dart';
 import '../data/repo/ships_repo.dart';
@@ -29,7 +29,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
       _isSearchBarActive = !_isSearchBarActive;
       if (!_isSearchBarActive) {
         _searchTerm = '';
-        cubit.fetchShips(); // Fetch all ships again on deactivation
+        cubit.fetchShips(); 
       }
     });
   }
@@ -37,7 +37,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
   void _handleSearchChange(String value) {
     setState(() {
       _searchTerm = value;
-      cubit.fetchShips(searchTerm: _searchTerm); // Might not be needed here
+      cubit.fetchShips(searchTerm: _searchTerm); 
     });
   }
 
@@ -77,19 +77,19 @@ class _ShipsScreenState extends State<ShipsScreen> {
                 itemBuilder: (context, index) {
                   final ship = filteredShips[index];
                   return shipContainer(
-                    context,
-                    ship.image ?? MyImages.imageNotFound,
-                    ship.name ?? 'No Name',
-                    ship.yearBuilt ?? 00,
-                    ship.massKg ?? 00,
-                    ship.type ?? 'Not Defined',
-                  );
+                      context,
+                      ship.image ?? MyImages.imageNotFound,
+                      ship.name ?? 'No Name',
+                      ship.yearBuilt ?? 00,
+                      ship.massKg ?? 00,
+                      ship.type ?? 'Not Defined',
+                      state is ShipsError == true ? true : false);
                 },
               );
             } else if (state is ShipsError) {
               return Center(
-                child: Text(
-                  'Error: ${state.error}',
+                child: CustomFailureWidget(
+                  textError: state.error,
                 ),
               );
             } else {
@@ -101,3 +101,4 @@ class _ShipsScreenState extends State<ShipsScreen> {
     );
   }
 }
+
