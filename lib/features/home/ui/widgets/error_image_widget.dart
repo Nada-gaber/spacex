@@ -9,7 +9,7 @@ class ErrorImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: AppColors.blueGray.withOpacity(.3)),
+      decoration: BoxDecoration(color: AppColors.blueGray.withOpacity(.7)),
       child: const Center(
         child: CustomFailureWidget(
           textError: "No Internet Connection",

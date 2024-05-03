@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import 'error_image_widget.dart';
 
 class DisplayingImagesWidget extends StatelessWidget {
   final int lengthOfImagesList;
@@ -16,12 +19,16 @@ class DisplayingImagesWidget extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ClipRRect(
-              borderRadius: BorderRadiusDirectional.circular(16),
-              child: Image.network(
-                images![index].toString(),
-                height: MediaQuery.of(context).size.height / 3.2,
-                fit: BoxFit.cover,
-              )),
+            borderRadius: BorderRadiusDirectional.circular(16),
+            child: CachedNetworkImage(
+              errorWidget: (context, url, error) {
+                return const ErrorImageWidget();
+              },
+              imageUrl: images![index].toString(),
+              height: MediaQuery.of(context).size.height / 3.2,
+              fit: BoxFit.cover,
+            ),
+          ),
         );
       },
       options: CarouselOptions(

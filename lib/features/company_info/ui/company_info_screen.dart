@@ -2,21 +2,15 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
-import 'package:spacex/core/routing/extensions.dart';
-import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_loading_widget.dart';
-import 'package:spacex/features/company_info/ui/widgets/buildin_column.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_loaded.dart';
-import 'package:spacex/features/company_info/ui/widgets/company_links_row.dart';
-import '../../../core/constant/images.dart';
+
 import '../../../core/networking/web_services.dart';
 import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/company_info_cubit.dart';
 import '../business_logic/cubit/company_info_states.dart';
 import '../data/repo/company_info_repo.dart';
 import 'widgets/company_appbar_error.dart';
-import 'widgets/company_info_appbar.dart';
-import '../../../core/widgets/text_style.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
   const CompanyInfoScreen({super.key});
@@ -49,6 +43,7 @@ class CompanyInfoScreen extends StatelessWidget {
               body: Center(
                 child: CustomFailureWidget(
                   textError: state.error,
+                  textSize: 24,
                 ),
               ),
             );
