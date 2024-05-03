@@ -26,7 +26,7 @@ class CrewScreenBody extends StatelessWidget {
               return CrewMemberItem(
                 crewMember: state.crews[index],
                 isNetworkConnected:
-                    state is GetAllCrewFailure == true ? true : false,
+                    state is GetAllCrewFailure ==  true ? false : true,
               );
             },
             itemCount: state.crews.length,

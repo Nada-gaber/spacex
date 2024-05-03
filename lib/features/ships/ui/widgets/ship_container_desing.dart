@@ -50,14 +50,19 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
                           tileMode: TileMode.clamp,
                         ),
                         child: Container(
-                          color: Colors.grey[200],
+                          decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
                       errorWidget: (context, url, error) => Container(
                           color: const Color.fromARGB(255, 30, 46, 66),
                           child: const Padding(
                             padding: EdgeInsets.all(20.0),
-                            child: Icon(Icons.error,color: Colors.grey,),
+                            child: Icon(
+                              Icons.error,
+                              color: Colors.grey,
+                            ),
                           )),
                     ),
                   ),

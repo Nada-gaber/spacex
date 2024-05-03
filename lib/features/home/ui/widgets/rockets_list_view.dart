@@ -23,7 +23,7 @@ class RocketsListView extends StatelessWidget {
                   imageUrl: rockets[index].flickrImages![0].toString(),
                   rocket: rockets[index],
                   isNetworkConnected:
-                      state is GetAllRocketsFailure == true ? true : false,
+                      state is GetAllRocketsFailure ==  true ? false : true,
                 );
               },
               scrollDirection: Axis.horizontal,

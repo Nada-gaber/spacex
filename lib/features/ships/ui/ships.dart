@@ -29,7 +29,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
       _isSearchBarActive = !_isSearchBarActive;
       if (!_isSearchBarActive) {
         _searchTerm = '';
-        cubit.fetchShips(); 
+        cubit.fetchShips();
       }
     });
   }
@@ -37,7 +37,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
   void _handleSearchChange(String value) {
     setState(() {
       _searchTerm = value;
-      cubit.fetchShips(searchTerm: _searchTerm); 
+      cubit.fetchShips(searchTerm: _searchTerm);
     });
   }
 
@@ -83,7 +83,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
                       ship.yearBuilt ?? 00,
                       ship.massKg ?? 00,
                       ship.type ?? 'Not Defined',
-                      state is ShipsError == true ? true : false);
+                      state is ShipsError == true ? false : true);
                 },
               );
             } else if (state is ShipsError) {
@@ -101,4 +101,3 @@ class _ShipsScreenState extends State<ShipsScreen> {
     );
   }
 }
-

@@ -28,10 +28,10 @@ shipContainer(BuildContext context, String shipImage, String shipName,
                 );
               }
             : () {
-                showToastNoNetwork(context,);
+                showToastNoNetwork(
+                  context,
+                );
               },
         child: containerShipDesign(context, shipImage, shipName)),
   );
 }
-
-
