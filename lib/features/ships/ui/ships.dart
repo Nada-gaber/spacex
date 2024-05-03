@@ -83,7 +83,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
                       ship.yearBuilt ?? 00,
                       ship.massKg ?? 00,
                       ship.type ?? 'Not Defined',
-                      state is ShipsError == true ? true : false);
+                      state is ShipsError == true ? false :true );
                 },
               );
             } else if (state is ShipsError) {
