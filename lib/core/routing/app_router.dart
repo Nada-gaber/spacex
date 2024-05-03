@@ -114,14 +114,7 @@ class AppRouter {
             child: const EditProfileScreen(),
           ),
         );
-      default:
-        return MaterialPageRoute(
-          builder: (context) => const Scaffold(
-            body: Center(
-              child: Text("No route"),
-            ),
-          ),
-        );
     }
+    return null;
   }
 }

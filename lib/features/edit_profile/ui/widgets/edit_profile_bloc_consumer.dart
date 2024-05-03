@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/strings.dart';
+import 'package:spacex/core/functions/show_toast.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
+import 'package:spacex/core/utils/cache_helper.dart';
 import 'package:spacex/core/widgets/custom_text_button.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_cubit.dart';
 import 'package:spacex/features/edit_profile/logic/edit_profile_data/edit_profile_data_state.dart';
@@ -19,14 +21,14 @@ class EditProfileBlocConsumer extends StatelessWidget {
         if (state is EditProfileDataLoading) {
           requestLoading = true;
         } else if (state is EditProfileDataSuccess) {
-          // showToast(text: 'Profile updated successfully');
+          showToast(text: 'Profile updated successfully');
           context.pushNamedAndRemoveUntil(
             Routes.home,
             predicate: (route) => false,
           );
           requestLoading = false;
         } else if (state is EditProfileDataFailure) {
-          // showToast(text: state.errorMessage);
+          showToast(text: state.errorMessage);
           requestLoading = false;
         }
       },
@@ -46,6 +48,7 @@ class EditProfileBlocConsumer extends StatelessWidget {
                 .currentState!
                 .validate()) {
               context.read<EditProfileDataCubit>().editProfileData(userModel);
+              CacheHelper.cacheProfileData(userModel);
             }
           },
         );

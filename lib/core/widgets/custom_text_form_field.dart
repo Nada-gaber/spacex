@@ -30,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
           icon,
           color: Colors.white,
         ),
+        errorMaxLines: 4,
       ),
       obscureText: obscureText ?? false,
     );
