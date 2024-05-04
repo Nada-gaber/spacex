@@ -1,8 +1,14 @@
 
 # ✨SpaceX - E1: Team 3✨
-## 📝Our Folders Structure
+## 📝 Our Folders Structure
 
-<img src="ss/1.png"/>
+![1](https://github.com/Nada-gaber/spacex/assets/63368547/6500865f-3976-4393-a026-ef5d60fe6cf8)
+
+## 💁🏻‍♂️ Our Project Plan
+![2](https://github.com/Nada-gaber/spacex/assets/63368547/32536caa-bcc9-42cb-b03a-81f3182907fa)
+
+## 👀 Our Project UI
+![3](https://github.com/Nada-gaber/spacex/assets/63368547/654723b1-d35a-46bd-97a8-e8ddf5865068)
 
 ----------
 

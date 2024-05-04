@@ -29,7 +29,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
       _isSearchBarActive = !_isSearchBarActive;
       if (!_isSearchBarActive) {
         _searchTerm = '';
-        cubit.fetchShips(); 
+        cubit.fetchShips();
       }
     });
   }
@@ -37,7 +37,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
   void _handleSearchChange(String value) {
     setState(() {
       _searchTerm = value;
-      cubit.fetchShips(searchTerm: _searchTerm); 
+      cubit.fetchShips(searchTerm: _searchTerm);
     });
   }
 
@@ -90,6 +90,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
               return Center(
                 child: CustomFailureWidget(
                   textError: state.error,
+                  textSize: 24,
                 ),
               );
             } else {

@@ -34,6 +34,7 @@ class LaunchPadListView extends StatelessWidget {
         } else if (state is LaunchPadsLoadedFailure) {
           return CustomFailureWidget(
             textError: state.errorMessage,
+            textSize: 18,
           );
         } else {
           return const CustomLoadingListOfLaunchPads();

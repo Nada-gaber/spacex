@@ -32,6 +32,7 @@ class RocketsListView extends StatelessWidget {
           } else if (state is GetAllRocketsFailure) {
             return CustomFailureWidget(
               textError: state.errorMessage,
+              textSize: 18,
             );
           } else {
             return const CustomLoadingListOfRockets();
