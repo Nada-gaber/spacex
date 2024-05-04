@@ -4,8 +4,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 
-import '../../../../core/widgets/custom_failure_widget.dart';
-
 containerShipDesign(BuildContext context, String shipImage, String shipName) {
   return Column(
     children: [
@@ -55,18 +53,8 @@ containerShipDesign(BuildContext context, String shipImage, String shipName) {
                           color: Colors.grey[200],
                         ),
                       ),
-                      errorWidget: (context, url, error) => Container(
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(
-                            color: AppColors.blueGray.withOpacity(.7)),
-                        child: const Center(
-                          child: CustomFailureWidget(
-                            textError: "No Internet Connection",
-                            textSize: 18,
-                          ),
-                        ),
-                      ),
+                      errorWidget: (context, url, error) =>
+                          Image.asset("assets/images/no_connection.png"),
                     ),
                   ),
                 ),

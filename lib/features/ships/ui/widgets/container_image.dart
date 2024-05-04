@@ -26,10 +26,7 @@ detailImageContainer(BuildContext context, String shipImage, String shipName,
                         padding: EdgeInsets.all(20.0),
                         child: CircularProgressIndicator(),
                       ),
-                      errorWidget: (context, url, error) => const Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Icon(Icons.error),
-                      ),
+                      errorWidget: (context, url, error) => Image.asset("assets/images/no_connection.png"),
                     )
                   : Image.asset(MyImages.imageNotFound)),
         ),
