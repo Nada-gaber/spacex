@@ -12,6 +12,7 @@ class GetProfileDataCubit extends Cubit<GetProfileDataState> {
   GetProfileDataCubit(this.homeRepo) : super(GetProfileDataInitial());
 
   Future getProfileData() async {
+    print('hello');
     emit(GetProfileDataLoading());
 
     final response = await homeRepo.getProfileData(MyStrings.token);
