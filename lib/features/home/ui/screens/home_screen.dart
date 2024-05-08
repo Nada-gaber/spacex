@@ -27,25 +27,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.backgroundDarkBlue,
-        title: const Text(
-          "SpaceX",
-          style: TextStyle(fontWeight: FontWeight.w900),
-        ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              // navigate to profile page
-            },
-            child: const ProfileImageBlocBuilder(),
+    return BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
+      builder: (context, state) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.backgroundDarkBlue,
+          title: const Text(
+            "SpaceX",
+            style: TextStyle(fontWeight: FontWeight.w900),
           ),
-        ],
+          actions: [
+            GestureDetector(
+              onTap: () {
+                // navigate to profile page
+              },
+              child: ProfileImageBlocBuilder(
+                getProfileDataState: state,
+              ),
+            ),
+          ],
+        ),
+        drawer: CustomDrawer(
+          getProfileDataState: state,
+        ),
+        body: const HomeScreenBody(),
+        backgroundColor: AppColors.backgroundDarkBlue,
       ),
-      drawer: const CustomDrawer(),
-      body: const HomeScreenBody(),
-      backgroundColor: AppColors.backgroundDarkBlue,
     );
   }
 }
