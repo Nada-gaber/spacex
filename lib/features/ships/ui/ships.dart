@@ -33,7 +33,6 @@ class _ShipsScreenState extends State<ShipsScreen> {
   void _handleSearchChange(String value) {
     setState(() {
       _searchTerm = value;
-      // cubit.fetchShips(searchTerm: _searchTerm);
     });
   }
 
