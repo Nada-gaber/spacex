@@ -1,15 +1,12 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_loaded.dart';
-
-import '../../../core/networking/web_services.dart';
+import '../../../core/utils/dependency_injection.dart';
 import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/company_info_cubit.dart';
 import '../business_logic/cubit/company_info_states.dart';
-import '../data/repo/company_info_repo.dart';
 import 'widgets/company_appbar_error.dart';
 
 class CompanyInfoScreen extends StatelessWidget {
@@ -18,11 +15,7 @@ class CompanyInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CompanyCubit>(
-      create: (context) {
-        final cubit = CompanyCubit(CompanyRepository(WebServices(Dio())));
-        cubit.fetchCompanyInfo();
-        return cubit;
-      },
+     create: (context)  => getIt.get<CompanyCubit>()..fetchCompanyInfo(),
       child: BlocBuilder<CompanyCubit, CompanyInfoState>(
         builder: (context, state) {
           if (state is CompanyLoaded) {
