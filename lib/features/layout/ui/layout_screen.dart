@@ -3,7 +3,7 @@ import 'package:rive/rive.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/ui/screens/home_screen.dart';
 import 'package:spacex/features/layout/models/rive_model.dart';
-import 'package:spacex/features/layout/ui/widgets/custom_bottom_nav_bar.dart';
+import 'package:spacex/features/layout/ui/widgets/custom_animated_bar.dart';
 import 'package:spacex/features/profile/ui/profile_screen.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -84,17 +84,55 @@ class _LayoutScreenState extends State<LayoutScreen> {
         child: Stack(
           children: [
             screens[selectedNavIndex],
-            CustomBottomNavBar(
-              selectedNavIndex: selectedNavIndex,
-              bottomNavItems: bottomNavItems,
-              changeCurrentIndex: (index) {
-                setState(() {
-                  selectedNavIndex = index;
-                });
-              },
-              animateTheIcon: (index) => animateTheIcon,
-              riveOnInIt: (artboard, {required stateMachineName}) =>
-                  riveIconInputs,
+            Positioned(
+              bottom: 24,
+              left: 24,
+              right: 24,
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: const BoxDecoration(
+                  color: Color(0xff1e2b3d),
+                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: List.generate(
+                    bottomNavItems.length,
+                        (index) => GestureDetector(
+                      onTap: () {
+                        animateTheIcon(index);
+                        setState(() {
+                          selectedNavIndex = index;
+                        });
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          CustomAnimatedBar(isActive: selectedNavIndex == index),
+                          SizedBox(
+                            height: 36,
+                            width: 36,
+                            child: Opacity(
+                              opacity: selectedNavIndex == index ? 1 : 0.5,
+                              child: RiveAnimation.asset(
+                                bottomNavItems[index].src,
+                                artboard: bottomNavItems[index].artboard,
+                                onInit: (artboard) {
+                                  riveOnInIt(
+                                    artboard,
+                                    stateMachineName:
+                                    bottomNavItems[index].stateMachineName,
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
