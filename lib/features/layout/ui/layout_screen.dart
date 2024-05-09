@@ -4,6 +4,7 @@ import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/ui/screens/home_screen.dart';
 import 'package:spacex/features/layout/models/rive_model.dart';
 import 'package:spacex/features/layout/ui/widgets/custom_bottom_nav_bar.dart';
+import 'package:spacex/features/profile/ui/profile_screen.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -44,7 +45,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
     const HomeScreen(),
     Container(),
     Container(),
-    Container(),
+    const ProfileScreen(),
   ];
 
   void animateTheIcon(int index) {

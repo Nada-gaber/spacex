@@ -3,10 +3,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cubit.dart';
 import 'package:spacex/features/home/ui/widgets/logout_bloc_listener.dart';
-import 'package:spacex/features/home/ui/widgets/profile_section.dart';
+import 'package:spacex/features/profile/ui/widgets/profile_section.dart';
 
 import '../../../../core/routing/routes.dart';
-import 'drawer_component.dart';
+import '../../../profile/ui/widgets/profile_component.dart';
 
 class CustomDrawer extends StatelessWidget {
   final GetProfileDataState getProfileDataState;
@@ -19,10 +19,8 @@ class CustomDrawer extends StatelessWidget {
       child: SafeArea(
         child: Column(
           children: [
-            ProfileSection(
-              getProfileDataState: getProfileDataState,
-            ),
-            DrawerComponent(
+            ProfileSection(),
+            ProfileComponent(
               title: "Edit Profile",
               icon: Icons.person_pin,
               onTap: () {
@@ -30,7 +28,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             buildDivide(),
-            DrawerComponent(
+            ProfileComponent(
               title: "Crew",
               icon: Icons.groups,
               onTap: () {
@@ -38,7 +36,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             buildDivide(),
-            DrawerComponent(
+            ProfileComponent(
               title: "Ships",
               icon: FontAwesomeIcons.ship,
               onTap: () {
@@ -46,7 +44,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             buildDivide(),
-            DrawerComponent(
+            ProfileComponent(
               title: "About",
               icon: Icons.info_outline_rounded,
               onTap: () {

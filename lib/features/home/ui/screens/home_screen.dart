@@ -26,25 +26,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
-      builder: (context, state) => Column(
-        children: [
-          CustomAppBar(
-            title: 'SpaceX',
-            leading: GestureDetector(
-              onTap: () {
-                // navigate to profile page
-              },
-              child: ProfileImageBlocBuilder(
-                getProfileDataState: state,
-              ),
-            ),
+    return Column(
+      children: [
+        CustomAppBar(
+          title: 'SpaceX',
+          leading: GestureDetector(
+            onTap: () {
+              // navigate to profile page
+            },
+            child: const ProfileImageBlocBuilder(),
           ),
-          const Expanded(
-            child: HomeScreenBody(),
-          ),
-        ],
-      ),
+        ),
+        const Expanded(
+          child: HomeScreenBody(),
+        ),
+      ],
     );
   }
 }
