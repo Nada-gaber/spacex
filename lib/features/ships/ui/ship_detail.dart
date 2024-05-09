@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
+import '../../../core/widgets/saved_floating_action_button.dart';
 import 'widgets/container_image.dart';
 import 'widgets/ship_detail_app_bar.dart';
 
@@ -49,6 +50,8 @@ class ShipDetails extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: const SavedFloatingActionButton(),
+
     );
   }
 }

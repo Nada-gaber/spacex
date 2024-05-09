@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 
+import '../../../../core/widgets/saved_floating_action_button.dart';
 import '../widgets/launch_pads_details_screen_body.dart';
 
 class LaunchPadsDetailsScreen extends StatelessWidget {
@@ -25,6 +26,9 @@ class LaunchPadsDetailsScreen extends StatelessWidget {
       body: LaunchPadsDetailsScreenBody(
         launchPad: launchPad,
       ),
+      floatingActionButton: const SavedFloatingActionButton(),
     );
   }
 }
+
+

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/core/widgets/saved_floating_action_button.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
 
 import '../../../../core/widgets/open_url_in_browser_icon_button.dart';
@@ -31,6 +32,7 @@ class RocketDetailsScreen extends StatelessWidget {
       body: RocketDetailsScreenBody(
         rocket: rocket,
       ),
+      floatingActionButton: const SavedFloatingActionButton(),
     );
   }
 }
