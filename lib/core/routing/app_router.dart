@@ -17,6 +17,7 @@ import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
+import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
 import '../../features/company_info/ui/company_info_screen.dart';
@@ -113,6 +114,10 @@ class AppRouter {
             ],
             child: const EditProfileScreen(),
           ),
+        );
+      case Routes.savedItemsScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SavedItemsScreen(),
         );
     }
     return null;

@@ -7,8 +7,8 @@ class Routes {
   static const String launchPadDetails = '/launch_pads_details';
   static const String login = '/login';
   static const String register = '/register';
-    static const String ships = '/ships';
+  static const String ships = '/ships';
   static const String crewScreen = '/crew_screen';
   static const String editProfileScreen = '/edit_profile_screen';
-
+  static const String savedItemsScreen = '/saved_items_screen';
 }

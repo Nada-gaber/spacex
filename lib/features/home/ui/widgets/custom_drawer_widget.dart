@@ -47,6 +47,14 @@ class CustomDrawer extends StatelessWidget {
             ),
             buildDivide(),
             DrawerComponent(
+              title: "Saved Items",
+              icon: Icons.bookmark_border,
+              onTap: () {
+                context.pushNamed(Routes.savedItemsScreen);
+              },
+            ),
+            buildDivide(),
+            DrawerComponent(
               title: "About",
               icon: Icons.info_outline_rounded,
               onTap: () {
