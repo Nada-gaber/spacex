@@ -40,7 +40,8 @@ class _ShipsScreenState extends State<ShipsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-create: (context) => getIt.get<ShipsCubit>()..fetchShips(),      child: Scaffold(
+      create: (context) => getIt.get<ShipsCubit>()..fetchShips(),
+      child: Scaffold(
         backgroundColor: AppColors.backgroundDarkBlue,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -75,7 +76,7 @@ create: (context) => getIt.get<ShipsCubit>()..fetchShips(),      child: Scaffold
                       ship.yearBuilt ?? 00,
                       ship.massKg ?? 00,
                       ship.type ?? 'Not Defined',
-                      state is ShipsError == true ? false :true );
+                      state is ShipsError == true ? false : true);
                 },
               );
             } else if (state is ShipsError) {
@@ -94,4 +95,3 @@ create: (context) => getIt.get<ShipsCubit>()..fetchShips(),      child: Scaffold
     );
   }
 }
-
