@@ -1,14 +1,12 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
 import 'package:spacex/features/ships/ui/widgets/custom_ships_loading.dart';
-import '../../../core/networking/web_services.dart';
+import '../../../core/utils/dependency_injection.dart';
 import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/ships_cubit.dart';
 import '../business_logic/cubit/ships_states.dart';
-import '../data/repo/ships_repo.dart';
 import 'widgets/ship_container.dart';
 import 'widgets/ship_search.dart';
 
@@ -20,7 +18,6 @@ class ShipsScreen extends StatefulWidget {
 }
 
 class _ShipsScreenState extends State<ShipsScreen> {
-  final cubit = ShipsCubit(ShipsRepository(WebServices(Dio())));
   bool _isSearchBarActive = false;
   String _searchTerm = '';
 
@@ -29,7 +26,6 @@ class _ShipsScreenState extends State<ShipsScreen> {
       _isSearchBarActive = !_isSearchBarActive;
       if (!_isSearchBarActive) {
         _searchTerm = '';
-        cubit.fetchShips();
       }
     });
   }
@@ -37,18 +33,14 @@ class _ShipsScreenState extends State<ShipsScreen> {
   void _handleSearchChange(String value) {
     setState(() {
       _searchTerm = value;
-      cubit.fetchShips(searchTerm: _searchTerm);
+      // cubit.fetchShips(searchTerm: _searchTerm);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) {
-        cubit.fetchShips();
-        return cubit;
-      },
-      child: Scaffold(
+create: (context) => getIt.get<ShipsCubit>()..fetchShips(),      child: Scaffold(
         backgroundColor: AppColors.backgroundDarkBlue,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
