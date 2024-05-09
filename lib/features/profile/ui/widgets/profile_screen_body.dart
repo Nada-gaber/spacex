@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/features/profile/ui/widgets/profile_component.dart';
-import 'package:spacex/features/home/ui/widgets/logout_bloc_listener.dart';
+import 'package:spacex/features/profile/ui/widgets/logout_bloc_listener.dart';
 import 'package:spacex/features/profile/ui/widgets/profile_section.dart';
 
 class ProfileScreenBody extends StatelessWidget {
