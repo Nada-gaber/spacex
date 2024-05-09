@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spacex/core/networking/web_services.dart';
+import 'package:spacex/features/company_info/business_logic/cubit/company_info_cubit.dart';
+import 'package:spacex/features/company_info/data/repo/company_info_repo.dart';
 import 'package:spacex/features/crew/data/repo/crew_repo.dart';
 import 'package:spacex/features/crew/logic/get_all_crew/get_all_crew_cubit.dart';
 import 'package:spacex/features/edit_profile/data/profile_repo.dart';
@@ -21,6 +23,9 @@ import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
 import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
+import 'package:spacex/features/ships/data/repo/ships_repo.dart';
+
+import '../../features/ships/business_logic/cubit/ships_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -111,6 +116,30 @@ Future<void> setupGetIt() async {
   );
   getIt.registerLazySingleton<CrewRepo>(
     () => CrewRepo(
+      getIt(),
+    ),
+  );
+
+  // Ships
+  getIt.registerFactory<ShipsCubit>(
+    () => ShipsCubit(
+      getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<ShipsRepository>(
+    () => ShipsRepository(
+      getIt(),
+    ),
+  );
+
+  // Company Info
+  getIt.registerFactory<CompanyCubit>(
+    () => CompanyCubit(
+      getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<CompanyRepository>(
+    () => CompanyRepository(
       getIt(),
     ),
   );
