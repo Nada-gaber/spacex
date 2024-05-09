@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spacex/features/company_sections/models/company_section_model.dart';
+import 'package:spacex/features/company_sections/ui/widgets/company_sections_list_view_item.dart';
 
 class CompanySectionsScreenBody extends StatefulWidget {
   const CompanySectionsScreenBody({super.key});
@@ -13,15 +14,15 @@ class _CompanySectionsScreenBodyState extends State<CompanySectionsScreenBody> {
   List<CompanySectionModel> companySections = [
     CompanySectionModel(
       title: 'Ships',
-      image: '',
+      image: 'assets/images/ships.jpg',
     ),
     CompanySectionModel(
       title: 'Crew',
-      image: '',
+      image: 'assets/images/crew.jpg',
     ),
     CompanySectionModel(
       title: 'About',
-      image: '',
+      image: 'assets/images/about.jpg',
     ),
   ];
 
@@ -30,9 +31,9 @@ class _CompanySectionsScreenBodyState extends State<CompanySectionsScreenBody> {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
       child: ListView.builder(
-        itemBuilder: (context, index) {
-          return;
-        },
+        itemBuilder: (context, index) => CompanySectionsListViewItem(
+          companySection: companySections[index],
+        ),
         itemCount: companySections.length,
       ),
     );
