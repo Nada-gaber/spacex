@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/features/company_sections/ui/company_sections_screen.dart';
 import 'package:spacex/features/home/ui/screens/home_screen.dart';
 import 'package:spacex/features/layout/models/rive_model.dart';
 import 'package:spacex/features/layout/ui/widgets/custom_animated_bar.dart';
@@ -43,7 +44,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   List<Widget> screens = [
     const HomeScreen(),
-    Container(),
+    const CompanySectionsScreen(),
     Container(),
     const ProfileScreen(),
   ];
