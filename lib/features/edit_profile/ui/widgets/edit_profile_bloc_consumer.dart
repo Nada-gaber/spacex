@@ -23,7 +23,7 @@ class EditProfileBlocConsumer extends StatelessWidget {
         } else if (state is EditProfileDataSuccess) {
           showToast(text: 'Profile updated successfully');
           context.pushNamedAndRemoveUntil(
-            Routes.home,
+            Routes.layout,
             predicate: (route) => false,
           );
           requestLoading = false;

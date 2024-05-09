@@ -52,6 +52,8 @@ dependencies:
   carousel_slider: ^4.2.1
   #cool and beautiful text animations.
   animated_text_kit: ^4.2.2
+  #bottom nav bar icons with cool animation
+  rive: ^0.13.4
 
 flutter_launcher_icons:
   android: "ic_launcher"

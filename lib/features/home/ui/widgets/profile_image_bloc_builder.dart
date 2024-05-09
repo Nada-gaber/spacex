@@ -16,7 +16,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     if (getProfileDataState is GetProfileDataSuccess) {
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: GestureDetector(
           onTap: () {
             context.pushNamed(Routes.editProfileScreen);
@@ -44,7 +44,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
       );
     } else if (getProfileDataState is GetProfileDataFailure) {
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: CircleAvatar(
           radius: screenWidth / 15,
           backgroundColor: Colors.transparent,
@@ -53,7 +53,7 @@ class ProfileImageBlocBuilder extends StatelessWidget {
       );
     } else {
       return const Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(4.0),
         child: CustomHomeProfileImageLoading(),
       );
     }
