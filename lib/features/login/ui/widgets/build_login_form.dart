@@ -4,8 +4,15 @@ import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 
-class BuildLoginForm extends StatelessWidget {
+class BuildLoginForm extends StatefulWidget {
   const BuildLoginForm({super.key});
+
+  @override
+  State<BuildLoginForm> createState() => _BuildLoginFormState();
+}
+
+class _BuildLoginFormState extends State<BuildLoginForm> {
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +31,10 @@ class BuildLoginForm extends StatelessWidget {
               return null;
             },
             text: 'Email Address',
-            icon: Icons.mail_outline_outlined,
+            suffixIcon: const Icon(
+              Icons.mail_outline_outlined,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(height: 25),
           CustomTextFormField(
@@ -36,8 +46,26 @@ class BuildLoginForm extends StatelessWidget {
               return null;
             },
             text: 'Password',
-            obscureText: true,
-            icon: Icons.lock_outline_rounded,
+            obscureText: isVisible ? false : true,
+            suffixIcon: isVisible ? IconButton(
+              onPressed: () {
+                isVisible = false;
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.visibility,
+                color: Colors.white,
+              ),
+            ) : IconButton(
+              onPressed: () {
+                isVisible = true;
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.visibility_off,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),
