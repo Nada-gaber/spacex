@@ -9,7 +9,8 @@ import '../../../../core/utils/nonetwork_toast.dart';
 import '../views/crew_member_details_screen.dart';
 
 class CrewMemberItem extends StatelessWidget {
-  const CrewMemberItem({super.key, required this.crewMember, required this.isNetworkConnected});
+  const CrewMemberItem(
+      {super.key, required this.crewMember, required this.isNetworkConnected});
 
   final CrewModel crewMember;
   final bool isNetworkConnected;
@@ -17,24 +18,24 @@ class CrewMemberItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:
-      isNetworkConnected ?
-       () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return CrewMemberDetailsScreen(
-                crewModel: crewMember,
+      onTap: isNetworkConnected
+          ? () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return CrewMemberDetailsScreen(
+                      crewModel: crewMember,
+                    );
+                  },
+                ),
+              );
+            }
+          : () {
+              showToastNoNetwork(
+                context,
               );
             },
-          ),
-        );
-      } : () {
-                showToastNoNetwork(
-                  context,
-                );
-              },
       child: ClipRRect(
         borderRadius: BorderRadiusDirectional.circular(12),
         child: GridTile(
