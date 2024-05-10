@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
+
+import '../../../core/utils/database_helper.dart';
 import '../../../core/widgets/saved_floating_action_button.dart';
+import '../../saved_items/data/models/saved_item.dart';
 import 'widgets/container_image.dart';
 import 'widgets/ship_detail_app_bar.dart';
 
@@ -13,6 +16,7 @@ class ShipDetails extends StatelessWidget {
   final int mass;
   final String type;
   final bool isNetworkConnected;
+
   const ShipDetails({
     required this.shipImage,
     required this.shipName,
@@ -25,6 +29,7 @@ class ShipDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataBaseHelper db = DataBaseHelper();
     return Scaffold(
       backgroundColor: AppColors.backgroundDarkBlue,
       appBar: shipDetailAppBar(shipName),
@@ -33,7 +38,8 @@ class ShipDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 12),
-            detailImageContainer(context, shipImage, shipName,isNetworkConnected ),
+            detailImageContainer(
+                context, shipImage, shipName, isNetworkConnected),
             const Padding(
               padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),
               child: Text(
@@ -50,8 +56,20 @@ class ShipDetails extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: const SavedFloatingActionButton(),
-
+      floatingActionButton: SavedFloatingActionButton(
+        icon: Icons.star_border,
+        onPressed: () async {
+          SavedItemModel savedItem = SavedItemModel(
+              id: null,
+              title: shipName,
+              imageUrl: shipImage,
+              country: yearBuilt.toString(),
+              type: "Ship");
+          await db.isSaved(shipName)
+              ? await db.delete(shipName)
+              : await db.saveItem(savedItem);
+        },
+      ),
     );
   }
 }
