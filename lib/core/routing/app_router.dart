@@ -17,6 +17,7 @@ import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
 import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
+import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 
@@ -54,9 +55,12 @@ class AppRouter {
       case Routes.rocketDetails:
         final arg = settings.arguments as Rocket;
         return MaterialPageRoute(
-          builder: (context) => RocketDetailsScreen(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<SavedItemsCubit>(),
+  child: RocketDetailsScreen(
             rocket: arg,
           ),
+),
         );
       case Routes.launchPadDetails:
         final arg = settings.arguments as LaunchPad;
@@ -117,7 +121,10 @@ class AppRouter {
         );
       case Routes.savedItemsScreen:
         return MaterialPageRoute(
-          builder: (context) => const SavedItemsScreen(),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<SavedItemsCubit>(),
+
+              child: const SavedItemsScreen()),
         );
     }
     return null;
