@@ -15,9 +15,11 @@ class SpacexApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt.get<GetProfileDataCubit>(),
       child: MaterialApp(
+        
         theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'TR',
+         
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splashScreen,
