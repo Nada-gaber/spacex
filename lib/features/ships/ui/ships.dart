@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/constant/images.dart';
-import 'package:spacex/features/ships/ui/widgets/custom_ships_loading.dart';
+import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import '../../../core/networking/web_services.dart';
 import '../../../core/widgets/custom_failure_widget.dart';
 import '../business_logic/cubit/ships_cubit.dart';
@@ -62,7 +62,9 @@ class _ShipsScreenState extends State<ShipsScreen> {
               : const Text('SpaceX Ships'),
           actions: [
             IconButton(
-              icon: Icon(_isSearchBarActive ? Icons.close : Icons.search),
+              icon: Icon(
+                _isSearchBarActive ? Icons.close : Icons.search,
+              ),
               onPressed: _handleSearchClick,
             ),
           ],
@@ -83,7 +85,9 @@ class _ShipsScreenState extends State<ShipsScreen> {
                       ship.yearBuilt ?? 00,
                       ship.massKg ?? 00,
                       ship.type ?? 'Not Defined',
-                      state is ShipsError == true ? false :true );
+                      state is ShipsError == true ? false : true,
+                      ship.active ?? false,
+                      ship.homePort ?? 'Not Defined');
                 },
               );
             } else if (state is ShipsError) {
@@ -94,7 +98,7 @@ class _ShipsScreenState extends State<ShipsScreen> {
                 ),
               );
             } else {
-              return const CustomShipsLoading();
+              return const CustomLoadingWidget();
             }
           },
         ),
@@ -102,4 +106,3 @@ class _ShipsScreenState extends State<ShipsScreen> {
     );
   }
 }
-
