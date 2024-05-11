@@ -31,7 +31,7 @@ class SavedItemWidget extends StatelessWidget {
         borderRadius: const BorderRadiusDirectional.all(Radius.circular(16)),
         border: Border.all(
           color: Colors.blue,
-          width: .5
+          width: 1
         )
       ),
       child: Row(
