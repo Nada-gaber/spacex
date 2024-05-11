@@ -61,16 +61,19 @@ class _RocketDetailsScreenState extends State<RocketDetailsScreen> {
             if (state is ItemIsSaved) {
               return SavedFloatingActionButton(
                 icon: state.isSaved ? Icons.star : Icons.star_border,
-                onPressed: () async {
+                onPressed: ()  {
                   state.isSaved
-                      ? await db.delete(widget.rocket.name.toString())
-                      : await db.saveItem(savedItem);
+                      ?  db.delete(widget.rocket.name.toString())
+                      :  db.saveItem(savedItem);
+                  BlocProvider.of<SavedItemsCubit>(context)
+                      .checkIsSaved(widget.rocket.name.toString());
                 },
               );
             } else {
               return const CustomLoadingWidget(color: AppColors.textWhite);
             }
           },
-        ));
+        ),
+    );
   }
 }
