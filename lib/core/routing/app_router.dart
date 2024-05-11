@@ -65,9 +65,12 @@ class AppRouter {
       case Routes.launchPadDetails:
         final arg = settings.arguments as LaunchPad;
         return MaterialPageRoute(
-          builder: (context) => LaunchPadsDetailsScreen(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<SavedItemsCubit>(),
+  child: LaunchPadsDetailsScreen(
             launchPad: arg,
           ),
+),
         );
       case Routes.splashScreen:
         return MaterialPageRoute(builder: (context) => const SplashScreen());
