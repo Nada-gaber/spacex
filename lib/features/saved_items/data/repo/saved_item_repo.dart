@@ -30,16 +30,5 @@ class SavedItemsRepo {
   }
 
 
-  // Future<void> toggleFavorite(SavedItemModel item) async {
-  //   try {
-  //     final isCurrentlySaved = await dataBaseHelper.isSaved(item.title);
-  //     if (isCurrentlySaved) {
-  //       await dataBaseHelper.delete(item.title);
-  //     } else {
-  //       await dataBaseHelper.saveItem(item);
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  // }
+
 }
