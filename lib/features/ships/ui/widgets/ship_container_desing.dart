@@ -1,92 +1,68 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:spacex/core/constant/colors.dart';
-import 'package:spacex/core/themes/text_styles.dart';
+import 'package:gradient_borders/gradient_borders.dart';
+import 'package:spacex/core/widgets/text_color_animation.dart';
+import 'package:spacex/features/ships/ui/widgets/cached_image.dart';
+import 'package:spacex/features/ships/ui/widgets/ships_container_details.dart';
 
-containerShipDesign(BuildContext context, String shipImage, String shipName) {
-  return Column(
-    children: [
-      Container(
-        height: MediaQuery.of(context).size.height / 4,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: -5.0,
-              blurRadius: 6.0,
-            ),
-          ],
+
+class ContainerShipDesign extends StatelessWidget {
+  final String shipImage;
+  final String shipName;
+  final bool isActive;
+  final String homePort;
+  const ContainerShipDesign(
+      {super.key,
+      required this.shipImage,
+      required this.shipName,
+      required this.isActive,
+      required this.homePort});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: AppColors.backgroundDarkBlue,
+        border: GradientBoxBorder(
+          gradient: LinearGradient(colors: [Colors.blue, AppColors.blueGray]),
+          width: 2,
         ),
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          child: Stack(
-            children: [
-              Hero(
-                tag: shipName,
-                child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 4,
-                  width: MediaQuery.of(context).size.width,
-                  child: FittedBox(
-                    fit: BoxFit.fill,
-                    child: CachedNetworkImage(
-                      imageUrl: shipImage,
-                      placeholder: (context, url) => Shimmer(
-                        gradient: const LinearGradient(
-                          colors: [
-                            AppColors.blueGray,
-                            AppColors.buttonBlue,
-                            Color.fromARGB(255, 23, 42, 63),
-                          ],
-                          stops: [
-                            0.1,
-                            0.3,
-                            0.4,
-                          ],
-                          begin: Alignment(-1.0, -0.3),
-                          end: Alignment(1.0, 0.3),
-                          tileMode: TileMode.clamp,
-                        ),
-                        child: Container(
-                          color: Colors.grey[200],
-                        ),
-                      ),
-                      errorWidget: (context, url, error) =>
-                          Image.asset("assets/images/no_connection.png"),
-                    ),
-                  ),
-                ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+        boxShadow: [
+          BoxShadow(
+            spreadRadius: -5.0,
+            blurRadius: 6.0,
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(5),
               ),
-            ],
-          ),
-        ),
-      ),
-      Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
-          color: AppColors.buttonBlue,
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: -5.0,
-              blurRadius: 6.0,
-            ),
-          ],
-        ),
-        child: Align(
-          alignment: Alignment.bottomLeft,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 15),
-            child: Text(
-              shipName,
-              style: MyTextStyles.font18WhiteBold,
+              child: Hero(
+                tag: TextColorAnimation(
+                    textAnimated: shipName,
+                    fontSize: 13,
+                    padding: 0,
+                    alignment: Alignment.centerLeft),
+                child: Container(
+                    color: AppColors.backgroundDarkBlue,
+                    height: MediaQuery.of(context).size.height / 5,
+                    width: MediaQuery.of(context).size.width / 3,
+                    child: CachedImage(shipImage: shipImage)),
+              ),
             ),
           ),
-        ),
+          ShipsContainerDetails(
+              shipName: shipName, homePort: homePort, isActive: isActive),
+        ],
       ),
-    ],
-  );
+    );
+  }
 }
