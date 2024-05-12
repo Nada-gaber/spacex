@@ -3,8 +3,16 @@ import 'package:spacex/features/ships/ui/ship_detail.dart';
 import '../../../../core/utils/nonetwork_toast.dart';
 import 'ship_container_desing.dart';
 
-shipContainer(BuildContext context, String shipImage, String shipName,
-    int yearBuilt, int mass, String type, bool isNetworkConnected) {
+shipContainer(
+    BuildContext context,
+    String shipImage,
+    String shipName,
+    int yearBuilt,
+    int mass,
+    String type,
+    bool isNetworkConnected,
+    bool isActive,
+    String homePort) {
   return Padding(
     padding: const EdgeInsets.all(10.0),
     child: InkWell(
@@ -23,15 +31,21 @@ shipContainer(BuildContext context, String shipImage, String shipName,
                       yearBuilt: yearBuilt,
                       mass: mass,
                       type: type,
+                      isActive: isActive,
+                      homePort: homePort,
                     ),
                   ),
                 );
               }
             : () {
-                showToastNoNetwork(context,);
+                showToastNoNetwork(
+                  context,
+                );
               },
-        child: containerShipDesign(context, shipImage, shipName)),
+        child: ContainerShipDesign(
+            shipImage: shipImage,
+            shipName: shipName,
+            isActive: isActive,
+            homePort: homePort)),
   );
 }
-
-
