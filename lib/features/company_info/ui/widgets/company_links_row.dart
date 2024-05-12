@@ -5,22 +5,13 @@ import 'custom_icon_company.dart';
 
 companyLinkRow(String twitterLink, String websiteLink, String flickrLink) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
-      costomIconButton(
-        twitterLink,
-        FontAwesomeIcons.twitter,
-      ),
+      costomIconButton(twitterLink, FontAwesomeIcons.twitter, 'twitter'),
       const SizedBox(width: 10),
-      costomIconButton(
-        websiteLink,
-        FontAwesomeIcons.globe,
-      ),
+      costomIconButton(websiteLink, FontAwesomeIcons.globe, 'website'),
       const SizedBox(width: 10),
-      costomIconButton(
-        flickrLink,
-        FontAwesomeIcons.flickr,
-      ),
+      costomIconButton(flickrLink, FontAwesomeIcons.flickr, 'flickr'),
     ],
   );
 }
