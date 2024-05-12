@@ -11,6 +11,9 @@ class Ships {
   @JsonKey(name: "mass_kg")
   final int? massKg;
   final String? type;
+  final bool? active;
+  @JsonKey(name: "home_port")
+  final String? homePort;
 
   Ships({
     this.image,
@@ -18,6 +21,8 @@ class Ships {
     this.yearBuilt,
     this.massKg,
     this.type,
+    this.active,
+    this.homePort,
   });
   factory Ships.fromJson(Map<String, dynamic> json) => _$ShipsFromJson(json);
   Map<String, dynamic> toJson() => _$ShipsToJson(this);
