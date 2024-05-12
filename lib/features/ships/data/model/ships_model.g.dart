@@ -12,6 +12,8 @@ Ships _$ShipsFromJson(Map<String, dynamic> json) => Ships(
       yearBuilt: (json['year_built'] as num?)?.toInt(),
       massKg: (json['mass_kg'] as num?)?.toInt(),
       type: json['type'] as String?,
+      active: json['active'] as bool?,
+      homePort: json['home_port'] as String?,
     );
 
 Map<String, dynamic> _$ShipsToJson(Ships instance) => <String, dynamic>{
@@ -20,4 +22,6 @@ Map<String, dynamic> _$ShipsToJson(Ships instance) => <String, dynamic>{
       'year_built': instance.yearBuilt,
       'mass_kg': instance.massKg,
       'type': instance.type,
+      'active': instance.active,
+      'home_port': instance.homePort,
     };
