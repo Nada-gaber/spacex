@@ -70,7 +70,7 @@ class _RocketDetailsScreenState extends State<RocketDetailsScreen> {
                 },
               );
             } else {
-              return const CustomLoadingWidget(color: AppColors.textWhite);
+              return const CustomLoadingWidget();
             }
           },
         ),

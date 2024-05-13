@@ -65,7 +65,7 @@ class _LaunchPadsDetailsScreenState extends State<LaunchPadsDetailsScreen> {
               },
             );
           } else {
-            return const CustomLoadingWidget(color: AppColors.textWhite);
+            return const CustomLoadingWidget();
           }
         },
       ),

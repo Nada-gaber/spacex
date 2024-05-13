@@ -73,7 +73,7 @@ class _SavedItemsScreenState extends State<SavedItemsScreen> {
               );
             } else {
               return const Center(
-                child: CustomLoadingWidget(color: AppColors.blueGray),
+                child: CustomLoadingWidget(),
               );
             }
           },
