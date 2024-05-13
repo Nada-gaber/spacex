@@ -23,7 +23,7 @@ class LoginBlocConsumer extends StatelessWidget {
           MySharedPreferences.setString('token', state.token);
           showToast(text: 'Login done successfully');
           context.pushNamedAndRemoveUntil(
-            Routes.home,
+            Routes.layout,
             predicate: (route) => false,
           );
           requestLoading = false;

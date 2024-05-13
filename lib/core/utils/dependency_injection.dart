@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spacex/core/networking/web_services.dart';
+import 'package:spacex/core/utils/database_helper.dart';
 import 'package:spacex/features/company_info/business_logic/cubit/company_info_cubit.dart';
 import 'package:spacex/features/company_info/data/repo/company_info_repo.dart';
 import 'package:spacex/features/crew/data/repo/crew_repo.dart';
@@ -23,6 +24,8 @@ import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/register/data/repo/register_repo.dart';
 import 'package:spacex/features/register/logic/create_user/create_user_cubit.dart';
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
+import 'package:spacex/features/saved_items/data/repo/saved_item_repo.dart';
+import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/ships/data/repo/ships_repo.dart';
 
 import '../../features/ships/business_logic/cubit/ships_cubit.dart';
@@ -100,10 +103,9 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<LaunchPadsCubit>(() => LaunchPadsCubit(getIt()));
   getIt.registerLazySingleton<LaunchPadRepo>(() => LaunchPadRepo(getIt()));
 
-
   // create user
   getIt.registerFactory<CreateUserCubit>(
-        () => CreateUserCubit(
+    () => CreateUserCubit(
       getIt(),
     ),
   );
@@ -143,6 +145,10 @@ Future<void> setupGetIt() async {
       getIt(),
     ),
   );
+    //saved items
+  getIt.registerLazySingleton<DataBaseHelper>(() => DataBaseHelper());
+  getIt.registerFactory<SavedItemsCubit>(() => SavedItemsCubit(getIt()));
+  getIt.registerLazySingleton<SavedItemsRepo>(() => SavedItemsRepo(getIt()));
 }
 
 Dio createAndSetUpDio() {

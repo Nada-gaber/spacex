@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ? MyStrings.isFirstTimeToOpenApp == true
                 ? Routes.onboarding
                 : Routes.login
-            : Routes.home,
+            : Routes.layout,
       );
     });
   }
