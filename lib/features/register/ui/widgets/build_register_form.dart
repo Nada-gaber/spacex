@@ -4,8 +4,15 @@ import 'package:spacex/core/utils/app_regex.dart';
 import 'package:spacex/core/widgets/custom_text_form_field.dart';
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
 
-class BuildRegisterForm extends StatelessWidget {
+class BuildRegisterForm extends StatefulWidget {
   const BuildRegisterForm({super.key});
+
+  @override
+  State<BuildRegisterForm> createState() => _BuildRegisterFormState();
+}
+
+class _BuildRegisterFormState extends State<BuildRegisterForm> {
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +29,10 @@ class BuildRegisterForm extends StatelessWidget {
               return null;
             },
             text: 'Your Name',
-            icon: Icons.person_outline_outlined,
+            suffixIcon: const Icon(
+              Icons.person_outline_outlined,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(height: 25),
           CustomTextFormField(
@@ -36,7 +46,10 @@ class BuildRegisterForm extends StatelessWidget {
               return null;
             },
             text: 'Email Address',
-            icon: Icons.mail_outline_outlined,
+            suffixIcon: const Icon(
+              Icons.mail_outline_outlined,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(height: 25),
           CustomTextFormField(
@@ -50,8 +63,26 @@ class BuildRegisterForm extends StatelessWidget {
               return null;
             },
             text: 'Password',
-            obscureText: true,
-            icon: Icons.lock_outline_rounded,
+            obscureText: isVisible ? false : true,
+            suffixIcon: isVisible ? IconButton(
+              onPressed: () {
+                isVisible = false;
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.visibility,
+                color: Colors.white,
+              ),
+            ) : IconButton(
+              onPressed: () {
+                isVisible = true;
+                setState(() {});
+              },
+              icon: const Icon(
+                Icons.visibility_off,
+                color: Colors.white,
+              ),
+            ),
           ),
         ],
       ),

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:spacex/core/constant/colors.dart';
-
 import '../../../../../../core/themes/text_styles.dart';
 
 detailsValuesRow(dynamic key, dynamic value) {
   return Padding(
-    padding: const EdgeInsets.only(right: 20.0, left: 20),
+    padding: const EdgeInsets.only(right: 10.0, left: 10),
     child: Column(
       children: [
         Row(
@@ -23,9 +21,6 @@ detailsValuesRow(dynamic key, dynamic value) {
         ),
         const SizedBox(
           height: 7,
-        ),
-        const Divider(
-          color: AppColors.blueGray,
         ),
       ],
     ),

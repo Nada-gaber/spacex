@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
+import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_info_appbar.dart';
 import 'package:spacex/features/company_info/ui/widgets/company_loaded.dart';
 import '../../../core/networking/web_services.dart';
@@ -49,11 +50,7 @@ class CompanyInfoScreen extends StatelessWidget {
                   ),
                 );
               } else {
-                return Center(
-                    child: SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Image.asset('assets/images/loading.gif')));
+                return const CustomLoadingWidget();
               }
             },
           ),

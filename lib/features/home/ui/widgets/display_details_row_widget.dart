@@ -22,7 +22,7 @@ class DisplayDetailsRowWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              "$nameOfKey :",
+              "$nameOfKey ",
               style: MyTextStyles.font18WhiteBold,
             ),
             const SizedBox(width: 10,),
