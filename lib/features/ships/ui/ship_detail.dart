@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/widgets/text_color_animation.dart';
 import 'package:spacex/core/widgets/text_style.dart';
+import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
-
 import '../../../core/utils/database_helper.dart';
 import '../../../core/widgets/custom_loading_widget.dart';
 import '../../../core/widgets/saved_floating_action_button.dart';
@@ -22,17 +22,28 @@ class ShipDetails extends StatefulWidget {
   final bool isNetworkConnected;
   final bool isActive;
   final String homePort;
-  const ShipDetails({
+
+  const ShipDetails({super.key, 
     required this.shipImage,
     required this.shipName,
-    super.key,
+    this.isNetworkConnected = true,
     required this.yearBuilt,
     required this.mass,
     required this.type,
-    this.isNetworkConnected = true,
     required this.isActive,
     required this.homePort,
   });
+
+  @override
+  State<ShipDetails> createState() => _ShipDetailsState();
+}
+
+class _ShipDetailsState extends State<ShipDetails> {
+  @override
+  void initState() {
+    BlocProvider.of<SavedItemsCubit>(context).checkIsSaved(widget.shipName);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +64,8 @@ class ShipDetails extends StatefulWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              detailImageContainer(
-                  context, shipImage, shipName, isNetworkConnected),
+              detailImageContainer(context, widget.shipImage, widget.shipName,
+                  widget.isNetworkConnected),
               const SizedBox(
                 height: 20,
               ),
@@ -67,12 +78,12 @@ class ShipDetails extends StatefulWidget {
               const SizedBox(
                 height: 10,
               ),
-              textStyle('Is $shipName Active?', 17),
-              RowIsActive(isActive: isActive),
+              textStyle('Is ${widget.shipName} Active?', 17),
+              RowIsActive(isActive: widget.isActive),
               const SizedBox(
                 height: 10,
               ),
-              textStyle('Home : $homePort', 17),
+              textStyle('Home : ${widget.homePort}', 17),
               const SizedBox(
                 height: 15,
               ),
@@ -92,9 +103,9 @@ class ShipDetails extends StatefulWidget {
               const SizedBox(
                 height: 10,
               ),
-              detailsValuesRow('Year built :', yearBuilt),
-              detailsValuesRow('Mass Kg:', mass),
-              detailsValuesRow('Type :', type),
+              detailsValuesRow('Year built :', widget.yearBuilt),
+              detailsValuesRow('Mass Kg:', widget.mass),
+              detailsValuesRow('Type :', widget.type),
               const SizedBox(
                 height: 15,
               ),
@@ -116,7 +127,7 @@ class ShipDetails extends StatefulWidget {
               },
             );
           } else {
-            return const CustomLoadingWidget(color: AppColors.textWhite);
+            return const CustomLoadingWidget();
           }
         },
       ),
