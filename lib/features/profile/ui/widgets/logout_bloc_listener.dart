@@ -6,7 +6,7 @@ import 'package:spacex/core/routing/extensions.dart';
 import 'package:spacex/core/routing/routes.dart';
 import 'package:spacex/core/utils/shared_preferences.dart';
 import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
-import 'package:spacex/features/home/ui/widgets/drawer_component.dart';
+import 'package:spacex/features/profile/ui/widgets/profile_component.dart';
 
 class LogoutBlocListener extends StatelessWidget {
   const LogoutBlocListener({super.key});
@@ -30,7 +30,7 @@ class LogoutBlocListener extends StatelessWidget {
           showToast(text: state.errorMessage);
         }
       },
-      child: DrawerComponent(
+      child: ProfileComponent(
         title: "Log out",
         icon: Icons.logout,
         onTap: () {

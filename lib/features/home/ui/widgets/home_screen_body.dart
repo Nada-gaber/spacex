@@ -46,6 +46,11 @@ class HomeScreenBody extends StatelessWidget {
           const SliverToBoxAdapter(
             child: LaunchPadListView(),
           ),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 80,
+            ),
+          ),
         ],
       ),
     );

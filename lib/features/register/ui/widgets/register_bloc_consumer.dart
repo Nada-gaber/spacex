@@ -26,7 +26,7 @@ class RegisterBlocConsumer extends StatelessWidget {
           context.read<CreateUserCubit>().createUser(state.userModel).then((value) {
             showToast(text: 'Register done successfully');
             context.pushNamedAndRemoveUntil(
-              Routes.home,
+              Routes.layout,
               predicate: (route) => false,
             );
           });
