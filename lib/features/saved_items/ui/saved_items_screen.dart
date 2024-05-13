@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/themes/text_styles.dart';
 import 'package:spacex/core/widgets/custom_loading_widget.dart';
-import 'package:spacex/features/home/ui/widgets/drawer_component.dart';
 import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/saved_items/ui/widgets/saved_item_widget.dart';
 
 import '../../../core/constant/colors.dart';
+import '../../profile/ui/widgets/profile_component.dart';
 
 class SavedItemsScreen extends StatefulWidget {
   const SavedItemsScreen({super.key});

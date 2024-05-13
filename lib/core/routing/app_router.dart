@@ -24,7 +24,6 @@ import 'package:spacex/features/ships/ui/ships.dart';
 
 import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
-import '../../features/home/ui/screens/home_screen.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
 import '../../features/splash/splash_screen.dart';
@@ -49,6 +48,9 @@ class AppRouter {
               BlocProvider(
                 create: (context) => getIt<LogoutCubit>(),
               ),
+    BlocProvider(
+    create: (context) => getIt.get<SavedItemsCubit>(),
+    ),
             ],
             child: const LayoutScreen(),
           ),

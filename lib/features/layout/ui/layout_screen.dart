@@ -6,6 +6,7 @@ import 'package:spacex/features/home/ui/screens/home_screen.dart';
 import 'package:spacex/features/layout/models/rive_model.dart';
 import 'package:spacex/features/layout/ui/widgets/custom_animated_bar.dart';
 import 'package:spacex/features/profile/ui/profile_screen.dart';
+import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -45,7 +46,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   List<Widget> screens = [
     const HomeScreen(),
     const CompanySectionsScreen(),
-    Container(),
+    const SavedItemsScreen(),
     const ProfileScreen(),
   ];
 
