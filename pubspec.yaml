@@ -54,6 +54,8 @@ dependencies:
   animated_text_kit: ^4.2.2
   #for local database to store saved items
   sqflite: ^2.3.3+1
+  #bottom nav bar icons with cool animation
+  rive: ^0.13.4
 
 flutter_launcher_icons:
   android: "ic_launcher"

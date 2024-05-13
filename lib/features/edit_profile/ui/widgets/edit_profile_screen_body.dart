@@ -24,7 +24,10 @@ class EditProfileScreenBody extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 18,
             ),
             CustomTextFormField(
-              icon: Icons.person_outline_outlined,
+              suffixIcon: const Icon(
+                Icons.person_outline_outlined,
+                color: Colors.white,
+              ),
               text: 'Please Enter Your Name',
               controller: context.read<EditProfileDataCubit>().nameController,
               validator: (value) {

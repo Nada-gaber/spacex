@@ -11,6 +11,7 @@ import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 import 'package:spacex/features/home/logic/cubits/launch_pads_cubit/launch_pads_cubit.dart';
 import 'package:spacex/features/home/logic/cubits/rocket_cubit/rocket_cubit.dart';
 import 'package:spacex/features/home/logic/logout/logout_cubit.dart';
+import 'package:spacex/features/layout/ui/layout_screen.dart';
 import 'package:spacex/features/login/logic/login_cubit/login_cubit.dart';
 import 'package:spacex/features/login/ui/login_screen.dart';
 import 'package:spacex/features/onboarding/ui/onboarding_screen.dart';
@@ -35,7 +36,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const OnboardingScreen(),
         );
-      case Routes.home:
+      case Routes.layout:
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
@@ -49,7 +50,7 @@ class AppRouter {
                 create: (context) => getIt<LogoutCubit>(),
               ),
             ],
-            child: const HomeScreen(),
+            child: const LayoutScreen(),
           ),
         );
       case Routes.rocketDetails:

@@ -42,13 +42,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   .delete()
                   .then((value) {
                 context.pushNamedAndRemoveUntil(
-                  Routes.home,
+                  Routes.layout,
                   predicate: (route) => false,
                 );
               });
             } else {
               context.pushNamedAndRemoveUntil(
-                Routes.home,
+                Routes.layout,
                 predicate: (route) => false,
               );
             }
@@ -76,13 +76,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         .delete()
                         .then((value) {
                       context.pushNamedAndRemoveUntil(
-                        Routes.home,
+                        Routes.layout,
                         predicate: (route) => false,
                       );
                     });
                   } else {
                     context.pushNamedAndRemoveUntil(
-                      Routes.home,
+                      Routes.layout,
                       predicate: (route) => false,
                     );
                   }
