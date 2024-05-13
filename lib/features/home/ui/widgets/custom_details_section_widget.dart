@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spacex/features/home/ui/widgets/display_details_row_widget.dart';
 
 import '../../data/models/rocket_model.dart';
-import 'drawer_component.dart';
+import '../../../profile/ui/widgets/profile_component.dart';
 
 class CustomDetailsSectionWidget extends StatelessWidget {
   final Rocket rocket;

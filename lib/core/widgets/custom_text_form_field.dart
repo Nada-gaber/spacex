@@ -5,7 +5,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final String text;
-  final IconData icon;
+  final Widget suffixIcon;
   final bool? obscureText;
 
   const CustomTextFormField({
@@ -13,7 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.controller,
     required this.text,
-    required this.icon,
+    required this.suffixIcon,
     this.obscureText,
   });
 
@@ -26,10 +26,7 @@ class CustomTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: text,
         hintStyle: MyTextStyles.font14WhiteBold,
-        suffixIcon: Icon(
-          icon,
-          color: Colors.white,
-        ),
+        suffixIcon: suffixIcon,
         errorMaxLines: 4,
       ),
       obscureText: obscureText ?? false,

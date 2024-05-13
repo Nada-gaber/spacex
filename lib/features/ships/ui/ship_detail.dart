@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/widgets/text_color_animation.dart';
 import 'package:spacex/core/widgets/text_style.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
+
+import '../../../core/utils/database_helper.dart';
+import '../../../core/widgets/custom_loading_widget.dart';
+import '../../../core/widgets/saved_floating_action_button.dart';
+import '../../saved_items/data/models/saved_item.dart';
 import 'widgets/container_image.dart';
 import 'widgets/row_is_active.dart';
 import 'widgets/ship_detail_app_bar.dart';
 
-class ShipDetails extends StatelessWidget {
+class ShipDetails extends StatefulWidget {
   final String shipImage;
   final String shipName;
   final int yearBuilt;
@@ -30,9 +36,16 @@ class ShipDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataBaseHelper db = DataBaseHelper();
+    SavedItemModel savedItem = SavedItemModel(
+        id: null,
+        title: widget.shipName,
+        imageUrl: widget.shipImage,
+        country: widget.yearBuilt.toString(),
+        type: "Ship");
     return Scaffold(
       backgroundColor: AppColors.backgroundDarkBlue,
-      appBar: shipDetailAppBar(shipName),
+      appBar: shipDetailAppBar(widget.shipName),
       body: SingleChildScrollView(
         child: Padding(
           padding:
@@ -88,6 +101,24 @@ class ShipDetails extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: BlocBuilder<SavedItemsCubit, SavedItemsState>(
+        builder: (context, state) {
+          if (state is ItemIsSaved) {
+            return SavedFloatingActionButton(
+              icon: state.isSaved ? Icons.star : Icons.star_border,
+              onPressed: () {
+                state.isSaved
+                    ? db.delete(widget.shipName)
+                    : db.saveItem(savedItem);
+                BlocProvider.of<SavedItemsCubit>(context)
+                    .checkIsSaved(widget.shipName);
+              },
+            );
+          } else {
+            return const CustomLoadingWidget(color: AppColors.textWhite);
+          }
+        },
       ),
     );
   }

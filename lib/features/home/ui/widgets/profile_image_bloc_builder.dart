@@ -7,55 +7,57 @@ import 'package:spacex/features/home/logic/get_profile_data/get_profile_data_cub
 import 'package:spacex/features/home/ui/widgets/custom_home_profile_image_loading.dart';
 
 class ProfileImageBlocBuilder extends StatelessWidget {
-  final GetProfileDataState getProfileDataState;
 
-  const ProfileImageBlocBuilder({super.key, required this.getProfileDataState});
+  const ProfileImageBlocBuilder({super.key});
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    if (getProfileDataState is GetProfileDataSuccess) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GestureDetector(
-          onTap: () {
-            context.pushNamed(Routes.editProfileScreen);
-          },
-          child: Container(
-            height: MediaQuery.sizeOf(context).height * 0.1,
-            width: MediaQuery.sizeOf(context).height * 0.1,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: CachedNetworkImage(
-              imageUrl:
-                  (getProfileDataState as GetProfileDataSuccess).userModel.image,
-              fit: BoxFit.fill,
-              progressIndicatorBuilder: (context, url, downloadProgress) {
-                return const CustomHomeProfileImageLoading();
+    return BlocBuilder<GetProfileDataCubit, GetProfileDataState>(
+      builder: (context, state) {
+        if (state is GetProfileDataSuccess) {
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: GestureDetector(
+              onTap: () {
+                context.pushNamed(Routes.editProfileScreen);
               },
-              errorWidget: (context, url, error) => const Icon(
-                Icons.error_outline,
+              child: Container(
+                height: MediaQuery.sizeOf(context).height * 0.1,
+                width: MediaQuery.sizeOf(context).height * 0.1,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: CachedNetworkImage(
+                  imageUrl: state.userModel.image,
+                  fit: BoxFit.fill,
+                  progressIndicatorBuilder: (context, url, downloadProgress) {
+                    return const CustomHomeProfileImageLoading();
+                  },
+                  errorWidget: (context, url, error) => const Icon(
+                    Icons.error_outline,
+                  ),
+                ),
               ),
             ),
-          ),
-        ),
-      );
-    } else if (getProfileDataState is GetProfileDataFailure) {
-      return Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          radius: screenWidth / 15,
-          backgroundColor: Colors.transparent,
-          child: const Icon(Icons.error_outline),
-        ),
-      );
-    } else {
-      return const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: CustomHomeProfileImageLoading(),
-      );
-    }
+          );
+        } else if (state is GetProfileDataFailure) {
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: CircleAvatar(
+              radius: screenWidth / 15,
+              backgroundColor: Colors.transparent,
+              child: const Icon(Icons.error_outline),
+            ),
+          );
+        } else {
+          return const Padding(
+            padding: EdgeInsets.all(4.0),
+            child: CustomHomeProfileImageLoading(),
+          );
+        }
+      },
+    );
   }
 }

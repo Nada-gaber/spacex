@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import '../../data/models/launch_pad_model.dart';
 import 'custom_description_section_widget.dart';
 import 'display_details_row_widget.dart';
-import 'drawer_component.dart';
+import '../../../profile/ui/widgets/profile_component.dart';
 
 class LaunchPadsDetailsScreenBody extends StatelessWidget {
   final LaunchPad launchPad;

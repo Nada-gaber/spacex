@@ -3,12 +3,12 @@ import 'package:spacex/core/themes/text_styles.dart';
 
 import '../../../../core/constant/colors.dart';
 
-class DrawerComponent extends StatelessWidget {
+class ProfileComponent extends StatelessWidget {
   final String title;
   final IconData icon;
   final void Function()? onTap;
 
-  const DrawerComponent({
+  const ProfileComponent({
     super.key,
     required this.title,
     required this.icon,
@@ -17,7 +17,6 @@ class DrawerComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
 
     return GestureDetector(
       onTap: onTap,
@@ -30,7 +29,7 @@ class DrawerComponent extends StatelessWidget {
           children: [
             Icon(
               icon,
-              size: 32,
+              size: 30,
               color: AppColors.textWhite,
             ),
             const SizedBox(
@@ -38,7 +37,7 @@ class DrawerComponent extends StatelessWidget {
             ),
             Text(
               title,
-              style: MyTextStyles.font18WhiteBold,
+              style: MyTextStyles.font16WhiteBold,
             )
           ],
         ),
