@@ -51,7 +51,9 @@ dependencies:
   #display images with scroll
   carousel_slider: ^4.2.1
   #cool and beautiful text animations.
-  animated_text_kit: ^4.2.2
+  animated_text_kit: ^4.2.
+  gradient_borders: ^1.0.0
+
   #for local database to store saved items
   sqflite: ^2.3.3+1
   #bottom nav bar icons with cool animation

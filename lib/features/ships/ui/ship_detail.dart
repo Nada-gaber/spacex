@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
-import 'package:spacex/core/themes/text_styles.dart';
-import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
+import 'package:spacex/core/widgets/text_color_animation.dart';
+import 'package:spacex/core/widgets/text_style.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
 
 import '../../../core/utils/database_helper.dart';
@@ -10,6 +10,7 @@ import '../../../core/widgets/custom_loading_widget.dart';
 import '../../../core/widgets/saved_floating_action_button.dart';
 import '../../saved_items/data/models/saved_item.dart';
 import 'widgets/container_image.dart';
+import 'widgets/row_is_active.dart';
 import 'widgets/ship_detail_app_bar.dart';
 
 class ShipDetails extends StatefulWidget {
@@ -19,7 +20,8 @@ class ShipDetails extends StatefulWidget {
   final int mass;
   final String type;
   final bool isNetworkConnected;
-
+  final bool isActive;
+  final String homePort;
   const ShipDetails({
     required this.shipImage,
     required this.shipName,
@@ -28,18 +30,9 @@ class ShipDetails extends StatefulWidget {
     required this.mass,
     required this.type,
     this.isNetworkConnected = true,
+    required this.isActive,
+    required this.homePort,
   });
-
-  @override
-  State<ShipDetails> createState() => _ShipDetailsState();
-}
-
-class _ShipDetailsState extends State<ShipDetails> {
-  @override
-  void initState() {
-    BlocProvider.of<SavedItemsCubit>(context).checkIsSaved(widget.shipName);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,26 +47,59 @@ class _ShipDetailsState extends State<ShipDetails> {
       backgroundColor: AppColors.backgroundDarkBlue,
       appBar: shipDetailAppBar(widget.shipName),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 12),
-            detailImageContainer(context, widget.shipImage, widget.shipName,
-                widget.isNetworkConnected),
-            const Padding(
-              padding: EdgeInsets.only(left: 10.0, top: 15, bottom: 20),
-              child: Text(
-                'Details',
-                style: MyTextStyles.font30WhiteBold,
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 20.0, top: 10, bottom: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              detailImageContainer(
+                  context, shipImage, shipName, isNetworkConnected),
+              const SizedBox(
+                height: 20,
               ),
-            ),
-            detailsValuesRow('Year built :', widget.yearBuilt),
-            detailsValuesRow('Mass Kg:', widget.mass),
-            detailsValuesRow('Type :', widget.type),
-            const SizedBox(
-              height: 30,
-            ),
-          ],
+              const TextColorAnimation(
+                textAnimated: 'Details :',
+                fontSize: 23,
+                padding: 0,
+                alignment: Alignment.centerLeft,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              textStyle('Is $shipName Active?', 17),
+              RowIsActive(isActive: isActive),
+              const SizedBox(
+                height: 10,
+              ),
+              textStyle('Home : $homePort', 17),
+              const SizedBox(
+                height: 15,
+              ),
+              const Divider(
+                endIndent: 30,
+                indent: 30,
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const TextColorAnimation(
+                textAnimated: 'More Info :',
+                fontSize: 23,
+                padding: 0,
+                alignment: Alignment.centerLeft,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              detailsValuesRow('Year built :', yearBuilt),
+              detailsValuesRow('Mass Kg:', mass),
+              detailsValuesRow('Type :', type),
+              const SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: BlocBuilder<SavedItemsCubit, SavedItemsState>(

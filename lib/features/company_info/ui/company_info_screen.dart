@@ -52,7 +52,6 @@ class CompanyInfoScreen extends StatelessWidget {
               backgroundColor: AppColors.backgroundDarkBlue,
               appBar: companyInfoErrorAppBar(context),
               body: const CustomLoadingWidget(
-                color: Colors.white,
               ),
             );
           }
