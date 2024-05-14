@@ -4,7 +4,6 @@ import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/features/home/data/models/launch_pad_model.dart';
 
 import '../../../../core/utils/database_helper.dart';
-import '../../../../core/widgets/custom_loading_widget.dart';
 import '../../../../core/widgets/saved_floating_action_button.dart';
 import '../../../saved_items/data/models/saved_item.dart';
 import '../../../saved_items/logic/cubits/saved_items_cubit.dart';
@@ -16,17 +15,18 @@ class LaunchPadsDetailsScreen extends StatefulWidget {
   const LaunchPadsDetailsScreen({super.key, required this.launchPad});
 
   @override
-  State<LaunchPadsDetailsScreen> createState() => _LaunchPadsDetailsScreenState();
+  State<LaunchPadsDetailsScreen> createState() =>
+      _LaunchPadsDetailsScreenState();
 }
 
 class _LaunchPadsDetailsScreenState extends State<LaunchPadsDetailsScreen> {
-
   @override
   void initState() {
     BlocProvider.of<SavedItemsCubit>(context)
         .checkIsSaved(widget.launchPad.fullName.toString());
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     SavedItemModel savedItem = SavedItemModel(
@@ -51,21 +51,24 @@ class _LaunchPadsDetailsScreenState extends State<LaunchPadsDetailsScreen> {
       body: LaunchPadsDetailsScreenBody(
         launchPad: widget.launchPad,
       ),
-      floatingActionButton:  BlocBuilder<SavedItemsCubit, SavedItemsState>(
+      floatingActionButton: BlocBuilder<SavedItemsCubit, SavedItemsState>(
         builder: (context, state) {
           if (state is ItemIsSaved) {
             return SavedFloatingActionButton(
               icon: state.isSaved ? Icons.star : Icons.star_border,
-              onPressed: ()  {
+              onPressed: () {
                 state.isSaved
-                    ?  db.delete(widget.launchPad.fullName.toString())
-                    :  db.saveItem(savedItem);
+                    ? db.delete(widget.launchPad.fullName.toString())
+                    : db.saveItem(savedItem);
                 BlocProvider.of<SavedItemsCubit>(context)
                     .checkIsSaved(widget.launchPad.fullName.toString());
               },
             );
           } else {
-            return const CustomLoadingWidget();
+            return FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: AppColors.buttonBlue,
+            );
           }
         },
       ),

@@ -5,8 +5,8 @@ import 'package:spacex/core/widgets/text_color_animation.dart';
 import 'package:spacex/core/widgets/text_style.dart';
 import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/ships/ui/widgets/detail_row.dart';
+
 import '../../../core/utils/database_helper.dart';
-import '../../../core/widgets/custom_loading_widget.dart';
 import '../../../core/widgets/saved_floating_action_button.dart';
 import '../../saved_items/data/models/saved_item.dart';
 import 'widgets/container_image.dart';
@@ -23,7 +23,8 @@ class ShipDetails extends StatefulWidget {
   final bool isActive;
   final String homePort;
 
-  const ShipDetails({super.key, 
+  const ShipDetails({
+    super.key,
     required this.shipImage,
     required this.shipName,
     this.isNetworkConnected = true,
@@ -127,7 +128,10 @@ class _ShipDetailsState extends State<ShipDetails> {
               },
             );
           } else {
-            return const CustomLoadingWidget();
+            return FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: AppColors.buttonBlue,
+            );
           }
         },
       ),

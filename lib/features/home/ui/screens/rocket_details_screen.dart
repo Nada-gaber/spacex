@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/constant/colors.dart';
 import 'package:spacex/core/utils/database_helper.dart';
-import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/core/widgets/saved_floating_action_button.dart';
 import 'package:spacex/features/home/data/models/rocket_model.dart';
 import 'package:spacex/features/saved_items/data/models/saved_item.dart';
@@ -38,42 +37,45 @@ class _RocketDetailsScreenState extends State<RocketDetailsScreen> {
         type: "Rocket");
     DataBaseHelper db = DataBaseHelper();
     return Scaffold(
+      backgroundColor: AppColors.backgroundDarkBlue,
+      appBar: AppBar(
         backgroundColor: AppColors.backgroundDarkBlue,
-        appBar: AppBar(
-          backgroundColor: AppColors.backgroundDarkBlue,
-          title: Text(
-            widget.rocket.name.toString(),
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-            ),
+        title: Text(
+          widget.rocket.name.toString(),
+          style: const TextStyle(
+            fontWeight: FontWeight.w600,
           ),
-          actions: [
-            OpenUrlInBrowserIconButton(
-              urlString: widget.rocket.wikipedia.toString(),
-            ),
-          ],
         ),
-        body: RocketDetailsScreenBody(
-          rocket: widget.rocket,
-        ),
-        floatingActionButton: BlocBuilder<SavedItemsCubit, SavedItemsState>(
-          builder: (context, state) {
-            if (state is ItemIsSaved) {
-              return SavedFloatingActionButton(
-                icon: state.isSaved ? Icons.star : Icons.star_border,
-                onPressed: ()  {
-                  state.isSaved
-                      ?  db.delete(widget.rocket.name.toString())
-                      :  db.saveItem(savedItem);
-                  BlocProvider.of<SavedItemsCubit>(context)
-                      .checkIsSaved(widget.rocket.name.toString());
-                },
-              );
-            } else {
-              return const CustomLoadingWidget();
-            }
-          },
-        ),
+        actions: [
+          OpenUrlInBrowserIconButton(
+            urlString: widget.rocket.wikipedia.toString(),
+          ),
+        ],
+      ),
+      body: RocketDetailsScreenBody(
+        rocket: widget.rocket,
+      ),
+      floatingActionButton: BlocBuilder<SavedItemsCubit, SavedItemsState>(
+        builder: (context, state) {
+          if (state is ItemIsSaved) {
+            return SavedFloatingActionButton(
+              icon: state.isSaved ? Icons.star : Icons.star_border,
+              onPressed: () {
+                state.isSaved
+                    ? db.delete(widget.rocket.name.toString())
+                    : db.saveItem(savedItem);
+                BlocProvider.of<SavedItemsCubit>(context)
+                    .checkIsSaved(widget.rocket.name.toString());
+              },
+            );
+          } else {
+            return FloatingActionButton(
+              onPressed: () {},
+              backgroundColor: AppColors.buttonBlue,
+            );
+          }
+        },
+      ),
     );
   }
 }
