@@ -30,11 +30,18 @@ class _CompanySectionsScreenBodyState extends State<CompanySectionsScreenBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
-      child: ListView.builder(
-        itemBuilder: (context, index) => CompanySectionsListViewItem(
-          companySection: companySections[index],
-        ),
-        itemCount: companySections.length,
+      child: Column(
+        children: [
+          ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) => CompanySectionsListViewItem(
+              companySection: companySections[index],
+            ),
+            itemCount: companySections.length,
+          ),
+          const SizedBox(height: 80),
+        ],
       ),
     );
   }
