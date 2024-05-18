@@ -7,6 +7,7 @@ import 'package:spacex/features/layout/models/rive_model.dart';
 import 'package:spacex/features/layout/ui/widgets/custom_animated_bar.dart';
 import 'package:spacex/features/profile/ui/profile_screen.dart';
 import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
+import 'package:spacex/features/streams/ui/screens/stream_intro.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -19,8 +20,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
   List<RiveModel> bottomNavItems = [
     RiveModel(
       src: "assets/app_icon/animated-icons.riv",
-      artboard: "HOME",
-      stateMachineName: "HOME_interactivity",
+      artboard: "LIKE/STAR",
+      stateMachineName: "STAR_Interactivity",
     ),
     RiveModel(
       src: "assets/app_icon/animated-icons.riv",
@@ -29,8 +30,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
     ),
     RiveModel(
       src: "assets/app_icon/animated-icons.riv",
-      artboard: "LIKE/STAR",
-      stateMachineName: "STAR_Interactivity",
+      artboard: "HOME",
+      stateMachineName: "HOME_interactivity",
+    ),
+    RiveModel(
+      src: "assets/app_icon/animated-icons.riv",
+      artboard: "CHAT",
+      stateMachineName: "CHAT_Interactivity",
     ),
     RiveModel(
       src: "assets/app_icon/animated-icons.riv",
@@ -41,12 +47,13 @@ class _LayoutScreenState extends State<LayoutScreen> {
 
   List<SMIBool?> riveIconInputs = [];
   List<StateMachineController?> controllers = [];
-  int selectedNavIndex = 0;
+  int selectedNavIndex = 2;
 
   List<Widget> screens = [
-    const HomeScreen(),
-    const CompanySectionsScreen(),
     const SavedItemsScreen(),
+    const CompanySectionsScreen(),
+    const HomeScreen(),
+    const StreamingIntroScreen(),
     const ProfileScreen(),
   ];
 
@@ -100,7 +107,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
                     bottomNavItems.length,
-                        (index) => GestureDetector(
+                    (index) => GestureDetector(
                       onTap: () {
                         animateTheIcon(index);
                         setState(() {
@@ -110,7 +117,8 @@ class _LayoutScreenState extends State<LayoutScreen> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          CustomAnimatedBar(isActive: selectedNavIndex == index),
+                          CustomAnimatedBar(
+                              isActive: selectedNavIndex == index),
                           SizedBox(
                             height: 36,
                             width: 36,
@@ -123,7 +131,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
                                   riveOnInIt(
                                     artboard,
                                     stateMachineName:
-                                    bottomNavItems[index].stateMachineName,
+                                        bottomNavItems[index].stateMachineName,
                                   );
                                 },
                               ),
