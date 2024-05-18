@@ -58,7 +58,9 @@ dependencies:
   sqflite: ^2.3.3+1
   #bottom nav bar icons with cool animation
   rive: ^0.13.4
-
+  #Agora Streaming
+  agora_rtc_engine: ^6.3.1
+  permission_handler: ^11.3.1
 flutter_launcher_icons:
   android: "ic_launcher"
   ios: true
