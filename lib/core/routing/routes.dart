@@ -11,4 +11,6 @@ class Routes {
   static const String crewScreen = '/crew_screen';
   static const String editProfileScreen = '/edit_profile_screen';
   static const String savedItemsScreen = '/saved_items_screen';
+    static const String streamingScreen = '/streams';
+
 }

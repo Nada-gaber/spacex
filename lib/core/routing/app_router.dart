@@ -21,6 +21,7 @@ import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
+import 'package:spacex/features/streams/ui/screens/agora_streaming.dart';
 
 import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
@@ -131,6 +132,10 @@ class AppRouter {
             create: (context) => getIt.get<SavedItemsCubit>(),
 
               child: const SavedItemsScreen()),
+        );
+         case Routes.streamingScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AgoraStreaming(),
         );
     }
     return null;
