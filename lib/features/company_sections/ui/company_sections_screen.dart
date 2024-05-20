@@ -8,14 +8,16 @@ class CompanySectionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-    children: [
-      CustomAppBar(
-        title: 'Sections',
-      ),
-      Expanded(
-        child: CompanySectionsScreenBody(),
-      ),
-    ],
+      children: [
+        CustomAppBar(
+          title: 'Sections',
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: CompanySectionsScreenBody(),
+          ),
+        ),
+      ],
     );
   }
 }

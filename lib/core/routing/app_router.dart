@@ -19,7 +19,6 @@ import 'package:spacex/features/register/logic/create_user/create_user_cubit.dar
 import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
-import 'package:spacex/features/saved_items/ui/saved_items_screen.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
 import 'package:spacex/features/streams/ui/screens/agora_streaming.dart';
 
@@ -27,6 +26,7 @@ import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
+import '../../features/saved_items/ui/saved_items_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -49,9 +49,9 @@ class AppRouter {
               BlocProvider(
                 create: (context) => getIt<LogoutCubit>(),
               ),
-    BlocProvider(
-    create: (context) => getIt.get<SavedItemsCubit>(),
-    ),
+              BlocProvider(
+                create: (context) => getIt.get<SavedItemsCubit>(),
+              ),
             ],
             child: const LayoutScreen(),
           ),
@@ -61,23 +61,25 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt.get<SavedItemsCubit>(),
-  child: RocketDetailsScreen(
-            rocket: arg,
+            child: RocketDetailsScreen(
+              rocket: arg,
+            ),
           ),
-),
         );
       case Routes.launchPadDetails:
         final arg = settings.arguments as LaunchPad;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt.get<SavedItemsCubit>(),
-  child: LaunchPadsDetailsScreen(
-            launchPad: arg,
+            child: LaunchPadsDetailsScreen(
+              launchPad: arg,
+            ),
           ),
-),
         );
       case Routes.splashScreen:
-        return MaterialPageRoute(builder: (context) => const SplashScreen());
+        return MaterialPageRoute(
+          builder: (context) => const SplashScreen(),
+        );
       case Routes.companyInfo:
         return MaterialPageRoute(
           builder: (context) => const CompanyInfoScreen(),
