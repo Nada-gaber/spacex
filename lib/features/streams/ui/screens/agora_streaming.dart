@@ -24,7 +24,6 @@ class _AgoraStreamingState extends State<AgoraStreaming> {
   bool _localUserJoined = false;
   late RtcEngine _engine;
   bool isWorking = false;
-  final List<int> _remoteUsers = []; // List to store remote UIDs
 
   @override
   void initState() {
@@ -32,54 +31,60 @@ class _AgoraStreamingState extends State<AgoraStreaming> {
     initAgora();
   }
 
-  Future<void> initAgora() async {
+  Future<void> requestPermissions() async {
     await [Permission.microphone, Permission.camera].request();
+  }
 
+  Future<void> initializeEngine() async {
     _engine = createAgoraRtcEngine();
     await _engine.initialize(const RtcEngineContext(
       appId: MyStrings.appId,
       channelProfile: ChannelProfileType.channelProfileLiveBroadcasting,
     ));
+  }
 
-    _engine.registerEventHandler(
-      RtcEngineEventHandler(
-        onJoinChannelSuccess: (RtcConnection connection, int elapsed) {
-          debugPrint("local user ${connection.localUid} joined");
-          setState(() {
-            _localUserJoined = true;
-          });
-        },
-        onUserJoined: (RtcConnection connection, int remoteUid, int elapsed) {
-          debugPrint("remote user $remoteUid joined");
-          setState(() {
-            _remoteUid = remoteUid;
-          });
-        },
-        onUserOffline: (RtcConnection connection, int remoteUid,
-            UserOfflineReasonType reason) {
-          debugPrint("remote user $remoteUid left channel");
-          setState(() {
-            _remoteUid = null;
-          });
-        },
-        onTokenPrivilegeWillExpire: (RtcConnection connection, String token) {
-          debugPrint(
-              '[onTokenPrivilegeWillExpire] connection: ${connection.toJson()}, token: $token');
-        },
-      ),
-    );
+  void registerEventHandlers() {
+    _engine.registerEventHandler(RtcEngineEventHandler(
+      onJoinChannelSuccess: (connection, elapsed) =>
+          onJoinSuccess(connection, elapsed),
+      onUserJoined: (connection, remoteUid, elapsed) =>
+          onUserJoined(connection, remoteUid, elapsed),
+    ));
+  }
 
-    // Enable video based on user selection
+  void onJoinSuccess(RtcConnection connection, int elapsed) {
+    debugPrint("local user ${connection.localUid} joined");
+    setState(() {
+      _localUserJoined = true;
+    });
+  }
+
+  void onUserJoined(RtcConnection connection, int remoteUid, int elapsed) {
+    debugPrint("remote user $remoteUid joined");
+    setState(() {
+      _remoteUid = remoteUid;
+    });
+  }
+
+  Future<void> enableVideo() async {
     if (_useVideo) {
       await _engine.enableVideo();
       await _engine.startPreview();
     }
+  }
 
-    // Enable microphone based on user selection
+  Future<void> enableMicrophone() async {
     if (_useMicrophone) {
       await _engine.enableAudio();
     }
+  }
 
+  Future<void> initAgora() async {
+    await requestPermissions();
+    await initializeEngine();
+    registerEventHandlers();
+    await enableVideo();
+    await enableMicrophone();
     await _engine.setClientRole(role: ClientRoleType.clientRoleBroadcaster);
   }
 
@@ -97,7 +102,14 @@ class _AgoraStreamingState extends State<AgoraStreaming> {
   Future<void> _joinChannel() async {
     String channelName = _channelNameController.text;
     if (channelName.isEmpty) {
-      return; // Handle empty channel name
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please enter a channel name'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+
+      return;
     }
     await _engine.joinChannel(
       token: MyStrings.tokenAgora,
@@ -125,7 +137,6 @@ class _AgoraStreamingState extends State<AgoraStreaming> {
                 // Channel name text field
                 ChannelNameTextField(
                     textEditingController: _channelNameController),
-
                 Center(
                   child: _localUserJoined
                       ? AgoraVideoView(
@@ -181,12 +192,9 @@ class _AgoraStreamingState extends State<AgoraStreaming> {
                     ],
                   ),
                 ),
-
                 // Join channel button
                 JoinChannelButton(onPressed: _joinChannel),
-
                 // Local and remote video views
-
                 _remoteUid != null
                     ? SizedBox(
                         width: 100,
