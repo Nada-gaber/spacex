@@ -6,6 +6,7 @@ class MyStrings {
       MySharedPreferences.getBool('isFirstTimeToOpenApp');
   static const appId = "036c698bfdce4bacb304e275fa4c1c58";
   static const tokenAgora =
-      "007eJxTYAj4c6/O4s7c1StYLr39NftJyZGYzSEu7mG6PG0c8sx9tScUGAyMzZLNLC2S0lKSU02SEpOTjA1MUo3MTdMSTZINk00tust90hoCGRk2W9swMTJAIIjPxlBckJicWsHAAADp/CC/";
+            "007eJxTYNBfUfnj3KX1EaUHM7nSj3xy2bI5LKRE6rfGE/YuzkO8Ov4KDAbGZslmlhZJaSnJqSZJiclJxgYmqUbmpmmJJsmGyaYWjNK+aQ2BjAwP785lZGSAQBCfjaG4IDE5tYKBAQCuPyBt";
+
   static const channel = "spacex";
 }
