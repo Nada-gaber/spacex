@@ -20,10 +20,13 @@ import 'package:spacex/features/register/logic/register/register_cubit.dart';
 import 'package:spacex/features/register/ui/register_screen.dart';
 import 'package:spacex/features/saved_items/logic/cubits/saved_items_cubit.dart';
 import 'package:spacex/features/ships/ui/ships.dart';
+import 'package:spacex/features/streams/ui/screens/agora_streaming.dart';
+
 import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
+import '../../features/saved_items/ui/saved_items_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -124,6 +127,17 @@ class AppRouter {
             ],
             child: const EditProfileScreen(),
           ),
+        );
+      case Routes.savedItemsScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt.get<SavedItemsCubit>(),
+
+              child: const SavedItemsScreen()),
+        );
+         case Routes.streamingScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AgoraStreaming(),
         );
     }
     return null;
