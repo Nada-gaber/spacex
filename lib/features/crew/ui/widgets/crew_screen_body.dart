@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spacex/core/widgets/custom_failure_widget.dart';
+import 'package:spacex/core/widgets/custom_loading_widget.dart';
 import 'package:spacex/features/crew/logic/get_all_crew/get_all_crew_cubit.dart';
 import 'package:spacex/features/crew/ui/widgets/custom_crew_loading.dart';
 
@@ -38,7 +39,7 @@ class CrewScreenBody extends StatelessWidget {
             textSize: 24,
           ));
         } else {
-          return const CustomCrewLoading();
+          return const CustomLoadingWidget();
         }
       },
     );
