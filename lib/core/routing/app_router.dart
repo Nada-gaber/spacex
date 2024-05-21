@@ -26,7 +26,6 @@ import '../../features/company_info/ui/company_info_screen.dart';
 import '../../features/home/data/models/rocket_model.dart';
 import '../../features/home/ui/screens/launch_pads_details_screen.dart';
 import '../../features/home/ui/screens/rocket_details_screen.dart';
-import '../../features/saved_items/ui/saved_items_screen.dart';
 import '../../features/splash/splash_screen.dart';
 
 class AppRouter {
@@ -128,14 +127,7 @@ class AppRouter {
             child: const EditProfileScreen(),
           ),
         );
-      case Routes.savedItemsScreen:
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt.get<SavedItemsCubit>(),
-
-              child: const SavedItemsScreen()),
-        );
-         case Routes.streamingScreen:
+      case Routes.streamingScreen:
         return MaterialPageRoute(
           builder: (context) => const AgoraStreaming(),
         );
