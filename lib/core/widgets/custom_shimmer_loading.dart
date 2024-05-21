@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:spacex/core/constant/colors.dart';
 
 class CustomShimmerLoading extends StatelessWidget {
   final Widget child;
@@ -8,8 +9,8 @@ class CustomShimmerLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey.shade500,
-      highlightColor: Colors.grey.shade100,
+      baseColor: AppColors.blueGray,
+      highlightColor: Colors.blue.shade100,
       child: child,
     );
   }
