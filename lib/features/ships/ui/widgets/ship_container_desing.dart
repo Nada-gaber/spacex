@@ -5,12 +5,12 @@ import 'package:spacex/core/widgets/text_color_animation.dart';
 import 'package:spacex/features/ships/ui/widgets/cached_image.dart';
 import 'package:spacex/features/ships/ui/widgets/ships_container_details.dart';
 
-
 class ContainerShipDesign extends StatelessWidget {
   final String shipImage;
   final String shipName;
   final bool isActive;
   final String homePort;
+
   const ContainerShipDesign(
       {super.key,
       required this.shipImage,
@@ -47,20 +47,27 @@ class ContainerShipDesign extends StatelessWidget {
               ),
               child: Hero(
                 tag: TextColorAnimation(
-                    textAnimated: shipName,
-                    fontSize: 13,
-                    padding: 0,
-                    alignment: Alignment.centerLeft),
+                  textAnimated: shipName,
+                  fontSize: 13,
+                  padding: 0,
+                  alignment: Alignment.centerLeft,
+                ),
                 child: Container(
-                    color: AppColors.backgroundDarkBlue,
-                    height: MediaQuery.of(context).size.height / 5,
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: CachedImage(shipImage: shipImage)),
+                  color: AppColors.backgroundDarkBlue,
+                  height: MediaQuery.of(context).size.height / 5,
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: CachedImage(
+                    shipImage: shipImage,
+                  ),
+                ),
               ),
             ),
           ),
           ShipsContainerDetails(
-              shipName: shipName, homePort: homePort, isActive: isActive),
+            shipName: shipName,
+            homePort: homePort,
+            isActive: isActive,
+          ),
         ],
       ),
     );
