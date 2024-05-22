@@ -24,5 +24,6 @@ void main() async {
   );
   runApp(SpacexApp(
     appRouter: AppRouter(),
+    
   ));
 }
