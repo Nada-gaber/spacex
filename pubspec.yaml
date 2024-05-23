@@ -1,34 +1,89 @@
 name: spacex
-description: "A new Flutter project."
+description: "Stay updated on SpaceX launches, missions, and news. Explore stunning images and videos, track launches, and learn about space exploration innovations. Your SpaceX companion app!"
 
 publish_to: 'none' 
-
 
 version: 1.0.0+1
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
 
-
 dependencies:
   flutter:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  flutter_bloc: ^8.1.5
+  # for custom icons
+  font_awesome_flutter: ^10.7.0
+  # for splash screen
+  flutter_native_splash: ^2.4.0
+  # for app icon
+  flutter_launcher_icons: ^0.13.1
+  # for error handling
+  dartz: ^0.10.1
+  # show toast
+  fluttertoast: ^8.2.5
+  # saved local data
+  shared_preferences: ^2.2.3
+  # for dependency injection
   get_it: ^7.6.7
-  dio: ^5.4.2+1
+  # handle display images
+  shimmer: ^3.0.0
+  cached_network_image: ^3.3.1
+  # change profile image
+  image_picker: ^1.1.0
+  path: ^1.9.0
+  # firebase
+  firebase_core: ^2.30.0
+  firebase_auth: ^4.19.2
+  cloud_firestore: ^4.17.2
+  firebase_storage: ^11.7.4
+  # logic
+  flutter_bloc: ^8.1.5
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  # API
+  dio: ^5.4.3+1
   retrofit: ^4.1.0
+  retrofit_generator: ^8.1.0
+  #url launcher
+  url_launcher: ^6.2.6
+  #display images with scroll
+  carousel_slider: ^4.2.1
+  #cool and beautiful text animations.
+  animated_text_kit: ^4.2.0
+  gradient_borders: ^1.0.0
+
+  #for local database to store saved items
+  sqflite: ^2.3.3+1
+  #bottom nav bar icons with cool animation
+  rive: ^0.13.4
+  #Agora Streaming
+  agora_rtc_engine: ^6.3.1
+  permission_handler: ^11.3.1
+  #secure token
+  flutter_secure_storage: ^4.2.1
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/app_icon/icon.png"
+  min_sdk_android: 21 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^3.0.0
-
+  build_runner: ^2.4.9
 
 flutter:
 
-
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/splash/
+    - assets/app_icon/
 
+  fonts:
+    - family: TR
+      fonts:
+        - asset: assets/fonts/tr.ttf
