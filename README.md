@@ -25,6 +25,6 @@ https://www.postman.com/skshariq01/workspace/my-test/collection/10265856-9b631a7
 ![11](https://github.com/Nada-gaber/spacex/assets/63368547/8a9350f9-9d3c-4231-8adc-c7f6115cb69b)
 ![13](https://github.com/Nada-gaber/spacex/assets/63368547/bc6d2262-df09-4a1a-b4ac-b2d69f928342)
 
-## ✨SpaceX - E1: Team 3✨
+## ✨SpaceX - Team ✨
 
 ![12](https://github.com/Nada-gaber/spacex/assets/63368547/407dc784-d39e-4996-8c7c-2bee75f0c604)
